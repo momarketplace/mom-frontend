@@ -6,7 +6,6 @@ import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-//import NotificationsIcon from '@mui/icons-material/Notifications';
 import Avatar from '@mui/material/Avatar';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Popover from '@mui/material/Popover';
@@ -18,6 +17,7 @@ import UserListItem from "./userAvatar/UserListItem";
 import { ChatState } from '../../context/ChatProvider'
 import ProfileModal from "./ProfileModal";
 import LoadingBox from "../LoadingBox";
+import SearchIcon from '@mui/icons-material/Search';
 
 
 function SideDrawer() {
@@ -122,7 +122,7 @@ function SideDrawer() {
         padding:"5px 10px 5px 10px"
       }}>
         <Tooltip title="Search user to chat" placement="bottom-end">
-          <Button aria-describedby={id} variant="contained" onClick={handlePopClick}> <i style={{color:"white"}} class="fa fa-search"></i>
+          <Button aria-describedby={id} variant="contained" onClick={handlePopClick}> <SearchIcon sx={{fontSize:"18px"}} />
             <Box component="span" sx={{
              display: {xs:"none", sm:"flex", md:"flex"}
            }}>Search users</Box>

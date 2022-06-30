@@ -16,5 +16,7 @@
     flex: 0.9;
 }
 .messageSender > button {
-    flex: 0.1
+    flex: 0.1;
+    background-color: #38B2AC;
+    color: white;
 }

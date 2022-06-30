@@ -5,6 +5,7 @@ import SideDrawer from '../components/chatcontainer/SideDrawer';
 import MyChats from '../components/chatcontainer/MyChats';
 import ChatBox from '../components/chatcontainer/ChatBox';
 import { useState } from 'react';
+import './Chats.css'
 
 
 

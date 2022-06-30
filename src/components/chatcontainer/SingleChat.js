@@ -24,11 +24,6 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
   const [newMessage, setNewMessage] = useState();
   const[sendMessageError, setSendMessageError] = useState(false)
  
-  //state for typing functionality
-  const [typing, setTyping] = useState(false);
-  const [isTyping, setIsTyping] = useState(false);
-  
-  
 
   //get login user details from store
   const userLogin = useSelector((state) => state.userLogin);
@@ -46,7 +41,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
       
       try {
         const config = {
-          "Content-Type": "apllication/json",
+          "Content-Type": "application/json",
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
           },
@@ -60,7 +55,6 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
           },
           config
         );
-        //console.log(data)
         
         setMessages([...messages, data]);
         //set notification
@@ -76,7 +70,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
     
       try {
         const config = {
-          "Content-Type": "apllication/json",
+          "Content-Type": "application/json",
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
           },
@@ -131,6 +125,9 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
   }, [selectedChat]);
 
   
+  const typingHandler = (e) => {
+    setNewMessage(e.target.value)
+  }
 
   //edit chat and set notification true when there is a notification
   const notified = async (id) => {
@@ -148,30 +145,6 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
     }
   }
 
-  //typing handler function
-   const typingHandler = (e) => {
-     setNewMessage(e.target.value);
-    //typing indicator logic
-    
-    if (!typing) {
-      setTyping(true);
-    }
-    //decide when to stop typing
-    let lastTypingTime = new Date().getTime();
-    //decide after 3 second
-    let timerLength = 3000;
-    setTimeout(() => {
-      let timeNow = new Date().getTime();
-      let timeDiff = timeNow - lastTypingTime;
-
-      if (timeDiff >= timerLength && typing) {
-        setTyping(false);
-      }
-    }, timerLength);
-  };
-  
-
-  
 
   return (
     <>
@@ -215,6 +188,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
               </>
             )}
             </Typography>
+
             <Box sx={{
               display:"flex",
             flexDirection:"column",
@@ -224,7 +198,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
             width:"100%",
               height: "100%",
             borderRadius:"10px",
-              overflowY: "hidden",
+              overflowY: "scroll",
            
             }}>
               {
@@ -247,10 +221,10 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
       
     </Stack>
               }
-              {/* {isTyping && <p style={{ color:"#023c3f"}}>Typing...</p>} */}
+              
               <div className="messageSender">
                 <input type="text" placeholder="Enter your message"
-                   onChange={typingHandler}
+                  onChange={typingHandler}
                   value={newMessage}
                   onKeyDown={sendMessage}
                 />

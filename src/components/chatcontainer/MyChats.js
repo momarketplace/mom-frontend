@@ -6,7 +6,6 @@ import { ChatState } from "../../context/ChatProvider";
 import { useEffect } from 'react';
 import ChatLoading from './ChatLoading';
 import Box from '@mui/material/Box';
-//import { getSender } from '../../config/ChatLogics';
 import GroupChatModal from './GroupChatModal';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -16,7 +15,7 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 
 function MyChats({fetchAgain}) {
-  const [loggedUser, setLoggedUser] = useState()
+  //const [loggedUser, setLoggedUser] = useState()
   const [loading, setLoading] = useState(false);
   
  
@@ -73,7 +72,7 @@ function MyChats({fetchAgain}) {
     //call the function in a useEffect
   //whenever the fetchAgain changes, this useEffect runs again
     useEffect(() => {
-        setLoggedUser(userInfo)
+        //setLoggedUser(userInfo)
         fetchChats()
     }, [fetchAgain])
   
@@ -97,7 +96,17 @@ function MyChats({fetchAgain}) {
  
   useEffect(() => {
     myNotification()
-  },[userInfo, selectedChat])
+  }, [userInfo, selectedChat])
+  
+
+  //function to know the sender of a message
+  function getSender(users) {
+    return users.map((user) => {
+      if (user._id !== userInfo._id) {
+       return user.name
+     }
+   })
+  }
   
   return (
     
@@ -150,7 +159,7 @@ function MyChats({fetchAgain}) {
           width: "100%",
           height: "100%",
           borderRadius: "40px",
-          overflowY:"hidden"
+          overflowY:"scroll"
         }}
          
         >
@@ -158,10 +167,10 @@ function MyChats({fetchAgain}) {
             <ChatLoading />
           ) : (
             <Box>
-              {
+              {/* {
                 chats.length === 0 &&
                 <p style={{color:"gray"}}>You have not added any user in your chat list. To add user(s), click on <strong>search users or search icon</strong> at the top of the page, type in the name of the user and click on <strong>Go</strong>. In the search result, click on the user and send your message(s).</p>
-              }
+              } */}
               {chats.map((chat) => (
                 <Box
                   onClick={() => {
@@ -182,16 +191,18 @@ function MyChats({fetchAgain}) {
                   <Typography sx={{display:"flex"}}>
                     
                     {!chat.isGroupChat
-                      ? getSenderImage(loggedUser, chat.users)
-                      : (<Box sx={{display:"flex", alignItems:"center",}}>
-                        <Stack sx={{mr:1}} direction="row" spacing={2}>
-                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" sx={{ width: 24, height: 24 }}/>
-                        </Stack>
-                        {chat.chatName}
-                      </Box>)}
-                     {chat.notification && chat.latestMessage.sender._id !== userInfo._id &&
-                      (<span className="badge">!</span>)
-                    }   
+                           ? (<Box sx={{ display: "flex", alignItems: "center", }}>
+                         {getSender(chat.users)}
+                       </Box>)
+                       : (<Box sx={{display:"flex", alignItems:"center",}}>
+                         <Stack sx={{mr:1}} direction="row" spacing={2}>
+                         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" sx={{ width: 24, height: 24 }}/>
+                         </Stack>
+                         {chat.chatName}
+                       </Box>)}
+                      {chat.notification && chat.latestMessage.sender._id !== userInfo._id &&
+                       (<span className="badge">!</span>)
+                     }   
                    
                   </Typography>
                   {chat.latestMessage && (
