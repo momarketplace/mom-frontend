@@ -203,14 +203,7 @@ function MyChats({fetchAgain}) {
                      }   
                    
                        </Typography>
-                       {chat.latestMessage && (
-                     <Typography sx={{fontSize:"12px"}}>
-                       <b>{chat.latestMessage.sender.name} : </b>
-                       {chat.latestMessage.content.length > 50
-                         ? chat.latestMessage.content.substring(0, 51) + "..."
-                         : chat.latestMessage.content}
-                     </Typography>
-                   )}
+                       
                   
                  </Box>
                ))}
