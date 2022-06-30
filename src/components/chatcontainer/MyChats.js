@@ -111,86 +111,84 @@ function MyChats({fetchAgain}) {
   return (
     
     <Box
-      sx={{
-        display:{xs: selectedChat? "none":"flex", sm: selectedChat? "none":"flex", md:"flex"},
-        flexDirection: "column",
-        alignItems: "center",
-        p:3,
-        bgcolor: "white",
-        width: {xs:"100%", sm: "100%", md: "31%",  },
-        borderRadius: "10px",
-        borderWidth: "1px",
-      }}
-      >
-      <Box
-        sx={{
-          pb: 3,
-          px: 3,
-          fontSize: { xs: "20px", sm: "20px", md: "22px" },
-          display: "flex",
-          width: "100%",
-          justifyContent: "space-between",
-          alignItems:"center",
-        }}
-        >
-       <Box> My Chats</Box>
+       sx={{
+         display:{xs: selectedChat? "none":"flex", sm: selectedChat? "none":"flex", md:"flex"},
+         flexDirection: "column",
+         alignItems: "center",
+         p:3,
+         bgcolor: "white",
+         width: {xs:"100%", sm: "100%", md: "31%",  },
+         borderRadius: "10px",
+         borderWidth: "1px",
+       }}
+       >
+       <Box
+         sx={{
+           pb: 3,
+           px: 3,
+           fontSize: { xs: "20px", sm: "20px", md: "22px" },
+           display: "flex",
+           width: "100%",
+           justifyContent: "space-between",
+           alignItems:"center",
+         }}
+         >
+        <Box> My Chats</Box>
       
-        <GroupChatModal>
-          <Button
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems:"center"
-              // fontSize: {xs:"17px", sm:"10px", md:"17px"}
-            }}
-            >
-              Create Group <span><AddIcon /></span>
-            </Button>
+         <GroupChatModal>
+           <Button
+             sx={{
+               display: "flex",
+               justifyContent: "center",
+               alignItems:"center"
+               // fontSize: {xs:"17px", sm:"10px", md:"17px"}
+             }}
+             >
+               Create Group <span><AddIcon /></span>
+             </Button>
           
-          </GroupChatModal>
-      </Box>
+           </GroupChatModal>
+       </Box>
       
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          p: 3,
-          bgcolor: "#f8f8f8",
-          width: "100%",
-          height: "100%",
-          borderRadius: "40px",
-          overflowY:"scroll"
-        }}
+       <Box
+         sx={{
+           display: "flex",
+           flexDirection: "column",
+           p: 3,
+           bgcolor: "#f8f8f8",
+           width: "100%",
+           height: "100%",
+           borderRadius: "40px",
+           overflowY:"scroll"
+         }}
          
-        >
-          {loading ? (
-            <ChatLoading />
-          ) : (
-            <Box>
-              {/* {
-                chats.length === 0 &&
-                <p style={{color:"gray"}}>You have not added any user in your chat list. To add user(s), click on <strong>search users or search icon</strong> at the top of the page, type in the name of the user and click on <strong>Go</strong>. In the search result, click on the user and send your message(s).</p>
-              } */}
-              {chats.map((chat) => (
-                <Box
-                  onClick={() => {
-                    setSelectedChat(chat)
-                    chat.notification && chat.latestMessage.sender._id !== userInfo._id && clearNotified(chat._id)
-                  }}
-                  sx={{
-                    cursor: "pointer",
-                    bgcolor: { xs: selectedChat === chat ? "#38B2AC" : "#e8e8e8", sm: selectedChat === chat ? "#38B2AC" : "#e8e8e8", md: selectedChat === chat ? "#38B2AC" : "#e8e8e8", lg: selectedChat === chat ? "#38B2AC" : "#e8e8e8" },
-                    color: { xs: selectedChat === chat ? "white" : "black", sm: selectedChat === chat ? "white" : "black", md: selectedChat === chat ? "white" : "black", lg: selectedChat === chat ? "white" : "black" },
-                    px: 3,
-                    py: 2,
-                    borderRadius: "10px",
-                    my:1
-                  }}
-                  key={chat._id}
-                >
-                  <Typography sx={{display:"flex"}}>
+         >
+           {loading ? (
+             <ChatLoading />
+           ) : (
+             <Box>
+               
+                 
+                   {chats?.map((chat) => (
+                 <Box
+                   onClick={() => {
+                     setSelectedChat(chat)
+                      chat.notification && chat.latestMessage.sender._id !== userInfo._id && clearNotified(chat._id)
+                   }}
+                   sx={{
+                     cursor: "pointer",
+                     bgcolor: { xs: selectedChat === chat ? "#38B2AC" : "#e8e8e8", sm: selectedChat === chat ? "#38B2AC" : "#e8e8e8", md: selectedChat === chat ? "#38B2AC" : "#e8e8e8", lg: selectedChat === chat ? "#38B2AC" : "#e8e8e8" },
+                     color: { xs: selectedChat === chat ? "white" : "black", sm: selectedChat === chat ? "white" : "black", md: selectedChat === chat ? "white" : "black", lg: selectedChat === chat ? "white" : "black" },
+                     px: 3,
+                     py: 2,
+                     borderRadius: "10px",
+                     my: 1,
+                   }}
+                   key={chat._id}
+                 >
+                       <Typography sx={{display:"flex"}}>
                     
-                    {!chat.isGroupChat
+                     {!chat.isGroupChat
                            ? (<Box sx={{ display: "flex", alignItems: "center", }}>
                          {getSender(chat.users)}
                        </Box>)
@@ -204,23 +202,25 @@ function MyChats({fetchAgain}) {
                        (<span className="badge">!</span>)
                      }   
                    
-                  </Typography>
-                  {chat.latestMessage && (
-                    <Typography sx={{fontSize:"12px"}}>
-                      <b>{chat.latestMessage.sender.name} : </b>
-                      {chat.latestMessage.content.length > 50
-                        ? chat.latestMessage.content.substring(0, 51) + "..."
-                        : chat.latestMessage.content}
-                    </Typography>
-                  )}
+                       </Typography>
+                       {chat.latestMessage && (
+                     <Typography sx={{fontSize:"12px"}}>
+                       <b>{chat.latestMessage.sender.name} : </b>
+                       {chat.latestMessage.content.length > 50
+                         ? chat.latestMessage.content.substring(0, 51) + "..."
+                         : chat.latestMessage.content}
+                     </Typography>
+                   )}
                   
-                </Box>
-              ))}
-            </Box>
+                 </Box>
+               ))}
+                   
+               
+             </Box>
             
-          )}
-        </Box>
-      </Box>
+           )}
+         </Box>
+       </Box>
     );
 }
 
