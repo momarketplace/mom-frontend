@@ -25,7 +25,7 @@ function DeleteProduct(props) {
         const fetchData = async () => {
             try {
                 setLoading(true)
-                const { data } = await axios.get(`/api/v1/product/delete/${id}`,{
+                const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/delete/${id}`,{
                     headers: {
                         Authorization: `Bearer ${userInfo.token}`
                         }
