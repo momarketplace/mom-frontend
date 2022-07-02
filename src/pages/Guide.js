@@ -11,7 +11,7 @@ import './Guide.css'
 function Guide() {
     return (
         <div style={{backgroundColor:"#f5f5f5", maxWidth:"100%"}}>
-        <h1 style={{ textAlign: "center" }}>How to use this website</h1>
+        <h2 style={{ textAlign: "center" }}>How to use this website</h2>
         
         <div>
           <Link to="/">
@@ -93,6 +93,24 @@ function Guide() {
           
         </AccordionDetails>
       </Accordion>
+
+
+          <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel3a-content"
+          id="panel3a-header"
+        >
+          <Typography><h2 className='guide-h2'>Buy without fear</h2></Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <p>If you do not get your item, you will get back your money.</p>
+              <p>Make sure you click on the item and follow the process to pay for it on this website.</p>
+              <p>Please, do not pay directly to the seller, or make payment outside this platform. We will not be able to return such payment if you did not get your item.</p>
+            </AccordionDetails>
+      </Accordion>
+
+          
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -165,6 +183,22 @@ function Guide() {
              </ul>
             </AccordionDetails>
       </Accordion>
+
+
+          <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel3a-content"
+          id="panel3a-header"
+        >
+          <Typography> <h2 className='guide-h2'>How can I view my orders?</h2></Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <h4>View my orders</h4>
+              <p>When you log in, move the mouse to your name at the top of the page, in the dropdown, click on "My Orders". </p>
+            </AccordionDetails>
+      </Accordion>
+          
           <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -298,6 +332,24 @@ function Guide() {
 
             </AccordionDetails>
           </Accordion>
+
+
+
+          <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel3a-content"
+          id="panel3a-header"
+        >
+          <Typography> <h2 className='guide-h2'>How do I access my store?</h2></Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <h4>Access my store</h4>
+              <p>When you log in, move the mouse to your name at the top of the page, in the dropdown, click on "userstore". In that same dropdown, you can also access your "Sold items", "Customer orders" and others.</p>
+            </AccordionDetails>
+      </Accordion>
+
+
           <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -516,10 +568,9 @@ function Guide() {
           <Typography> <h2 className='guide-h2'>Is it free to sell on Mosganda?</h2></Typography>
             </AccordionSummary>
             <AccordionDetails>
-            <p>Yes, it is free to sell on Mosganda. Mosganda only charge 3% for item(s) sold on our platform. This charge is deducted only when a sales process has been successfully completed</p>
-              
-            
-      
+               <h4>Our service charge</h4>
+                <p>We only charge you 3% when you have successfully sold an item.</p>
+                <p>For example, if you sell an item that cost #1000, our 3% charge is just #30. So you will receive #970 plus the amount you charge for the delivery of the item.</p>
             </AccordionDetails>
       </Accordion>
           

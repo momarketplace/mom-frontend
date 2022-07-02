@@ -157,7 +157,7 @@ function HomePage() {
             </Stack>
                 }
           </div>
-          
+          <p style={{backgroundColor:"white", padding:"10px", margin:"0px"}}>Confused?  <Link to ="/guide" style={{color:"blue"}}>Take our step by step guide.</Link></p>
             
        
 

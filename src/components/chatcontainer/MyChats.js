@@ -167,7 +167,10 @@ function MyChats({fetchAgain}) {
              <ChatLoading />
            ) : (
              <Box>
-               
+               {
+                 chats.length === 0 &&
+                 <p style={{color:"gray"}}>You have not added any user in your chat list. To add user(s), click on <strong>search users or search icon</strong> at the top of the page, type in the name of the user and click on <strong>Go</strong>. In the search result, click on the user and send your message(s).</p>
+               }
                  
                    {chats?.map((chat) => (
                  <Box

@@ -499,7 +499,7 @@ function UserStore() {
                     
            <Link to="/services">
             <Button sx={{marginTop: "3px"}} variant="contained" color="primary" size="large">
-              Service Charges
+              About store and withdrawal
               </Button>
           </Link> 
           </div>
