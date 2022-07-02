@@ -107,6 +107,7 @@ function Guide() {
               <p>If you do not get your item, you will get back your money.</p>
               <p>Make sure you click on the item and follow the process to pay for it on this website.</p>
               <p>Please, do not pay directly to the seller, or make payment outside this platform. We will not be able to return such payment if you did not get your item.</p>
+              <p>Also take note of the seller's <strong>Delivery capacity</strong> in the product details before proceeding to make payment.</p>
             </AccordionDetails>
       </Accordion>
 

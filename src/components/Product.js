@@ -18,12 +18,12 @@ function Product(props) {
       </Link>
       <div className="card-body">
         <Link to={`/product/${product._id}`}>
-          <h2 style={{ textAlign: "center" }}>{product.name}</h2>
+          <h4 style={{ textAlign: "center", margin:"0px" }}>{product.name}</h4>
           {/* {product.isSold && <h3 className="sold">Item Sold</h3>} */}
         </Link>
         <div className="card-body-items">
           <div className="price">
-            <h3>#{product.price}</h3>
+            <h4>#{product.price}</h4>
           </div>
           <div>
             <p>{product.storeCity}</p>

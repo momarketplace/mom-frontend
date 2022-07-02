@@ -85,7 +85,10 @@ function ProductPage(props) {
                     Seller-Name: <strong>{product.sellerName}</strong>
                       </li>
                       <li>
-                    Delivery: <strong>{product.deliveryCapacity}</strong>
+                        Delivery: <strong style={{color:"red"}}>{product.deliveryCapacity === "Within-the-same-city" ?
+                          `Only within ${product.storeCity}` : product.deliveryCapacity === "Within-the-same-state" ?
+                        `Only within ${product.storeState}`: `Across ${product.storeCountry}`}
+                        </strong>
                   </li>
                 </ul>
               </div>
