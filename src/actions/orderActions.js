@@ -76,15 +76,15 @@ export const detailsOrder = (orderId) => async (dispatch, getState) => {
 }
 
 //PAY ORDER ACTIONS
-export const payOrder = (order, paymentResult ) => async (dispatch, getState) =>{
+export const payOrder = (order ) => async (dispatch, getState) =>{
     dispatch({
         type: ORDER_PAY_REQUEST,
-        payload: {order, paymentResult}
+        payload: {order}
     });
     //get user info
     const { userLogin: { userInfo },} = getState();
     try {
-        const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/order/${order._id}/pay`, {paymentResult}, {
+        const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/order/${order._id}/pay`, {
             headers: { Authorization: `Bearer ${userInfo.token}`},
         });
         dispatch({

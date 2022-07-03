@@ -121,7 +121,7 @@ useEffect(() =>{
                     <ul>
                         <li>
                             <div className ="card card-body">
-                                <h2>Shipping/Buyer Information</h2>
+                                <h4>Shipping/Buyer Information</h4>
                                 <p> <strong>Name:</strong> { basket.shippingAddress.fullName }, <strong>Phone:</strong> { basket.shippingAddress.phone } <br />
                                 <strong>Address:</strong> { basket.shippingAddress.address },
                                 { basket.shippingAddress.city }, 
@@ -131,20 +131,20 @@ useEffect(() =>{
                         </li>
                         <li>
                             <div className ="card card-body">
-                                <h2>Payment</h2>
+                                <h4>Payment</h4>
                                 <p> <strong>Method:</strong> { basket.paymentMethod } 
                                 </p>
                             </div>
                         </li>
                         <li>
                             <div className='card card-body'>
-                                <h2>Delivery</h2>
+                                <h4>Delivery</h4>
                                 <p>Amount: <strong>#{ deliveryFee}</strong></p>
                             </div>
                         </li>
                         <li>
                             <div className ="card card-body">
-                                <h2>Order Items</h2>
+                                <h4>Order Items</h4>
                                 <ul>
                             {
                                 basket.basketItems.map((item) =>(
@@ -183,7 +183,7 @@ useEffect(() =>{
                     <div className ="card card-body">
                         <ul>
                             <li>
-                                <h2>Order Summary</h2>
+                                <h4>Order Summary</h4>
                             </li>
                             <li>
                                 <div className = "row">

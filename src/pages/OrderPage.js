@@ -31,7 +31,7 @@ function OrderPage(props) {
      //get order details from redux store
     const orderDetails = useSelector(state => state.orderDetails);
     const { order, loading, error } = orderDetails;
-    console.log(order)
+    //console.log(order)
 
     //get the orderPay from redux store
     const orderPay = useSelector(state => state.orderPay);
@@ -103,10 +103,10 @@ function OrderPage(props) {
     //   })[0]
      
 
-    const paymentResult = { id: orderId, name: name, email: email, phone: phone, amount: amount / 100 }
+    //const paymentResult = { id: orderId, name: name, email: email, phone: phone, amount: amount / 100 }
     
       const successHandler = () => {
-          dispatch(payOrder(order, paymentResult));
+          dispatch(payOrder(order));
 
           //update paid products
         order.orderItems.map((x) => {
@@ -121,13 +121,13 @@ function OrderPage(props) {
     error? (<MessageBox variant="danger">{error}</MessageBox>):
     (
         <div style={{backgroundColor:"white"}}>
-            <h3 style={{padding:"10px", maxWidth:"90%"}}>Order {order._id} </h3>
+            <p style={{padding:"10px", maxWidth:"90%", marginBottom:"0px"}}>Order Id: <span style={{backgroundColor:"#006400",color:"yellow",padding:"5px"}}>{order._id}</span> </p>
             <div className = "row top">
                 <div className = "col-2">
                     <ul>
                         <li>
                             <div className ="card card-body">
-                                <h3>Shipping/Buyer Information</h3>
+                                <h4>Shipping/Buyer Information</h4>
                                 <p> <strong>Name:</strong> { order.shippingAddress.fullName }, <strong>Phone:</strong> { order.shippingAddress.phone } <br />
                                 <strong>Address:</strong> { order.shippingAddress.address },
                                 { order.shippingAddress.city }, 
@@ -150,8 +150,8 @@ function OrderPage(props) {
                         </li>
                         <li>
                             <div className ="card card-body">
-                                <h3>Payment</h3>
-                                <p> <strong>Method:</strong> { order.paymentMethod } 
+                                <h4>Payment</h4>
+                                <p> Method: { order.paymentMethod } 
                                 </p>
 
                                 { order.isPaid?
@@ -162,13 +162,13 @@ function OrderPage(props) {
                                 </li>
                                 <li>
                                     <div className='card card-body'>
-                                        <h3>Delivery</h3>
+                                        <h4>Delivery</h4>
                                         <p>Fee: #{ order.deliveryFee}</p>
                                     </div>
                                 </li>
                         <li>
                             <div className ="card card-body">
-                                <h3>Order Items</h3>
+                                <h4>Order Items</h4>
                                 <ul>
                             {
                                 order.orderItems.map((item) =>(
@@ -205,7 +205,7 @@ function OrderPage(props) {
                     <div className ="card card-body">
                         <ul>
                             <li>
-                                <h3>Order Summary</h3>
+                                <h4>Order Summary</h4>
                             </li>
                             <li>
                                 <div className = "row">
