@@ -8,9 +8,10 @@
     padding-left: 10px;
 }
 
-/* .store-service-item {
-    background-color: #fff;
-} */
-.service {
-    border-bottom: 5px solid blue;
+.store-service-item {
+    border-top: 2px solid blue;
+}
+
+.service-h4 {
+    color: #000080;
 }

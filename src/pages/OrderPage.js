@@ -26,7 +26,7 @@ function OrderPage(props) {
     //get login user details from store
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-   console.log(userInfo);
+   //console.log(userInfo);
 
      //get order details from redux store
     const orderDetails = useSelector(state => state.orderDetails);
@@ -76,6 +76,7 @@ function OrderPage(props) {
             setEmail(email)
             setPhone(phone)
             setName(name)
+            order.paymentResult = { id: orderId, name: name, email: email, phone: phone, amount: amount / 100 }
         }
        
     },[email, name, order, phone])
@@ -102,7 +103,8 @@ function OrderPage(props) {
     //   })[0]
      
 
-      const paymentResult = {id: orderId, name: name, email: email, phone: phone, amount:amount/100}
+    const paymentResult = { id: orderId, name: name, email: email, phone: phone, amount: amount / 100 }
+    
       const successHandler = () => {
           dispatch(payOrder(order, paymentResult));
 
@@ -217,12 +219,12 @@ function OrderPage(props) {
                                     <div>#{order.deliveryFee.toFixed(2)}</div>
                                 </div>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                 <div className = "row">
                                     <div>Service</div>
                                     <div>#{order.buyerService.toFixed(2)}</div>
                                 </div>
-                            </li>
+                            </li> */}
                             
                             <li>
                                 <div className = "row">

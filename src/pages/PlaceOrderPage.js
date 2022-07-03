@@ -62,28 +62,20 @@ const history = useHistory()
         const serviceCharge = ser.price * 0.03;
         ser.service = serviceCharge;
         return serviceCharge;
-        // if (ser.price <= 10000) {
-        //     ser.service = 50
-        //     return 50
-        // } 
-         
-        //  else if (ser.price > 10000) {
-        //     ser.service = 100
-        //     return 100
-        // }
+        
     })
 
     //service for buyer
-    const buyerService = basket.itemsPrice <= 10000 ? 50 : basket.itemsPrice <= 50000 ? 100 : 200;
+    //const buyerService = basket.itemsPrice <= 10000 ? 50 : basket.itemsPrice <= 50000 ? 100 : 200;
     //const totalService = service.reduce((a, b) => a + b, 0)
     
 
-    basket.totalPrice = basket.itemsPrice + basket.shippingPrice + Number(buyerService) + Number(deliveryFee) //+ basket.taxPrice
+    basket.totalPrice = basket.itemsPrice + basket.shippingPrice + Number(deliveryFee) //+ basket.taxPrice + Number(buyerService)
     basket.deliveryFee = Number(deliveryFee)
-    basket.buyerService = Number(buyerService)
-console.log(basket)
-    console.log(basket.basketItems)
-   console.log(service)
+    //basket.buyerService = Number(buyerService)
+//console.log(basket)
+    //console.log(basket.basketItems)
+   //console.log(service)
 
 useEffect(() =>{
     if(basket) {
@@ -205,13 +197,13 @@ useEffect(() =>{
                                     <div>#{ deliveryFee}</div>
                                 </div>
                             </li>
-                            <li>
+                            {/* <li>
                                 <div className = "row">
                                     <div>Transfer</div>
                                     <div>#{buyerService}</div>
-                                     {/* <div>#{basket.shippingPrice.toFixed(2)}</div>  */}
+                                      <div>#{basket.shippingPrice.toFixed(2)}</div> 
                                 </div>
-                            </li>
+                            </li> */}
                             {
                                 /*
                                 <li>
