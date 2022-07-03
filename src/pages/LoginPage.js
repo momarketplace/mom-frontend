@@ -41,7 +41,7 @@ function LoginPage(props) {
       <div>
         <form onSubmit={handleSubmit}>
           <div className='login'>
-            <h1 style={{ textAlign: "center" }}>Login</h1>
+            <h2 style={{ textAlign: "center" }}>Login</h2>
             <div className='register-items'>
             <label htmlFor="email">Email<span className="required-field">*</span></label>
               <input

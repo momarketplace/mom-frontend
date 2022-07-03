@@ -425,7 +425,7 @@ function App() {
               </form>
             </div>
           </div>
-          <div className="footer-item">All rights reserved</div>
+          <div className="footer-all-right-reserved">All rights reserved</div>
         </footer>
       </div>
     </BrowserRouter>

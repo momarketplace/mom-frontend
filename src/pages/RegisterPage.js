@@ -75,7 +75,7 @@ function RegisterPage(props) {
       <div>
         <form onSubmit={handleSummit}>
           <div className='register'>
-            <h1 style={{textAlign:"center"}}>Register</h1>
+            <h2 style={{textAlign:"center"}}>Register</h2>
             <p>Please fill in this form to create an account.</p>
             
             <div className='register-items'>
