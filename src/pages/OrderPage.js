@@ -103,10 +103,10 @@ function OrderPage(props) {
     //   })[0]
      
 
-    //const paymentResult = { id: orderId, name: name, email: email, phone: phone, amount: amount / 100 }
+    const paymentResult = { id: orderId, name: name, email: email, phone: phone, amount: amount / 100 }
     
       const successHandler = () => {
-          dispatch(payOrder(order));
+          dispatch(payOrder(order, paymentResult));
 
           //update paid products
         order.orderItems.map((x) => {
