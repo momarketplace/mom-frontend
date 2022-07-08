@@ -133,7 +133,11 @@ function MyChats({fetchAgain}) {
            alignItems:"center",
          }}
          >
-        <Box> My Chats</Box>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+             <Typography sx={{fontSize:"10px",margin:"0px", color:"orange", display:{sx:"flex",sm:"flex",md:"none",lg:"none"}}}>Click on a user to start chatting</Typography>
+             My Chats
+             
+        </Box>
       
          <GroupChatModal>
            <Button
@@ -169,7 +173,7 @@ function MyChats({fetchAgain}) {
              <Box>
                {
                  chats.length === 0 &&
-                 <p style={{color:"gray"}}>You have not added any user in your chat list. To add user(s), click on <strong>search users or search icon</strong> at the top of the page, type in the name of the user and click on <strong>Go</strong>. In the search result, click on the user and send your message(s).</p>
+                 <p style={{color:"gray", fontSize:"12px"}}>You have not added any user in your chat list. To add user(s), click on <strong>search users or search icon</strong> at the top of the page, type in the name of the user and click on <strong>Go</strong>. In the search result, click on the user and send your message(s).</p>
                }
                  
                    {chats?.map((chat) => (

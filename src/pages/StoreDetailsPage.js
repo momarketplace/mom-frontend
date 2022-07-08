@@ -103,12 +103,7 @@ function StoreDetailsPage(props) {
                       </span>{" "}
                       {store.singleStore.creatorPhone}
                     </p>
-                    <p>
-                      <span>
-                        <EmailIcon />
-                      </span>
-                      {store.singleStore.creatorEmail}
-                      </p>
+                   
                       <p><Link to='/chats'>
                         <Button variant="contained" color="primary" size="small">
                       Chat
@@ -137,8 +132,11 @@ function StoreDetailsPage(props) {
                                    <p>Country: <strong>{store.singleStore.country}</strong></p>
                                             <p>Description: <strong>{store.singleStore.description}</strong></p>
                                             <p>
-                Delivery: <strong>{store.singleStore.deliveryCapacity}</strong>
-                                            </p>
+                 Delivery: <strong style={{color:"red"}}>{store.singleStore.deliveryCapacity === "Within-the-same-city" ?
+                   `Only within ${store.singleStore.city}` : store.singleStore.deliveryCapacity === "Within-the-same-state" ?
+                  `Only within ${store.singleStore.state}`: `Across ${store.singleStore.country}`}
+                  </strong>
+              </p>
                                             
                                    
                            </div>

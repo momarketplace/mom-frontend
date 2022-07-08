@@ -16,7 +16,7 @@ function ProductPage(props) {
     //read product details from redux store
     const productDetails = useSelector(state => state.productDetails);
     const { loading, error, product} = productDetails;
-    console.log(product)
+    //console.log(product)
 
     useEffect(() => {
         dispatch(getProductDetails(productId));
@@ -96,7 +96,7 @@ function ProductPage(props) {
                     {
                       product.isPaid ? (<div>
                         <h4>Buyer Information</h4>
-                <p>Buyer Name: <b>{product.buyerName}</b>, Buyer Phone: <b>{product.buyerPhone}</b>, Buyer Email: <b>{product.buyerEmail}</b></p>
+                <p>Buyer Name: <b>{product.buyerName}</b>, Buyer Phone: <b>{product.buyerPhone}</b></p>
                         <p>Buyer Address: {product.buyerAddress}</p>
                         
                         <h4>Status</h4>

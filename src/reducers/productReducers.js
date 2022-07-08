@@ -1,6 +1,9 @@
 //product reducers
 
 import { 
+    BLOCK_PRODUCT_FAIL,
+    BLOCK_PRODUCT_REQUEST,
+    BLOCK_PRODUCT_SUCCESS,
     CREATE_PRODUCT_FAIL, 
     CREATE_PRODUCT_REQUEST, 
     CREATE_PRODUCT_SUCCESS, 
@@ -23,6 +26,9 @@ import {
     SOLD_PRODUCTS_FAIL,
     SOLD_PRODUCTS_REQUEST,
     SOLD_PRODUCTS_SUCCESS,
+    UNBLOCK_PRODUCT_FAIL,
+    UNBLOCK_PRODUCT_REQUEST,
+    UNBLOCK_PRODUCT_SUCCESS,
     UNPOST_PRODUCT_FAIL,
     UNPOST_PRODUCT_REQUEST,
     UNPOST_PRODUCT_SUCCESS,
@@ -305,5 +311,52 @@ export const getSoldProductsReducer = (state = { soldProducts:[]}, action) =>{
             }
         default:
             return state
+    }
+}
+
+
+
+//block product reducers
+export const blockProductReducer = (state = {}, action) =>{
+    switch(action.type) {
+        case BLOCK_PRODUCT_REQUEST:
+            return {
+                loadblock: true
+            }
+        case BLOCK_PRODUCT_SUCCESS:
+            return {
+                loadblock: false,
+                successblock: true
+            }
+        case BLOCK_PRODUCT_FAIL:
+            return {
+                loadblock: false,
+                errorblock: action.payload
+            }
+        default:
+            return state;
+    }
+}
+
+
+//unblock product reducers
+export const unblockProductReducer = (state = {}, action) =>{
+    switch(action.type) {
+        case UNBLOCK_PRODUCT_REQUEST:
+            return {
+                loadunblock: true
+            }
+        case UNBLOCK_PRODUCT_SUCCESS:
+            return {
+                loadunblock: false,
+                successunblock: true
+            }
+        case UNBLOCK_PRODUCT_FAIL:
+            return {
+                loadunblock: false,
+                errorunblock: action.payload
+            }
+        default:
+            return state;
     }
 }

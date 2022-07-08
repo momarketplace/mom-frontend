@@ -37,6 +37,12 @@ import {
   SOLD_PRODUCTS_REQUEST,
   SOLD_PRODUCTS_SUCCESS,
   SOLD_PRODUCTS_FAIL,
+  BLOCK_PRODUCT_REQUEST,
+  BLOCK_PRODUCT_SUCCESS,
+  BLOCK_PRODUCT_FAIL,
+  UNBLOCK_PRODUCT_REQUEST,
+  UNBLOCK_PRODUCT_SUCCESS,
+  UNBLOCK_PRODUCT_FAIL,
 } from "../constants/productConstants";
 
 //create a product
@@ -433,5 +439,60 @@ export const getSoldProducts = () => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message,
     });
+  }
+}
+
+
+//block a product
+export const blockProduct = (id) => async(dispatch, getState) => {
+  dispatch({
+      type: BLOCK_PRODUCT_REQUEST,
+      payload: id
+  })
+  //get user info
+  const { userLogin: {userInfo} } = getState();
+  try {
+      const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/block`, id, {
+          headers: {
+              Authorization: `Bearer ${userInfo.token}`
+          },
+      })
+      dispatch({
+          type: BLOCK_PRODUCT_SUCCESS,
+          payload: data
+      })
+      
+  } catch (error) {
+      const message = error.response && error.response.data.message?
+      error.response.data.message : error.message;
+      dispatch({type: BLOCK_PRODUCT_FAIL, payload: message})
+  }
+}
+
+
+
+//unblock a product
+export const unblockProduct = (id) => async(dispatch, getState) => {
+  dispatch({
+      type: UNBLOCK_PRODUCT_REQUEST,
+      payload: id
+  })
+  //get user info
+  const { userLogin: {userInfo} } = getState();
+  try {
+      const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/unblock`, id, {
+          headers: {
+              Authorization: `Bearer ${userInfo.token}`
+          },
+      })
+      dispatch({
+          type: UNBLOCK_PRODUCT_SUCCESS,
+          payload: data
+      })
+      
+  } catch (error) {
+      const message = error.response && error.response.data.message?
+      error.response.data.message : error.message;
+      dispatch({type: UNBLOCK_PRODUCT_FAIL, payload: message})
   }
 }

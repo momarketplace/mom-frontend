@@ -38,7 +38,7 @@ function Resetpassword(props) {
     }
     return (
         <div style={{backgroundColor:'#f5f5f5', maxWidth:"100%", textAlign:"center"}}>
-            <h1>Reset Password</h1>
+            <h3>Reset Password</h3>
             <div className='login'>
                 <form className='form' onSubmit={handleSubmit}>
                    
@@ -85,7 +85,7 @@ function Resetpassword(props) {
                     
           <div>
             <label />
-            <button type="submit" className="primary">
+            <button type="submit" className="primary" style={{margin:"5px"}}>
               Reset
             </button>
           </div>

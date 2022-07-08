@@ -52,7 +52,7 @@ function ComplainList() {
             {
                 complains?.map((complain) => (
                     <div key={complain._id} style={{border:"1px solid black", marginBottom:"2px",backgroundColor:"#f8f8f8"}}>
-                        <h4 style={{ marginBottom: "1px", marginLeft: "5px" }}>complain Id: {complain._id}, orderId:{ complain.orderId}</h4>
+                        <p style={{ marginBottom: "1px", marginLeft: "5px" }}>complain Id: {complain._id}, orderId:{ complain.orderId}</p>
                         <table className="table">
                             <thead>
                                 <tr>

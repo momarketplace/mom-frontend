@@ -137,7 +137,7 @@ function OrderPage(props) {
                                 {
                                     order.isPaid && 
                                     <>
-                                    <p>Paid By: <strong>{order.paymentResult.name}</strong>, Email: <strong>{order.paymentResult.email}</strong>, Phone: <strong>{order.paymentResult.phone}</strong></p>
+                                    <p>Paid By: <strong>{order.paymentResult.name}</strong>, Phone: <strong>{order.paymentResult.phone}</strong></p>
                                     </>
 
                                 }
@@ -180,7 +180,7 @@ function OrderPage(props) {
                                             <div className ="min-30">
                                                 <Link to = {`/product/${item.product}`}>{item.name}</Link>
                                                 <h4>Store Information</h4>
-                                                <p>Name: <strong>{item.storeName}</strong>, {item.storeId}</p>
+                                                <p>Name: <strong>{item.storeName}</strong></p>
                                                 <p>Address: <strong>{item.storeAddress}, {item.storeCity}, {item.storeCountry}.</strong></p>
                                                 <h4>Store Owner</h4>
                                                 <p>Name: <strong>{item.sellerName}</strong> Phone: <strong>{item.sellerPhone}</strong></p>

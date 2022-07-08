@@ -29,12 +29,23 @@ function ForgotPassword() {
 
 
     return (
-        <div style={{backgroundColor:"#f5f5f5", textAlign: "center", maxWidth:"100%", padding:"20px"}}>
-            <h1>Forgot Password</h1>
-            <p>Kindly enter your email in the form below. A link will be sent to your email address.</p>
+         <div className='forgotpassword'>
+            <h3 style={{textAlign:"center"}}>Forgot Password</h3>
+            <p style={{maxWidth:"90%"}}>Kindly enter your email in the form below. A link will be sent to your email address.</p>
             <div>
-                <form onSubmit={handleSubmit}>
-                    {loading && <LoadingBox></LoadingBox>}
+                 
+                <form className='mosganda-header-search' onSubmit={handleSubmit}>
+              <input type="text" id="email" className='mosganda-search-input' placeholder=' Enter your email'
+               value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            
+                    <button className='mosganda-header-searchIconContainer' type="submit">Send</button>
+                    
+              
+                </form> 
+                {loading && <LoadingBox></LoadingBox>}
                     {
               result && <Stack sx={{ width: '90%' }} spacing={2}>
               <Alert severity="success" onClose={() => setResult("")}>Successful. A password reset link has been sent to your email.</Alert>
@@ -47,13 +58,6 @@ function ForgotPassword() {
       
             </Stack>
               }
-                    <label htmlFor='email'><strong>Email:</strong></label>
-                    <input type="text" id="email" placeholder='Enter your email' required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <button type="submit" style={{backgroundColor:"brown", color:"white"}}>Submit</button>
-                </form>
             </div>
         </div>
     )

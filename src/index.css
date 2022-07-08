@@ -567,7 +567,7 @@ img.medium {
   width: 50%;
   margin: 10px auto;
   margin-bottom: 50px;
-  box-shadow: -5px 5px 2px 3px #04AA6D;
+  box-shadow: -2px 2px 2px 3px #04AA6D;
 }
 
 .login-items {
@@ -623,6 +623,9 @@ img.medium {
       margin-left: 5px;
       padding: 5px;
       max-width: 90%;
+    }
+ .login-input {
+      width: 90%
     }
 }
 
@@ -1218,4 +1221,13 @@ a {
   .privacy-text {
     max-width: 95%;
   }
+}
+
+/* forgot password */
+.forgotpassword {
+  background-color: white;
+  margin: 0 auto;
+  width: 50%;
+  padding: 20px;
+  max-width: 50%;
 }

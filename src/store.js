@@ -4,7 +4,7 @@ import { basketReducer } from './reducers/basketReducer';
 import { createChatReducer, getChatsReducer } from './reducers/chatReducer';
 import { createMessageReducer, getMessageReducer } from './reducers/messageReducer';
 import { createOrderReducer, orderDetailsReducer, orderMineListReducer, orderNotificationReducer, orderPayReducer } from './reducers/orderReducers';
-import { createProductReducer, editPostedProductReducer, findProductForUpdateReducer, getAllProductReducer, getOrderedProductsReducer, getProductDetailsReducers, getSoldProductsReducer, getUserProductsReducer, orderedProductReducer, paidProductReducer, unPostedProductReducer, updateUserProductReducer } from './reducers/productReducers';
+import { blockProductReducer, createProductReducer, editPostedProductReducer, findProductForUpdateReducer, getAllProductReducer, getOrderedProductsReducer, getProductDetailsReducers, getSoldProductsReducer, getUserProductsReducer, orderedProductReducer, paidProductReducer, unblockProductReducer, unPostedProductReducer, updateUserProductReducer } from './reducers/productReducers';
 import { createStoreReducer, editPostedStoreReducer, editStoreReducers, getAllStoresReducer, getSingleStoreReducers, getUserStoreReducers, unPostedStoreReducer } from './reducers/storeReducers';
 import { updateUserCreateStoreReducer, userDetailsReducer, userLoginReducer, userRegisterReducer, userUpdateProfileReducer } from './reducers/userReducer';
 import { createWithdrawReducer, getWithdrawalsReducer } from './reducers/withdrawReducer';
@@ -59,7 +59,9 @@ const reducer = combineReducers({
     getMyChats: getChatsReducer,
     messageCreate: createMessageReducer,
     getAllMessages: getMessageReducer,
-     orderNotify: orderNotificationReducer,
+    orderNotify: orderNotificationReducer,
+     blockaproduct: blockProductReducer,
+    unblockaproduct: unblockProductReducer,
 })
 //to show store in the console
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

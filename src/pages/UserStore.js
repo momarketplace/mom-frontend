@@ -330,7 +330,7 @@ function UserStore() {
         </div>
         <div>
           <h4>
-            <span style={{fontSize:'10px'}}>Store link: <span style={{backgroundColor:"#011628", color:"yellow", padding:"2px", borderRadius:"5px"}}>https://www.mosganda.com/{userStore && userStore.businessName }</span></span> {" "}
+            <span style={{fontSize:'15px'}}>Store link: <span style={{backgroundColor:"#011628", color:"yellow", padding:"5px", borderRadius:"5px"}}>https://www.mosganda.com/{userStore && userStore.businessName }</span></span> {" "}
             <Button variant="outlined" onClick={() => copyLink(`https://www.mosganda.com/${userStore.businessName}`)}>
               Copy Link
               <ContentCopyIcon />
@@ -419,7 +419,10 @@ function UserStore() {
                 <strong>{userStore && userStore.description}</strong>
               </p>
               <p>
-                Delivery: <strong>{userStore && userStore.deliveryCapacity}</strong>
+                 Delivery: <strong style={{color:"red"}}>{userStore && userStore.deliveryCapacity === "Within-the-same-city" ?
+                   `Only within ${userStore && userStore.city}` : userStore && userStore.deliveryCapacity === "Within-the-same-state" ?
+                  `Only within ${userStore && userStore.state}`: `Across ${userStore && userStore.country}`}
+                  </strong>
               </p>
               <div className="store-utils">
                 <p>

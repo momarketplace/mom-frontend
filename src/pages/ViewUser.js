@@ -54,7 +54,7 @@ function ViewUser(props) {
         const fetchUser = async () => {
             try {
                 setLoading(true)
-                const { data } = await axios.get(`/api/v1/user/${id}`, {
+                const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user/${id}`, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -69,13 +69,13 @@ function ViewUser(props) {
         fetchUser()
     }, [])
 
-    console.log(user)
+    //console.log(user)
 
     //block a users accsess to this website
     const blockUser = async (id) => {
         try {
              setLoadBlockUser(true)
-            const { data } = await axios.put(`/api/v1/user/banned`, {id}, {
+            const { data } = await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user/banned`, {id}, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -84,7 +84,7 @@ function ViewUser(props) {
             setSuccessBlockUser(true)
 
             setLoadBlockStore(true)
-             await axios.put(`/api/v1/store/banned`, {id}, {
+             await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/store/banned`, {id}, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -93,7 +93,7 @@ function ViewUser(props) {
             setSuccessBlockStore(true)
 
             setLoadBlockProduct(true)
-            await axios.put(`/api/v1/product/banned`, {id}, {
+            await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/banned`, {id}, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -113,7 +113,7 @@ function ViewUser(props) {
     const unBlockUser = async(id) => {
         try {
              setLoadunBlockUser(true)
-            const { data } = await axios.put(`/api/v1/user/unbanned`, {id}, {
+            const { data } = await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user/unbanned`, {id}, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -122,7 +122,7 @@ function ViewUser(props) {
             setSuccessunBlockUser(true)
 
             setLoadunBlockStore(true)
-             await axios.put(`/api/v1/store/unbanned`, {id}, {
+             await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/store/unbanned`, {id}, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -131,7 +131,7 @@ function ViewUser(props) {
             setSuccessunBlockStore(true)
 
             setLoadunBlockProduct(true)
-            await axios.put(`/api/v1/product/unbanned`, {id}, {
+            await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/unbanned`, {id}, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -149,7 +149,7 @@ function ViewUser(props) {
     }
     return (
         <div style={{backgroundColor:"#f5f5f5", padding:"10px", maxWidth:"100%"}}>
-            <h1 style={{ textAlign: "center" }}>User details page</h1>
+            <h3 style={{ textAlign: "center" }}>User details page</h3>
             
             <div className='row center'>
 
@@ -271,12 +271,12 @@ function ViewUser(props) {
                     </div>
                     <div>
                         <h4 style={{textAlign:"center"}}>User Info</h4>
-                        <p>Name: <strong>{user && user.name}</strong></p>
-                        <p>Email: {user && user.email}</p>
-                        <p>Phone: {user && user.phone}</p>
-                        <p>Id: {user && user._id}</p>
-                        <p>Status: {user && user.isSeller ? "Seller" : "Buyer"}</p>
-                        <p style={{ maxWidth: "100%" }}>Address: {user && user.address}</p>
+                        <p style={{margin:"0px"}}>Name: <strong>{user && user.name}</strong></p>
+                        <p style={{margin:"0px"}}>Email: {user && user.email}</p>
+                        <p style={{margin:"0px"}}>Phone: {user && user.phone}</p>
+                        <p style={{margin:"0px"}}>Id: {user && user._id}</p>
+                        <p style={{margin:"0px"}}>Status: {user && user.isSeller ? "Seller" : "Buyer"}</p>
+                        <p style={{ maxWidth: "100%",margin:"0px" }}>Address: {user && user.address}</p>
                         <h4 style={{ textAlign: "center" }}>Actions</h4>
                         {
                             user && !user.isAdmin &&  

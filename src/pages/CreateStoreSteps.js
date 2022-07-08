@@ -35,7 +35,7 @@ function CreateStoreSteps() {
               </div>
               <div className='createstoresteps-option'>
                   <p className='gray'>
-                      To learn more, visit our step to step guide on {" "}
+                      To learn more, visit our step by step guide on {" "}
                       <Link to="/guide">how to use this website here</Link>
                   </p>
               </div>

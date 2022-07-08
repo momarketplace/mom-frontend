@@ -60,9 +60,9 @@ function WithdrawHistory(props) {
                     <div className='row center'>
                         {
                             withdraws?.map((width) => (
-                        <div className='withdraw-history' key={width._id}>
+                        <div className='card' key={width._id} style={{padding:"5px"}}>
                                     <p>Id: { width._id} <Button sx={{m:1}} variant="contained" size="small"
-                          onClick={() => { props.history.push(`/product/${width.productId}`) }}>
+                          onClick={() => { props.history.push(`/product/${width._id}`) }}>
                           View
                                     </Button></p>
                                     <p>Date: {width.requestedAt.substring(0, 10)}</p>

@@ -8,7 +8,7 @@ import Product from '../components/Product';
 import { Link } from "react-router-dom"
 import Button from "@mui/material/Button";
 import PhoneIcon from '@mui/icons-material/Phone';
-import EmailIcon from '@mui/icons-material/Email';
+//import EmailIcon from '@mui/icons-material/Email';
 
 
 function StoreUrlLandingPage(props) {
@@ -118,12 +118,7 @@ function StoreUrlLandingPage(props) {
                       </span>{" "}
                       {mystore.creatorPhone}
                     </p>
-                    <p>
-                      <span>
-                        <EmailIcon />
-                      </span>
-                      {mystore.creatorEmail}
-                      </p>
+                    
                       <p><Link to='/chats'>
                         <Button variant="contained" color="primary" size="small">
                       Chat
@@ -152,8 +147,11 @@ function StoreUrlLandingPage(props) {
                                    <p>Country: <strong>{mystore.country}</strong></p>
                                             <p>Description: <strong>{mystore.description}</strong></p>
                                             <p>
-                Delivery: <strong>{mystore.deliveryCapacity}</strong>
-                                            </p>
+                 Delivery: <strong style={{color:"red"}}>{mystore.deliveryCapacity === "Within-the-same-city" ?
+                   `Only within ${mystore.city}` : mystore.deliveryCapacity === "Within-the-same-state" ?
+                  `Only within ${mystore.state}`: `Across ${mystore.country}`}
+                  </strong>
+              </p>
                                             
                                    
                            </div>

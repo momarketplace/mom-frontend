@@ -11,7 +11,7 @@ function TermConditions() {
             <p className='privacy-text'><strong>Store Owner:</strong> <span>Someone that created a store on Mosganda.</span></p>
             <p className='privacy-text'><strong>Product/Item:</strong> <span>A product or an item is anything that is placed on Mosganda for sale.</span></p>
             <p className='privacy-text'><strong>Order:</strong> <span>An order contains the item(s) selected by a buyer which has been paid for, or yet to be paid for.</span></p>
-            <p className='privacy-text'><strong>Payme:</strong> <span>Payme is a button the seller clicks to receive payment for products/items the buyer has paid for when the seller has delivered such item to the buyer.</span></p>
+            <p className='privacy-text'><strong>Withdraw:</strong> <span>Withdraw is a button the seller clicks to receive payment for products/items the buyer has paid for when the seller has delivered such item to the buyer.</span></p>
             <p className='privacy-text'><strong>User:</strong> <span>A user is someone that has registered on Mosganda to benefit from the services we provide.</span></p>
             <p className='privacy-text'><strong>Account:</strong> <span>Account on Mosganda means information about a particular user.</span></p>
              <h4>(1) Introduction</h4>

@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { getSoldProducts } from '../actions/productActions';
 import { createWithdraw } from '../actions/withdrawActions';
 import LoadingBox from '../components/LoadingBox';
@@ -12,9 +11,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-//import axios from 'axios';
-//import Stack from '@mui/material/Stack';
-//import Alert from '@mui/material/Alert';
 import './SoldProducts.css'
 
 const style = {
@@ -22,7 +18,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 350,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -38,9 +34,10 @@ function SoldProducts(props) {
     const [ email, setEmail ] = useState('')
   const [phone, setPhone] = useState('')
   const [productId, setProductId] = useState('')
-  const [amountToPay, setAmountToPay] = useState()
-  const [serviceCharge, setServiceCharge] = useState()
-console.log(productId)
+  const [amountToPay, setAmountToPay] = useState(0)
+  const [serviceCharge, setServiceCharge] = useState(0)
+  const [deliveryCost, setDeliveryCost ] = useState(0)
+//console.log(productId)
 
    
   //get login user details from store
@@ -51,7 +48,7 @@ console.log(productId)
   //get sold products from redux store
   const productSold = useSelector((state) => state.productSold);
   const { loading, error, soldProducts } = productSold
-  console.log(soldProducts);
+  //console.log(soldProducts);
 
   //get widthdrawal from redux store
   const withdrawal = useSelector((state) => state.withdrawal);
@@ -69,7 +66,7 @@ useEffect(() =>{
 },[dispatch])
 
   const handleWithdraw = () => {
-      dispatch(createWithdraw(accountName, accountNumber, bank, amount, email, phone, productId));
+      dispatch(createWithdraw(accountName, accountNumber, bank, amount, deliveryCost, email, phone, productId));
       dispatch({type: CREATE_WITHDRAW_RESET})
   }
 
@@ -80,28 +77,25 @@ useEffect(() =>{
   }
   
     return (
-      <div style={{maxWidth:"100%", backgroundColor:"white"}}>
+      <div style={{width:"100%",maxWidth:"100%", backgroundColor:"white"}}>
         
-        <div className='withdrawal-steps'>
-          <h2 style={{textAlign:"center",padding:"10px"}}>Sold Items and Payout</h2>
+          <h3 className='sold-item-header'>Sold Items and Withdrawal</h3>
           <div className='withdrawal-information'>
-            <div className='withdrawal-information-one'>
-              <p style={{maxWidth:"100%"}}>Here are your sold items and steps for withdrawal.</p>
+            
+              <h4>Withdrawal steps</h4>
+            <ul>
+              <li>Get the buyer information from the item displayed in this page.</li>
+                <li>Get the item/product delivered to the buyer.</li>
+                <li>Click on the "Withdraw" button, fill in your account details in the popup and click submit.</li>
+              <li>Get paid within 12 hours.</li>
+             </ul>
+            <p className='withdrawal-notice'>Note that within this 12 hours, we are going to confirm if the buyer has received the item. So make sure you have successfully sent the item before clicking on "Withdraw" button.</p>
+            <p className='withdrawal-notice'>Also note that we will deduct our 3% charge from the selling price. For example, if you sell an item that cost #1000, our 3% charge is #30. So you will receive #970. If the amount you charge for the delivery of the item is #300 for example. Then, what you will receive is #970 + #300, which is #1,270</p>
             </div>
-            <div className='withdrawal-information-two'>
-              <h3>Withdrawal steps</h3>
-              <ul >
-                <li>Get your product delivered to your customer.</li>
-                <li>Click on the payme button to payout the product</li>
-              <li>Fill the widthdrawal form and submit.</li>
-                <li>Get paid within 48 hours.</li>
-            </ul>
-            </div>
-          </div>
           
               
             <h3 style={{ textAlign: "center" }}>Sold Items</h3>
-          </div>
+         
           
         <div>
           
@@ -113,10 +107,10 @@ useEffect(() =>{
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-                Withdrawal Form
+                <h3 style={{textAlign:"center"}}>Withdrawal Form</h3>
               </Typography>
-              <Box>
-                You will recieve {amountToPay} - service {serviceCharge} = #{amountToPay-serviceCharge}
+              <Box sx={{fontSize:'15px'}}>
+                You will recieve #{amountToPay - serviceCharge}
               </Box>
               <form>
                 <Box sx={{mt: 3}}>
@@ -168,12 +162,12 @@ useEffect(() =>{
           
           {
             soldProducts?.map((product) => (
-              <div className='withdraw-history' style={{padding:"1px"}} key={product._id}>
-                <div>
+              <div className='card' key={product._id}>
+                <div style={{padding:"5px"}}>
                   <div>
-                    <h4>Product Information</h4>
-                    <p>Product Id: <strong>{product._id}</strong></p>
-                    <p style={{display:"flex"}}><img
+                    <h4 style={{textAlign:"center"}}>Product Information</h4>
+                    <p className='soldproduct-item'>Id: {product._id}</p>
+                    <p className='soldproduct-item' style={{display:"flex"}}><img
                         className="small"
                         src={product.image}
                         alt={product.name}
@@ -181,26 +175,28 @@ useEffect(() =>{
                           onClick={() => { props.history.push(`/product/${product._id}`) }}>
                           View product
                       </Button></p>
-                    <p>
-                      <span style={{marginRight:"5px"}}>{product.name}</span>
-                      <span>#{product.price}</span>
-                      <span style={{marginLeft:"5px"}}>D-cost: #{ product.deliveryCost}</span>
+                    <p className='soldproduct-item'>
+                      <span style={{marginRight:"5px"}}>Name: {product.name}</span>
+                    </p>
+                    <p className='soldproduct-item' style={{display:"flex"}}>
+                      <span>Price: #{product.price},</span> { " " }
+                      <span style={{marginLeft:"5px"}}>Delivery: #{ product.deliveryCost}</span>
                     </p>
                   </div>
                   <div>
-                    <h4>Buyer Information</h4>
-                    <p>Name: <b>{product.buyerName}</b>, Phone: <b>{product.buyerPhone}</b> </p>
-                    <p>Address: { product.buyerAddress }</p>
+                    <h4 style={{textAlign:"center"}}>Buyer Information</h4>
+                    <p className='soldproduct-item'>Name: <b>{product.buyerName}</b>, Phone: <b>{product.buyerPhone}</b> </p>
+                    <p className='soldproduct-item'>Address: { product.buyerAddress }</p>
                   </div>
                   <div>
-                    <h4>Product Status</h4>
-                    <p>Payment: {product.isPaid ? "Paid at" : "No"}  { product.isPaid
+                    <h4 style={{textAlign:"center"}}>Product Status</h4>
+                    <p className='soldproduct-item'>Payment: {product.isPaid ? "Paid at" : "No"}  { product.isPaid
                               ? product.isPaidAt.substring(0, 10)
                       : ""}</p>
-                    <p>Delivery: {product.isDelivererd ? "Delivered at" : "No"}  { product.isDelivererd
+                    <p className='soldproduct-item'>Delivery: {product.isDelivererd ? "Delivered at" : "No"}  { product.isDelivererd
                               ? product.isDeliveredAt.substring(0, 10)
                       : ""} </p>
-                    <p>Paid by Mosganda: {product.isSettled ? "Paid at" : "Pending"}  { product.isSettled
+                    <p className='soldproduct-item'>Paid by Mosganda: {product.isSettled ? "Paid at" : "Pending"}  { product.isSettled
                               ? product.isSettledAt.substring(0, 10)
                         : ""} </p>
                   </div>
@@ -208,14 +204,15 @@ useEffect(() =>{
                     {
                 !product.isSettled &&
                  <Button sx={{ m: 2 }} variant="contained" size="large" onClick={() => {
-                setAmount(product.price)
-                setAmountToPay(product.price + product.deliveryCost)
-                setServiceCharge(product.service)
+                  setAmount(product.price)
+                  setServiceCharge(product.price * 0.03)
+                  setDeliveryCost(product.deliveryCost)
+                  setAmountToPay(product.price + product.deliveryCost) 
                   setProductId(product._id)
                   setEmail(userInfo.email)
                   setPhone(userInfo.phone)
                   handleOpen()
-                }}>Pay Me</Button>
+                }}>Withdraw</Button>
                }
                   </div>
                 </div>
@@ -224,148 +221,6 @@ useEffect(() =>{
           }
         </div>
         
-        {/* {
-          soldProducts && soldProducts.length === 0 ? (<p style={{ backgroundColor: "#f5f5f5", textAlign: "center",height:"50px",padding:"20px" }}>There are no sold items at the moment.</p>) : (<>
-            {
-          loading && <LoadingBox></LoadingBox>
-        }
-        {
-          error && <MessageBox variant="danger">Error</MessageBox>
-        }
-        {
-          soldProducts?.map((product) => (
-              <div key={product._id} className='soldProducts'>
-                <div className='soldProduct-items'>
-                  <h4>Product Information</h4>
-                <p style={{display:"flex"}}><img
-                        className="small"
-                        src={product.image}
-                        alt={product.name}
-                /><Button sx={{m:1}} variant="contained" size="small"
-                          onClick={() => { props.history.push(`/product/${product._id}`) }}>
-                          View product
-                </Button></p>
-                <p>Product Id: <strong>{product._id}</strong></p>
-                  <p>Product Name: <b>{product.name}</b>, Price: <b>{product.price}</b></p>
-                  <p>Description: <b>{ product.description}</b></p>
-                </div>
-                <div className='soldProduct-items'>
-                  <h4>Buyer Information</h4>
-                <p>Buyer Name: <b>{product.buyerName}</b>, Buyer Phone: <b>{product.buyerPhone}</b>, Buyer Email: <b>{product.buyerEmail}</b></p>
-                <p>Buyer Address: { product.buyerAddress}</p>
-                </div>
-                <table className='table'>
-                  <thead>
-                    <tr>
-                      <th>Amount</th>
-                      <th>Paid</th>
-                      <th>Date</th>
-                      <th>Delivered</th>
-                    <th>Date</th>
-                    <th>D-fee</th>
-                      <th>Payout</th>
-                      <th>Date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{product.price}</td>
-                      <td>{product.isPaid ? "Paid" : "No"}</td>
-                      <td>{product.isPaid
-                              ? product.isPaidAt.substring(0, 10)
-                        : "No"}</td>
-                      <td>{product.isDelivered ? "Delivered" : "No"}</td>
-                      <td>{product.isDelivered
-                              ? product.isDeliveredAt.substring(0, 10)
-                      : "No"}</td>
-                    <td>{ product.deliveryCost}</td>
-                      <td>{product.isSettled ? "Paid Out" : "No"}</td>
-                      <td>{product.isSettledAt? product.isSettledAt.substring(0,10) : "No"}</td>
-                      
-                    </tr>
-                  </tbody>
-              </table>
-              {
-                product.isSettled? `Paid out by Mosganda`: <p>Total Amount payable: Price (#{product.price}) + delivery fee (#{product.deliveryCost}) = #{product.price + product.deliveryCost }</p>
-              }
-              {
-                !product.isSettled &&
-                 <Button sx={{ m: 2 }} variant="contained" size="large" onClick={() => {
-                setAmount(product.price)
-                setAmountToPay(product.price + product.deliveryCost)
-                setServiceCharge(product.service)
-                  setProductId(product._id)
-                  setEmail(userInfo.email)
-                  setPhone(userInfo.phone)
-                  handleOpen()
-                }}>Pay Me</Button>
-               }
-              </div>
-            
-          ))
-        }
-          </>)
-        } */}
-        
-        
-        
-           {/* {loading ? (
-          <LoadingBox></LoadingBox>
-        ) : error ? (
-          <MessageBox variant="danger"></MessageBox>
-        ) : (
-          <div className="row center">
-            {soldProducts.map(
-              (product) =>
-                product?.buyerName && (
-                  <div key={product._id} className="card">
-                    <Link to={`/product/${product._id}`}>
-                      
-                      <img
-                        className="medium"
-                        src={product.image}
-                        alt={product.name}
-                      />
-                    </Link>
-                    <div className="card-body">
-                      <Link to={`/product/${product._id}`}>
-                        <h2>Product Name: {product.name}</h2>
-                      </Link>
-                      <div className="price">
-                        Price: <strong>#{product.price}</strong>
-                      </div>
-                      <div>
-                        <h3>Customer Information</h3>
-                        <p>
-                          Name: <strong>{product.buyerName}</strong>
-                        </p>
-                        <p>
-                          Phone: <strong>{product.buyerPhone}</strong>
-                        </p>
-                        <p>
-                          Address: <strong>{product.buyerAddress}</strong>
-                        </p>
-                        <p>
-                          Payment Status:{" "}
-                          <strong>
-                            {product.isPaid ? "Paid" : "Not Yet Paid"}
-                          </strong>
-                        </p>
-                        <p>
-                          Payment Date:{" "}
-                          <strong>
-                            {product.isPaid
-                              ? product.isPaidAt.substring(0, 10)
-                              : "Not Yet Paid"}
-                          </strong>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )
-            )}
-          </div>
-        )}    */}
       </div>
     );
 }

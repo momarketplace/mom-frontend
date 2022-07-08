@@ -9,16 +9,16 @@ import {
 } from "../constants/withdrawConstants"
 
 //create a widthdraw
-export const createWithdraw = (accountName, accountNumber, bank, amount, email, phone, productId) => async(dispatch, getState) =>{
+export const createWithdraw = (accountName, accountNumber, bank, amount, deliveryCost, email, phone, productId) => async(dispatch, getState) =>{
     dispatch({
         type: CREATE_WITHDRAW_REQUEST,
-        payload: {accountName, accountNumber, bank, amount, email, phone, productId}
+        payload: {accountName, accountNumber, bank, amount, deliveryCost, email, phone, productId}
     })
     // get userInfo from redux store
     const { userLogin: { userInfo }, } = getState()
 
     try {
-        const { data } = await Axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/withdraw/create', {accountName, accountNumber, bank, amount, email, phone, productId}, {
+        const { data } = await Axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/withdraw/create', {accountName, accountNumber, bank, amount, deliveryCost, email, phone, productId}, {
             headers: {
                 Authorization: `Bearer ${userInfo.token}`
             }
