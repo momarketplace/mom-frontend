@@ -126,6 +126,10 @@ footer {
   width: 100%;
   margin-left: 20px;
   margin-right: 20px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .mosganda-header a {
@@ -189,7 +193,7 @@ footer {
   .mosganda-header {
     display: flex;
     flex-direction: column;
-    height: 120px;
+    height: 140px;
     padding: 10px;
   }
 
@@ -941,6 +945,7 @@ a:hover {
 .table td {
   text-align: left;
   padding: 8px;
+  font-size: 15px;
 }
 
 .table tr:nth-child(even) {

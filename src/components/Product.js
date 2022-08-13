@@ -29,7 +29,7 @@ function Product(props) {
             <p>{product.storeCity}</p>
           </div>
         </div>
-        <div className="card-body-span">
+        <div className="card-body-span" style={{display:"flex", justifyContent:"space-evenly"}}>
           <span>
             <Link to={`/basket/${product._id}?qty=${qty}`}>
               <Button variant="contained" color="secondary" size="small">

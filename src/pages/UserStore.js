@@ -11,7 +11,7 @@ import {
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import Button from "@mui/material/Button";
-import { useHistory } from 'react-router-dom'
+//import { useHistory } from 'react-router-dom'
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import FlightOutlinedIcon from '@mui/icons-material/FlightOutlined';
 import UndoIcon from '@mui/icons-material/Undo';
@@ -47,9 +47,9 @@ function UserStore() {
   const { userInfo } = userLogin;
   //console.log(userInfo);
 
-  const history = useHistory()
+  //const history = useHistory()
   if (!userInfo.isSeller) {
-      history.push('/')
+      window.location = '/'
     
   }
   //get userstore from redux store

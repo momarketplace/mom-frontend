@@ -5,15 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { detailsOrder, orderNotification, payOrder } from '../actions/orderActions';
 import { paidProduct } from '../actions/productActions';
-
+import { useParams } from 'react-router-dom';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { ORDER_PAY_RESET } from '../constants/orderConstants';
 
 
 
-function OrderPage(props) {
-    const orderId = props.match.params.id;
+function OrderPage() {
+    //const orderId = props.match.params.id;
+    const {id} = useParams() //use id to replace orderId
     //const publicKey = "pk_test_863b631d2a66390b101d9b0be373f958bad8ac59"
     //const amount = 1000000 // Remember, set in kobo!
     const [publicKey, setPublicKey]=useState("")
@@ -61,14 +62,14 @@ function OrderPage(props) {
    
 
     useEffect(()=>{
-        if(!order || successPay || (order && order._id !== orderId)) {
+        if(!order || successPay || (order && order._id !== id)) {
             dispatch({
                 type: ORDER_PAY_RESET
             })
-            dispatch(detailsOrder(orderId)); //load the order
+            dispatch(detailsOrder(id)); //load the order
         }
         
-    },[dispatch, order, orderId, successPay])
+    },[dispatch, order, id, successPay])
 
     useEffect(() =>{
         if(order) {
@@ -76,7 +77,7 @@ function OrderPage(props) {
             setEmail(email)
             setPhone(phone)
             setName(name)
-            order.paymentResult = { id: orderId, name: name, email: email, phone: phone, amount: amount / 100 }
+            order.paymentResult = { id: id, name: name, email: email, phone: phone, amount: amount / 100 }
         }
        
     },[email, name, order, phone])
@@ -103,18 +104,18 @@ function OrderPage(props) {
     //   })[0]
      
 
-    const paymentResult = { id: orderId, name: name, email: email, phone: phone, amount: amount / 100 }
+    const paymentResult = { id: id, name: name, email: email, phone: phone, amount: amount / 100 }
     
       const successHandler = () => {
           dispatch(payOrder(order, paymentResult));
 
           //update paid products
         order.orderItems.map((x) => {
-            return dispatch(paidProduct({id: x.product, buyerEmail:email, orderId:orderId, deliveryCost: x.deliveryCost, service: x.service }))
+            return dispatch(paidProduct({id: x.product, buyerEmail:email, orderId:id, deliveryCost: x.deliveryCost, service: x.service }))
         });
           
            //notify buyer
-        dispatch(orderNotification(orderId))
+        dispatch(orderNotification(id))
       }
 
     return loading? (<LoadingBox></LoadingBox>):

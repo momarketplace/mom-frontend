@@ -11,12 +11,14 @@ import Product from '../components/Product';
 import { Link } from "react-router-dom"
 import Button from "@mui/material/Button";
 import PhoneIcon from '@mui/icons-material/Phone';
-import EmailIcon from '@mui/icons-material/Email';
+//import EmailIcon from '@mui/icons-material/Email';
+import {useParams} from 'react-router-dom'
 
 
 function StoreDetailsPage(props) {
     const dispatch = useDispatch();
-    const storeId = props.match.params.id;
+    //const storeId = props.match.params.id;
+  const {id} = useParams()
    
     const [loadProduct, setLoadProduct] = useState(false);
     const [errorProduct, setErrorProduct ] = useState('')
@@ -35,9 +37,9 @@ function StoreDetailsPage(props) {
   
     
     useEffect(() => {
-        dispatch(getSingleStore(storeId));
+        dispatch(getSingleStore(id));
 
-    }, [dispatch, storeId])
+    }, [dispatch, id])
   
  
 
@@ -46,7 +48,7 @@ function StoreDetailsPage(props) {
         const fetchProduct = async () => {
             try {
                 setLoadProduct(true);
-                const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/nonuser/${storeId}`)
+                const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/nonuser/${id}`)
                 setLoadProduct(false);
                 setProducts(data)
             } catch (error) {
@@ -56,7 +58,7 @@ function StoreDetailsPage(props) {
             }
         }
         fetchProduct()
-    }, [storeId])
+    }, [id])
     console.log(products)
  
   
@@ -144,11 +146,11 @@ function StoreDetailsPage(props) {
                        </div>
                        
                    </div>
-                            <div style={{backgroundColor:"white", padding:"10px"}}>
+                            {/* <div style={{backgroundColor:"white", padding:"10px"}}>
                                 
                    <h3 style={{textAlign:"center"}}>Checkout list of our items below, for your shopping pleasure.</h3>
-               </div>
-                            <div className="row center">
+               </div> */}
+                            <div className="row center" style={{borderTop: "5px solid blue", marginTop:"10px"}}>
                                 {loadProduct && <LoadingBox></LoadingBox>}
                                 {errorProduct && <MessageBox variant="danger">{ errorProduct}</MessageBox>}
                    {

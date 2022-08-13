@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; 
 import FileBase64 from 'react-file-base64';
-import { useHistory } from 'react-router-dom'
+//import { useHistory } from 'react-router-dom'
 import { detailsUser, updateUserProfile } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
@@ -33,7 +33,7 @@ function ProfilePage(props) {
     //console.log(userStore)
 
  
-    const history = useHistory()
+    //const history = useHistory()
    const dispatch = useDispatch()
     useEffect(()=>{
         if(!user){
@@ -74,9 +74,9 @@ function ProfilePage(props) {
             //reset redirect to the right page
             dispatch({ type: USER_UPDATE_PROFILE_RESET })
             if (userInfo.isSeller) {
-                history.push("/userstore");
+                window.location = "/userstore";
         } else {
-            history.push('/')
+            window.location = '/'
             }
     }, 2000);
     }

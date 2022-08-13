@@ -7,7 +7,6 @@ import MessageBox from '../components/MessageBox';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-//import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
@@ -57,7 +56,7 @@ function OrderHistoryPage(props) {
         dispatch(listOrderMine())
 
     }, [dispatch])
-    console.log(orders)
+    //console.log(orders)
 
     //set isDelivered to true
     const deliveredOrder = async (id) => {
@@ -68,7 +67,7 @@ function OrderHistoryPage(props) {
                 },
             };
 
-             await axios.put("/api/v1/order/delivered", { id }, config);
+             await axios.put("https://mosganda-online-market-backend.herokuapp.com/api/v1/order/delivered", { id }, config);
             setSuccessUpdate(true)
         } catch (error) {
             setErrorUpdate(true)
@@ -85,10 +84,10 @@ function OrderHistoryPage(props) {
     //delivered items
     const productDelivered = async (id) => {
         try {
-             await axios.put("/api/v1/product/isdelivered", { id });
+             await axios.put("https://mosganda-online-market-backend.herokuapp.com/api/v1/product/isdelivered", { id });
             setSuccessProduct(true)
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             setErrorProduct(true)
         }
     }
@@ -103,7 +102,7 @@ function OrderHistoryPage(props) {
                     Authorization: `Bearer ${userInfo.token}`,
                 },
             };
-             await axios.post('/api/v1/reject', { name, email, phone, orderId, complain }, config)
+             await axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/reject', { name, email, phone, orderId, complain }, config)
             setComplainLoading(false)
             setComplainSuccess(true)
         } catch (error) {
@@ -113,19 +112,19 @@ function OrderHistoryPage(props) {
      }
     
     return (
-        <div>
+        <div style={{width:"100%", maxWidth:"100%"}}>
             {
                 orders && orders.length === 0 ? (<div style={{ backgroundColor: "#f5f5f5", padding: "10px", marginBottom: "10px" }}>
                     <h3 style={{ textAlign: "center" }}> Order Items</h3>
                     <p>You have not placed any order. When you buy from someone, all your orders will be listed here.</p>
                 </div>) : (<>
-                        <div style={{backgroundColor:"#f5f5f5", padding:"10px", marginBottom:"10px"}}>
+                        <div style={{backgroundColor:"#f8f8ff", padding:"10px", marginBottom:"10px", maxWidth:"95%"}}>
                 <h3 style={{ textAlign: "center" }}> Order Items</h3>
                 <h4>Important</h4>
-                <p>Click on the <q>Details button</q> if you want to view your order.
-                When you recieve your item(s), let Mosganda know by clicking the <q>Confirm Delivery</q> button.</p>
-                <p>If you recieved a different thing from what you ordered and paid for, click on the <q>Customer Complain Form</q>, briefly describe your complain and Mosganda will pick it up.</p>
-                <p>Want to chat with the seller, get the seller name from the order details. Go to <q>Chat</q> and search the name to start chatting.</p>
+                <p style={{maxWidth:"95%", fontSize:"15px"}}>
+                When you receive your item(s), you are to click on the <q>Confirm Delivery</q> button immediately. If you do not do this within 12 hours, it also means that you have received the item but choose not to confirm delivery.</p>
+                <p style={{maxWidth:"95%", fontSize:"15px"}}>If you received a different item from what you ordered and paid for, click on the <q>Customer Complain Form</q>, briefly describe your complaint and submit it immediately.</p>
+                <p style={{maxWidth:"95%",fontSize:"15px"}}>Want to chat with the seller, get the seller's name from the order details. Go to <q>Chat</q> and search the name to start chatting. Click on the <q>Details button</q> if you want to view your order.</p>
                 <Button sx={{margin:2}} onClick={handleOpen} variant="contained" color="error" size="large">
                 Customer Complain Form
             </Button>
@@ -142,7 +141,7 @@ function OrderHistoryPage(props) {
         <Box sx={style}>
                 <form onSubmit={submitComplain}>
           <Box sx={{textAlign:"center"}}>
-            <h3>Complain Form</h3>
+            <h3>Complaint Form</h3>
           </Box>
           
           <Box sx={{display:"flex", m:1, alignItems:"center"}}>
@@ -238,12 +237,15 @@ function OrderHistoryPage(props) {
                                    
             {
                 orders?.map((order) => (
-                    <div key={order._id} style={{border:"1px solid black", marginBottom:"2px",backgroundColor:"#f8f8f8"}}>
-                        <h4 style={{ marginBottom: "1px", marginLeft: "5px" }}>Order Id: {order._id} { " "} <Button variant="contained" size="small"
+                    <div key={order._id} style={{border:"1px solid black", marginBottom:"10px",backgroundColor:"#f8f8f8", maxWidth:"95%"}}>
+                        {/* <p style={{ marginBottom: "1px", marginLeft: "5px" }}>Order Id: {order._id} { " "} <Button variant="contained" size="small"
                                         onClick={() => { props.history.push(`/order/${order._id}`) }}>
                                         Details
-                                    </Button></h4>
-                        <table className="table">
+                                    </Button></p> */}
+                        <p style={{ marginBottom: "1px", marginLeft: "5px" }}>Order Id: {order._id} {" "}
+                            <Link to ={`/order/${order._id}`} style={{fontWeight:"bold",border:"1px solid black", padding:"1px"}}>Details</Link>
+                        </p>
+                        <table className="table" style={{maxWidth:"98%"}}>
                             <thead>
                                 <tr>
                                 
@@ -255,7 +257,7 @@ function OrderHistoryPage(props) {
                                     <th>RECIEVED</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style={{maxWidth:"100%"}}>
                             <tr>
                                         
                                 {/* get only the date part, and leave the time*/}

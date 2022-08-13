@@ -11,7 +11,7 @@ import { createStore, getUserStore } from '../actions/storeActions';
 import { updateUserCreateStore } from '../actions/userActions';
 import { CREATE_STORE_RESET } from '../constants/storeConstants';
 import Button from "@mui/material/Button";
-import { useHistory } from 'react-router-dom'
+//import { useHistory } from 'react-router-dom'
 
 //for select
 import InputLabel from '@mui/material/InputLabel';
@@ -25,7 +25,7 @@ import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
 
 
-function CreateStore(props) {
+function CreateStore() {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -56,11 +56,11 @@ function CreateStore(props) {
 
  
   
-  const history = useHistory()
+  //const history = useHistory()
 
     if (!userInfo) {
         //window.location = '/login';
-      history.push("/login");
+      window.location = "/login";
   }
   
   if (userInfo && userInfo.isSeller === true) {
@@ -147,7 +147,7 @@ dispatch(getUserStore());
     setTimeout(() => {
       //redirect the user to his store page
       dispatch({type: CREATE_STORE_RESET})
-    props.history.push('/userstore')
+    window.location = '/userstore'
     }, 5000)
   }
   //console.log(deliveryCapacity)

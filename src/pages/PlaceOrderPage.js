@@ -9,7 +9,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { orderedProduct } from '../actions/productActions';
 import { UPDATE_ORDERED_PRODUCT_RESET } from '../constants/productConstants';
-import { useHistory } from 'react-router-dom'
+//import { useHistory } from 'react-router-dom'
 
 function PlaceOrderPage(props) {
     const dispatch = useDispatch();
@@ -18,12 +18,12 @@ function PlaceOrderPage(props) {
     const [buyerPhone, setBuyerPhone] = useState('')
     
    
-const history = useHistory()
+//const history = useHistory()
     //get cart from redux store
     const basket = useSelector((state) => state.basket)
     //check if user entered payment method, if not redirect the user to payment method
     if(!basket.paymentMethod) {
-        history.push('/payment')
+        window.location = '/payment'
     }
     //get orderCreate from redux store
     const orderCreate = useSelector(state => state.orderCreate);
@@ -111,7 +111,7 @@ useEffect(() =>{
              window.location = `/order/${order._id}`
         }
     
-    }, [dispatch, order, history, success, successProduct])
+    }, [dispatch, order, success, successProduct])
     
     return (
         <div>

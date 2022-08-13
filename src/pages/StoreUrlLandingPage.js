@@ -159,11 +159,11 @@ function StoreUrlLandingPage(props) {
                        </div>
                        
                    </div>
-                            <div style={{backgroundColor:"white", padding:"10px"}}>
+                            {/* <div style={{backgroundColor:"white", padding:"10px"}}>
                                 
                    <h3 style={{textAlign:"center"}}>Checkout list of our items below, for your shopping pleasure.</h3>
-               </div>
-                            <div className="row center">
+               </div> */}
+                            <div className="row center" style={{borderTop: "5px solid blue", marginTop:"10px"}}>
                                 {loadProduct && <LoadingBox></LoadingBox>}
                                 {errorProduct && <MessageBox variant="danger">{ errorProduct}</MessageBox>}
                    {

@@ -6,11 +6,13 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 //import Rating from "../components/Rating"
 import Button from "@mui/material/Button";
+import {useParams} from 'react-router-dom'
 
 
 function ProductPage(props) {
     const dispatch = useDispatch();
-    const productId = props.match.params.id;
+    //const productId = props.match.params.id;
+  const {id} = useParams() //replace productId with id
     const [ qty, setQty ] = useState(1);
 
     //read product details from redux store
@@ -19,12 +21,12 @@ function ProductPage(props) {
     //console.log(product)
 
     useEffect(() => {
-        dispatch(getProductDetails(productId));
-    },[dispatch, productId]);
+        dispatch(getProductDetails(id));
+    },[dispatch, id]);
 
     //function to handle add to basket button
     const addToBasketHandler = () => {
-        props.history.push(`/basket/${productId}?qty=${qty}`)
+        window.location = `/basket/${id}?qty=${qty}`
   }
   
 

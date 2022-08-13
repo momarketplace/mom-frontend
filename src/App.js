@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Link, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Link, Route } from 'react-router-dom';
 import ProductPage from './pages/ProductPage';
 import HomePage from './pages/HomePage';
 import StoresPage from './pages/StoresPage';
@@ -144,7 +144,7 @@ function App() {
           <div className='mosganda-header-left'>
             {/*header logo*/}
           <Link to="/">
-            <div className='mosganda-header-logo'>Mosganda</div>
+                        <div className='mosganda-header-logo'><img style={{width:"30px", height:"auto", marginRight:"5px"}} src="/images/m-logo.jpg" alt="" />  <span>Mosganda</span> </div>
           </Link>
            
             <div className='mosganda-header-itemslink'>
@@ -321,51 +321,53 @@ function App() {
           </header>
          
         <main>
-           <Route path="/recruitment" component={ Recruitment }></Route>
-          <Route path = "/:storename" component = { StoreUrlLandingPage }></Route>
-         <Route path="/createstoresteps" component={ CreateStoreSteps }></Route>
-          <Route path="/dashboard" component={ Dashboard }></Route>
-           <Route path="/privacy" component={ Privacy }></Route>
-          <Route path="/resetpassword/:id" component={ Resetpassword }></Route>
-          <Route path="/forgotpassword" component={ ForgotPassword }></Route>
-          <Route path="/viewuser/:id" component={ ViewUser }></Route>
-        <Route path="/services" component={ Services }></Route>
-          <Route path="/newsletterlist" component={ NewsletterEmailList }></Route>
-          <Route path="/ojiko" component={ Ojiko }></Route>
-          <Route path="/about" component={ About }></Route>
-          <Route path="/termsandconditions" component={ TermConditions }></Route>
-          <Route path="/complainlist" component={ ComplainList }></Route>
-          <Route path="/withdrawlist" component={ WithdrawList }></Route>
-          <Route path="/orderlist" component={ OrderList }></Route>
-          <Route path="/productlist" component={ ProductList }></Route>
-          <Route path="/storelist" component={ StoreList }></Route>
-          <Route path="/userlist" component={ UserList }></Route>
-          <Route path="/feedback" component={ Feedback }></Route>
-          <Route path="/guide" component={Guide}></Route>
-          <Route path="/chats" component={Chats}></Route>
-          <Route path="/findwithdrawals" component={WithdrawHistory}></Route>
-          <Route path="/soldproducts" component={SoldProducts}></Route>
-         <Route path="/orderedproducts" component={CustomerOrders}></Route> 
-          <Route path="/delete/:id" component={DeleteProduct}></Route>
-          <Route path="/update/:id" component={UpdateProduct}></Route>
-          <Route path="/editstore" component={EditStore}></Route>
-          <Route path="/userstore" component={UserStore}></Route>
+          <Routes>
+           <Route path="/recruitment" element={ <Recruitment />}></Route>
+          <Route path = "/:storename" element = { <StoreUrlLandingPage />}></Route>
+         <Route path="/createstoresteps" element={ <CreateStoreSteps />}></Route>
+          <Route path="/dashboard" element={ <Dashboard />}></Route>
+           <Route path="/privacy" element={<Privacy />}></Route>
+          <Route path="/resetpassword/:id" element={ <Resetpassword />}></Route>
+          <Route path="/forgotpassword" element={ <ForgotPassword />}></Route>
+          <Route path="/viewuser/:id" element={ <ViewUser />}></Route>
+        <Route path="/services" element={ <Services />}></Route>
+          <Route path="/newsletterlist" element={ <NewsletterEmailList />}></Route>
+          <Route path="/ojiko" element={ <Ojiko />}></Route>
+          <Route path="/about" element={ <About />}></Route>
+          <Route path="/termsandconditions" component={ <TermConditions />}></Route>
+          <Route path="/complainlist" element={ <ComplainList />}></Route>
+          <Route path="/withdrawlist" element={ <WithdrawList />}></Route>
+          <Route path="/orderlist" element={ <OrderList />}></Route>
+          <Route path="/productlist" element={ <ProductList /> }></Route>
+          <Route path="/storelist" element={ <StoreList />}></Route>
+          <Route path="/userlist" element={ <UserList />}></Route>
+          <Route path="/feedback" element={ <Feedback />}></Route>
+          <Route path="/guide" element={<Guide />}></Route>
+          <Route path="/chats" element={<Chats />}></Route>
+          <Route path="/findwithdrawals" element={<WithdrawHistory />}></Route>
+          <Route path="/soldproducts" element={<SoldProducts />}></Route>
+         <Route path="/orderedproducts" element={<CustomerOrders />}></Route> 
+          <Route path="/delete/:id" element={<DeleteProduct />}></Route>
+          <Route path="/update/:id" element={<UpdateProduct />}></Route>
+          <Route path="/editstore" element={<EditStore />}></Route>
+          <Route path="/userstore" element={<UserStore />}></Route>
           {/* <Route path="/store/bizname/:name" component={StoreDetailsPageCopy}></Route> */}
-          <Route path="/store/:id" component={StoreDetailsPage}></Route>
-          <Route path="/createproduct" component={CreateProductPage}></Route>
-          <Route path="/createstore" component={CreateStore}></Route>
-          <Route path="/profile" component={ProfilePage}></Route>
-          <Route path="/orderhistory" component={OrderHistoryPage}></Route>
-          <Route path="/order/:id" component={OrderPage}></Route>
-          <Route path="/placeorder" component={PlaceOrderPage}></Route>
-          <Route path="/payment" component={PaymentMethodPage}></Route>
-          <Route path="/shipping" component={ShippingAddressPage}></Route>
-          <Route path="/register" component={RegisterPage}></Route>
-          <Route path="/login" component={LoginPage}></Route>
-          <Route path="/basket/:id?" component={BasketPage}></Route>
-          <Route path="/stores" component={StoresPage}></Route>
-          <Route path="/product/:id" component={ProductPage}></Route>
-            <Route path="/" component={HomePage} exact></Route>
+          <Route path="/store/:id" element={<StoreDetailsPage />}></Route>
+          <Route path="/createproduct" element={<CreateProductPage />}></Route>
+          <Route path="/createstore" element={<CreateStore />}></Route>
+          <Route path="/profile" element={<ProfilePage />}></Route>
+          <Route path="/orderhistory" element={<OrderHistoryPage />}></Route>
+          <Route path="/order/:id" element={<OrderPage />}></Route>
+          <Route path="/placeorder" element={<PlaceOrderPage />}></Route>
+          <Route path="/payment" element={<PaymentMethodPage />}></Route>
+          <Route path="/shipping" element={<ShippingAddressPage />}></Route>
+          <Route path="/register" element={<RegisterPage />}></Route>
+          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/basket/:id?" element={<BasketPage />}></Route>
+          <Route path="/stores" element={<StoresPage />}></Route>
+          <Route path="/product/:id" element={<ProductPage />}></Route>
+            <Route path="/" index element={<HomePage />}></Route>
+            </Routes>
           
         </main>
         <footer>
@@ -395,7 +397,7 @@ function App() {
             </div>
             
             <div className='mosganda-footer-item'>
-              <h4>Mosganda</h4>
+                            <h4 style={{display:"flex", alignItems:"center"}}><img style={{ width: "30px", height: "auto",marginRight:"5px" }} src="/images/m-logo.jpg" alt="" /> { " "} Mosganda</h4>
               <p>09028718288</p>
               <p>contact@mosganda.com</p>
               <p style={{paddingBottom:"0", marginBottom:"0",fontSize:"13px", color:"yellow"}}>Subscribe to our newsletter</p>
