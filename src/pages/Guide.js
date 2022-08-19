@@ -32,7 +32,7 @@ function Guide() {
                 <h4>Mosganda</h4>
                 <p>Mosganda is an online marketplace for buying and selling goods and services. Mosganda is a platform that allows a seller to create a store and sells his/her items online. Mosganda is a service company that is unique in promoting SMEs by allowing them to sell with their brand names on our marketplace. Mosganda provides payment service and a fun-filled social service. The payment service facilitates the payment of online transactions within the marketplace while the social service connects buyers and sellers (SMEs) for effective communication through chat.</p>
                 <h4>Why Mosganda?</h4>
-                <p>Every business today wants to have its presence online to increase its sales, and generate more income. This means that business owners will need a website for their business. But most micro and small businesses cannot afford the cost of building and maintaining a website. Mosganda solves this problem by creating a platform that allows a seller to create an online store, where he can interact with his/her customers and make sales.</p>
+                <p>Mosganda exist to take your business online particularly for Micro and Small Enterprises (SMEs) that cannot afford the cost of building, hosting, and maintaining a website for their business.</p>
                 <h4>Why sell on Mosganda?</h4>
                 <ul className='guide-ul'>
                 <li><span className='guide-ul-span'>Make more money:</span> Mosganda allows you to bring your business online, and make unlimited sales. Thereby, making more money.</li>
@@ -41,6 +41,7 @@ function Guide() {
                   <li><span className='guide-ul-span'>Location:</span> One can sell from any town/city in Nigeria at anytime.</li>
                   <li><span className='guide-ul-span'>No design skills:</span> You do not need a graphic designer to create your online store. All that is needed is for you to click on "Create Store" button and fill in your store information.</li>
                 <li><span className='guide-ul-span'>Customer support:</span> We have 24/7 support for all our customers.</li>
+                <li><span className='guide-ul-span'>No product limitation:</span> Any item you can sell legally in your physical store can also be sold on Mosganda.</li>
                 <li><span className='guide-ul-span'>Low commission:</span> We charge you as low as 3% when you have successfully made a sale. We only make money when you make money.</li>
                   
               </ul>

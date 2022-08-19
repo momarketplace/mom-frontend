@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Mosganda",
+  "name": "Mosganda App",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,13 +8,13 @@
       "type": "image/x-icon"
     },
     {
-      "src": "buysell.jpg",
-      "type": "image/png",
+      "src": "m-logo.jpg",
+      "type": "image/jpg",
       "sizes": "192x192"
     },
     {
-      "src": "buysell.jpg",
-      "type": "image/png",
+      "src": "m-logo.jpg",
+      "type": "image/jpg",
       "sizes": "512x512"
     }
   ],

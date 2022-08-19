@@ -6,17 +6,17 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import Stack from '@mui/material/Stack';
-import Alert from '@mui/material/Alert';
+//import Stack from '@mui/material/Stack';
+//import Alert from '@mui/material/Alert';
 
-function LoginPage(props) {
+function LoginPage() {
     const [ email, setEmail ] = useState('');
     const [password, setPassword] = useState('');
   const [show, setShow] = useState()
   
 
 
-    const redirect = props.location.search? props.location.search.split('=')[1] : '/';
+    //const redirect = props.location.search? props.location.search.split('=')[1] : '/';
 
     //get access to userLogin from redux store
     const userLogin = useSelector((state) => state.userLogin)
@@ -32,9 +32,9 @@ function LoginPage(props) {
     //keep track of changes to userInfo
     useEffect(() => {
       if (userInfo) {
-            props.history.push(redirect);
+            window.location = "/"
         }
-    }, [props.history, redirect, userInfo])
+    }, [userInfo])
   
   
     return (

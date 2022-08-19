@@ -144,7 +144,7 @@ function App() {
           <div className='mosganda-header-left'>
             {/*header logo*/}
           <Link to="/">
-                        <div className='mosganda-header-logo'><img style={{width:"30px", height:"auto", marginRight:"5px"}} src="/images/m-logo.jpg" alt="" />  <span>Mosganda</span> </div>
+                        <div className='mosganda-header-logo'><img style={{width:"30px", height:"auto", marginRight:"10px"}} src="/images/m-logo.jpg" alt="" />  <span>Mosganda</span> </div>
           </Link>
            
             <div className='mosganda-header-itemslink'>
@@ -373,19 +373,38 @@ function App() {
         <footer>
           <div className='mosganda-footer'>
             <div className='mosganda-footer-item'>
-              <h4>Follow us</h4>
+                            {/* <h4 style={{display:"flex", alignItems:"center", backgroundColor:"white", color:"navy"}}><img style={{ width: "20px", height: "auto",marginRight:"10px" }} src="/images/m-logo.jpg" alt="" /> { " "} Mosganda</h4> 
+                            */}
+                 <div className='mosganda-footer-logo'><img style={{width:"30px", height:"auto", marginRight:"1px"}} src="/images/m-logo.jpg" alt="" />  <span>Mosganda</span> </div>
+                  <p>09028718288</p>
+                  <p>contact@mosganda.com</p>
+                  <p style={{paddingBottom:"0", marginBottom:"0",fontSize:"13px", color:"yellow"}}>Subscribe to our newsletter</p>
+                  <form className='newsletter' onSubmit={submitNewsletter}>
+                   <div><input type="text" id="newsletter" placeholder='example@gmail.com'
+                    onChange={(e) => setNewsEmail(e.target.value)} required
+                    value={newsEmail}
+                   />
+                   <label />
+                   </div>
+                    <button type="submit">Subscribe</button>
+                    {
+                    loadingnewsEmail && <LoadingBox></LoadingBox>
+                    }
+                    {
+                    createNewsEmailFail && <Stack sx={{ width: '90%' }} spacing={2}>
+                    <Alert severity="error" onClose={() => setCreateNewsEmailFail(false)}>Error.</Alert>
+      
+                    </Stack>
+                    }
+                    {
+                    createNewsEmailSuccess && <Stack sx={{ width: '90%' }} spacing={2}>
+                    <Alert severity="success" onClose={() => setCreateNewsEmailSuccess(false)}>Successful.</Alert>
+      
+                     </Stack>
+                      }
+                    </form>
+                </div>
             
-              <p> <Link to="#" style={{ color: "white", margin: "2px" }}><FacebookIcon sx={{fontSize:30, backgroundColor:"white", color:"blue"}}/></Link>
-                  <Link to="#" style={{ color: "white", margin: "2px" }}><InstagramIcon sx={{fontSize:30, backgroundColor:"white", color:"purple"}} /></Link>
-                  <Link to="#" style={{ color: "white", margin: "2px" }}><TwitterIcon sx={{fontSize:30, backgroundColor:"white", color:"#1c86ee"}} /></Link>
-                  <Link to="#" style={{ color: "white", margin: "2px" }}><YouTubeIcon sx={{fontSize:30, backgroundColor:"white", color:"red"}} /></Link>
-              </p>
-              <p className='whatsapp-container'>
-                <WhatsAppIcon sx={{fontSize:30, marginRight:"2px"}} />
-                <span>08133806965</span>
-              </p>
-              
-            </div>
             <div className='mosganda-footer-item'>
               <h4>Company</h4>
               <p> <Link to="/about">About us</Link></p>
@@ -395,38 +414,24 @@ function App() {
               <p> <Link to="/feedback">Your feedback</Link></p>
               <p> <Link to="/recruitment">Careers</Link></p>
             </div>
-            
             <div className='mosganda-footer-item'>
-                            <h4 style={{display:"flex", alignItems:"center"}}><img style={{ width: "30px", height: "auto",marginRight:"5px" }} src="/images/m-logo.jpg" alt="" /> { " "} Mosganda</h4>
-              <p>09028718288</p>
-              <p>contact@mosganda.com</p>
-              <p style={{paddingBottom:"0", marginBottom:"0",fontSize:"13px", color:"yellow"}}>Subscribe to our newsletter</p>
-              <form className='newsletter' onSubmit={submitNewsletter}>
-                <div><input type="text" id="newsletter" placeholder='example@gmail.com'
-                  onChange={(e) => setNewsEmail(e.target.value)} required
-                  value={newsEmail}
-                />
-                  <label />
-                </div>
-                <button type="submit">Subscribe</button>
-                {
-                    loadingnewsEmail && <LoadingBox></LoadingBox>
-                }
-                {
-            createNewsEmailFail && <Stack sx={{ width: '90%' }} spacing={2}>
-              <Alert severity="error" onClose={() => setCreateNewsEmailFail(false)}>Error.</Alert>
-      
-            </Stack>
-                }
-                {
-              createNewsEmailSuccess && <Stack sx={{ width: '90%' }} spacing={2}>
-              <Alert severity="success" onClose={() => setCreateNewsEmailSuccess(false)}>Successful.</Alert>
-      
-            </Stack>
-                }
-              </form>
+              <h4>Follow us</h4>
+            
+              <p>
+                <Link to="#" style={{ color: "white", margin: "2px" }}><FacebookIcon sx={{ fontSize: 30, backgroundColor: "white", color: "blue" }} /></Link>
+                <Link to="#" style={{ color: "white", margin: "2px" }}><InstagramIcon sx={{fontSize:30, backgroundColor:"white", color:"purple"}} /></Link>
+                 <Link to="#" style={{ color: "white", margin: "2px" }}><TwitterIcon sx={{fontSize:30, backgroundColor:"white", color:"#1c86ee"}} /></Link>
+                <Link to="#" style={{ color: "white", margin: "2px" }}><YouTubeIcon sx={{fontSize:30, backgroundColor:"white", color:"red"}} /></Link>
+              </p>
+              <p className='whatsapp-container'>
+                <WhatsAppIcon sx={{fontSize:30}} />
+                <span style={{ marginLeft:"2px"}}>08133806965</span>
+              </p>
+              
             </div>
-          </div>
+            
+            
+                </div>
           <div className="footer-all-right-reserved">All rights reserved</div>
         </footer>
       </div>

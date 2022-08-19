@@ -171,20 +171,7 @@ function ProductPage(props) {
                 </div>)
                 }
                   </div>
-                  {
-                    !product.isPaid &&
-                    <div>
-                            <p>
-                      To chat with me, click on {" "}
-                      <Link to='/chats'>
-                        <Button variant="contained" color="primary" size="small">
-                      Chat
-                    </Button>
-                      </Link>
-                      . Search my name <b>{product.sellerName}</b> and add me to your chat list.
-                    </p>
-                          </div>
-                  }
+                  
             </div>
           </div>
         )}

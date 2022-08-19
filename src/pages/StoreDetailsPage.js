@@ -2,20 +2,18 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-//import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { getSingleStore } from '../actions/storeActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Product from '../components/Product';
-import { Link } from "react-router-dom"
 import Button from "@mui/material/Button";
 import PhoneIcon from '@mui/icons-material/Phone';
-//import EmailIcon from '@mui/icons-material/Email';
 import {useParams} from 'react-router-dom'
+import { ChatState } from '../context/ChatProvider';
 
 
-function StoreDetailsPage(props) {
+function StoreDetailsPage() {
     const dispatch = useDispatch();
     //const storeId = props.match.params.id;
   const {id} = useParams()
@@ -23,12 +21,20 @@ function StoreDetailsPage(props) {
     const [loadProduct, setLoadProduct] = useState(false);
     const [errorProduct, setErrorProduct ] = useState('')
   const [products, setProducts] = useState([])
-  //const [loading, setLoading] = useState(false)
-  //const [error, setError] = useState(false)
-  //const [stores, setStores] = useState()
-    //const [email, setEmail] = useState('');
+  
     
+  const [createChatLoading, setCreateChatLoading] = useState(false)
+  const [errorCreateChat, setErrorCreateChat] = useState(false)
+  const [successCreateChat, setSuccessCreateChat] = useState(false)
+  
+  
+  //get login user details from store
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
+    //import state from context
+  const {setSelectedChat, chats, setChats } =
+    ChatState();
     //get store details from redux store
     const storeDetails = useSelector((state) =>state.storeDetails);
     const { loading, error, store } = storeDetails;
@@ -59,8 +65,41 @@ function StoreDetailsPage(props) {
         }
         fetchProduct()
     }, [id])
-    console.log(products)
+    //console.log(products)
  
+  //handle chat
+  const handleChat = async (userId) => {
+    if (!userInfo) {
+      window.location = "/login"
+      return
+    } else {
+      try {
+     setCreateChatLoading(true)
+     const config = {
+         headers: {
+           "Content-type":"application/json",
+           Authorization: `Bearer ${userInfo.token}`
+         },
+       };
+     const { data } = await axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/chat', { userId }, config);
+     if(!chats.find((c) => c._id === data._id)) setChats([data, ...chats])
+     setCreateChatLoading(false)
+     setSuccessCreateChat(true)
+        setSelectedChat(data)
+        
+   } catch (error) {
+    setErrorCreateChat(error.message)
+   }
+    }
+   
+  }
+
+  if (successCreateChat) {
+    window.location = "/chats"
+    setTimeout(() => {
+      setSuccessCreateChat(false)
+    },3000)
+  }
   
     
     return (
@@ -106,11 +145,22 @@ function StoreDetailsPage(props) {
                       {store.singleStore.creatorPhone}
                     </p>
                    
-                      <p><Link to='/chats'>
-                        <Button variant="contained" color="primary" size="small">
-                      Chat
+                      
+                       <p>
+                          <Button variant="contained" color="primary" size="small" onClick={() => {
+                                         
+                        handleChat(store.singleStore.user)
+                      }}>
+                      Message
                     </Button>
-                      </Link></p>
+                                      </p>
+                                      {
+                                        createChatLoading && <LoadingBox></LoadingBox>
+                                      }
+                                      {
+                                        errorCreateChat &&
+                                        <MessageBox variant="danger">Error</MessageBox>
+                                      }
                   </div>
                 </div>
                 
