@@ -144,7 +144,7 @@ function App() {
           <div className='mosganda-header-left'>
             {/*header logo*/}
           <Link to="/">
-                        <div className='mosganda-header-logo'><img style={{width:"30px", height:"auto", marginRight:"10px"}} src="/images/m-logo.jpg" alt="" />  <span>Mosganda</span> </div>
+                        <div className='mosganda-header-logo'><img style={{width:"20px", height:"auto", marginRight:"10px"}} src="/images/m-logo.jpg" alt="" />  <span style={{fontSize:"20px"}}>Mosganda</span> </div>
           </Link>
            
             <div className='mosganda-header-itemslink'>
@@ -375,7 +375,7 @@ function App() {
             <div className='mosganda-footer-item'>
                             {/* <h4 style={{display:"flex", alignItems:"center", backgroundColor:"white", color:"navy"}}><img style={{ width: "20px", height: "auto",marginRight:"10px" }} src="/images/m-logo.jpg" alt="" /> { " "} Mosganda</h4> 
                             */}
-                 <div className='mosganda-footer-logo'><img style={{width:"30px", height:"auto", marginRight:"1px"}} src="/images/m-logo.jpg" alt="" />  <span>Mosganda</span> </div>
+                 <div className='mosganda-footer-logo'><img style={{width:"20px", height:"auto", marginRight:"1px"}} src="/images/m-logo.jpg" alt="" />  <span style={{fontSize:"20px"}}>Mosganda</span> </div>
                   <p>09028718288</p>
                   <p>contact@mosganda.com</p>
                   <p style={{paddingBottom:"0", marginBottom:"0",fontSize:"13px", color:"yellow"}}>Subscribe to our newsletter</p>
