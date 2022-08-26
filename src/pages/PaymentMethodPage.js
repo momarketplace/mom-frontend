@@ -5,13 +5,14 @@ import CheckoutSteps from '../components/CheckoutSteps';
 import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
 
-function PaymentMethodPage(props) {
+function PaymentMethodPage() {
     //user should only see this screen if he has entered shipping info else be redirected to shipping
     const basket = useSelector((state) => state.basket);
     const { shippingAddress } = basket;
 
     if(!shippingAddress.address){
-        props.history.push('/shipping');
+        //props.history.push('/shipping');
+        window.location="/shipping"
     }
 
     const [paymentMethod, setPaymentMethod] = useState('Paystack');
@@ -30,7 +31,8 @@ function PaymentMethodPage(props) {
         }
         
         //redirect the user to finally place the order
-        props.history.push('/placeorder');
+        //props.history.push('/placeorder');
+        window.location="/placeorder"
     }
     return (
         <div>

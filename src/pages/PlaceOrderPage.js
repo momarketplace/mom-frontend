@@ -11,7 +11,7 @@ import { orderedProduct } from '../actions/productActions';
 import { UPDATE_ORDERED_PRODUCT_RESET } from '../constants/productConstants';
 //import { useHistory } from 'react-router-dom'
 
-function PlaceOrderPage(props) {
+function PlaceOrderPage() {
     const dispatch = useDispatch();
     const [buyerName, setBuyerName ] = useState('')
     const [buyerAddress, setBuyerAddress ] = useState('')

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { saveShippingAddress } from '../actions/basketActions';
 import CheckoutSteps from '../components/CheckoutSteps';
 
-function ShippingAddressPage(props) {
+function ShippingAddressPage() {
     //Only login user should see this page
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
@@ -11,8 +11,9 @@ function ShippingAddressPage(props) {
     //get userInfo from basket
     const basket = useSelector((state) =>state.basket);
     const { shippingAddress } = basket;
-    if(!userInfo) {
-        props.history.push('/login')
+    if (!userInfo) {
+        window.location="/login"
+        //props.history.push('/login')
     }
 
     //instaed of empty values, default values for these fields should come from the information in shippingAddress
@@ -34,7 +35,8 @@ function ShippingAddressPage(props) {
         dispatch(saveShippingAddress({fullName, address, city, landmark, state, country, phone}));
 
         //redirect the user to payment
-        props.history.push('/payment');
+        //props.history.push('/payment');
+        window.location="/payment"
     }
     return (
         <div style={{width:"100%"}}>
