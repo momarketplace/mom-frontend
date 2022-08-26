@@ -5,25 +5,30 @@ import { addToBasket, removeFromBasket } from '../actions/basketActions';
 import MessageBox from '../components/MessageBox';
 import Button from "@mui/material/Button";
  import Stack from '@mui/material/Stack';
- import Alert from '@mui/material/Alert';
+import Alert from '@mui/material/Alert';
+ import {useParams, useSearchParams } from "react-router-dom"
 
-function BasketPage(props) {
-    const productId = props.match.params.id;
+function BasketPage() {
+    //const productId = props.match.params.id;
     //finding the qty
-    const qty = props.location.search? Number(props.location.search.split('=')[1]) : 1
+  const { id } = useParams() 
+  let [searchParams, setSearchParams] = useSearchParams()
+  const qty = searchParams.get("qty")
+    //const qty = props.location.search? Number(props.location.search.split('=')[1]) : 1
 
   const [proceed, setProceed] = useState(true)
   
     //get basket from redux store
     const basket = useSelector((state) => state.basket);
     const { basketItems } = basket;
-    console.log(basketItems)
+    //console.log(basketItems)
     
 
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(addToBasket(productId, qty))
-    },[dispatch, productId, qty])
+  useEffect(() => {
+      //change productId to id
+        dispatch(addToBasket(id, qty))
+    },[dispatch, id, qty])
 
     const removeFromBasketHandler = (id) => {
         dispatch(removeFromBasket(id))
@@ -38,7 +43,7 @@ function BasketPage(props) {
     const handleCheckout = () => {
         if(findStoreId.every(check)){
             setProceed(true)
-            props.history.push('/login?redirect=shipping')
+            window.location = "/shipping"
         }else{
             setProceed(false)
             

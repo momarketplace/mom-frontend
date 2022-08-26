@@ -363,7 +363,8 @@ function App() {
           <Route path="/shipping" element={<ShippingAddressPage />}></Route>
           <Route path="/register" element={<RegisterPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/basket/:id?" element={<BasketPage />}></Route>
+          <Route path="/basket/:id" element={<BasketPage />}></Route>
+          {/* <Route path="/basket/:id?" element={<BasketPage />}></Route> */}
           <Route path="/stores" element={<StoresPage />}></Route>
           <Route path="/product/:id" element={<ProductPage />}></Route>
             <Route path="/" index element={<HomePage />}></Route>

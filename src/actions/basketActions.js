@@ -6,9 +6,10 @@ import {
     REMOVE_FROM_BASKET } from '../constants/basketConstants';
 
 
-export const addToBasket = (productId, qty) => async(dispatch, getState) => {
+export const addToBasket = (id, qty) => async(dispatch, getState) => {
     //send axios request to get information of this product
-    const { data } = await Axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/${productId}`)
+    //chnaged productId parameter to id
+    const { data } = await Axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/${id}`)
     dispatch({
         type: ADD_TO_BASKET,
         payload: {
