@@ -11,7 +11,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 
 
-function RegisterPage(props) {
+function RegisterPage() {
     const [ name, setName ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -47,6 +47,9 @@ function RegisterPage(props) {
           setName("");
           setEmail("");
           setPassword("");
+          if(!error){
+            setSuccessMessage(true)
+          }
         }
         
   }
@@ -55,19 +58,20 @@ function RegisterPage(props) {
     //keep track of changes to userInfo
     useEffect(() => {
       if (userInfo) {
-            props.history.push("/register");
+        window.location = "/"
       }
-       if(userInfo && !error) {
-         setSuccessMessage(true)
-       }
-    }, [props.history, userInfo])
+      //  if(userInfo && !error) {
+      //    setSuccessMessage(true)
+      //  }
+    }, [ userInfo])
   
   
   //move the user to login if registration is successful
   if (successMessage) {
     setTimeout(() => {
+      setSuccessMessage(false)
       window.location='/login'
-    }, 3000);
+    }, 2000);
   }
 
   
