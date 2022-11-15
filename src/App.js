@@ -40,9 +40,9 @@ import ComplainList from './pages/ComplainList';
 import TermConditions from './pages/TermConditions';
 import About from './pages/About';
 import Ojiko from './pages/Ojiko';
-import Stack from '@mui/material/Stack';
-import Alert from '@mui/material/Alert';
-import LoadingBox from './components/LoadingBox';
+// import Stack from '@mui/material/Stack';
+// import Alert from '@mui/material/Alert';
+// import LoadingBox from './components/LoadingBox';
 import NewsletterEmailList from './pages/NewsletterEmailList';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -70,10 +70,10 @@ import Recruitment from './pages/Recruitment';
 
 
 function App() {
-  const [newsEmail, setNewsEmail] = useState('')
-  const [createNewsEmailSuccess, setCreateNewsEmailSuccess] = useState(false)
-  const [createNewsEmailFail, setCreateNewsEmailFail] = useState(false)
-  const [ loadingnewsEmail, setLoadingnewsEmail] = useState(false)
+  // const [newsEmail, setNewsEmail] = useState('')
+  // const [createNewsEmailSuccess, setCreateNewsEmailSuccess] = useState(false)
+  // const [createNewsEmailFail, setCreateNewsEmailFail] = useState(false)
+  // const [ loadingnewsEmail, setLoadingnewsEmail] = useState(false)
   
 
 
@@ -121,20 +121,20 @@ function App() {
   const myNotifications = notifs.filter((n) => n.latestMessage.sender._id !== userInfo._id)
   
   //function to collect newsletter email
-  const submitNewsletter = async(e) => {
-    e.preventDefault();
-    try {
-            setLoadingnewsEmail(true)
-            await axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/newsletter/create', { newsEmail });
-            setLoadingnewsEmail(false)
-      setCreateNewsEmailSuccess(true)
-      setNewsEmail("")
+  // const submitNewsletter = async(e) => {
+  //   e.preventDefault();
+  //   try {
+  //           setLoadingnewsEmail(true)
+  //           await axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/newsletter/create', { newsEmail });
+  //           setLoadingnewsEmail(false)
+  //     setCreateNewsEmailSuccess(true)
+  //     setNewsEmail("")
       
-        } catch (error) {
-            setCreateNewsEmailFail(true)
-        }
+  //       } catch (error) {
+  //           setCreateNewsEmailFail(true)
+  //       }
 
-  }
+  // }
   return (
     <BrowserRouter>
     
@@ -144,7 +144,7 @@ function App() {
           <div className='mosganda-header-left'>
             {/*header logo*/}
           <Link to="/">
-                        <div className='mosganda-header-logo'><img style={{width:"20px", height:"auto", marginRight:"10px"}} src="/images/m-logo.jpg" alt="" />  <span style={{fontSize:"20px"}}>Mosganda</span> </div>
+                        <div className='mosganda-header-logo'><img style={{width:"20px", height:"auto", marginRight:"10px"}} src="/images/mom1.jpg" alt="" />  <span style={{fontSize:"20px"}}>Mosganda</span> </div>
           </Link>
            
             <div className='mosganda-header-itemslink'>
@@ -376,10 +376,10 @@ function App() {
             <div className='mosganda-footer-item'>
                             {/* <h4 style={{display:"flex", alignItems:"center", backgroundColor:"white", color:"navy"}}><img style={{ width: "20px", height: "auto",marginRight:"10px" }} src="/images/m-logo.jpg" alt="" /> { " "} Mosganda</h4> 
                             */}
-                 <div className='mosganda-footer-logo'><img style={{width:"20px", height:"auto", marginRight:"1px"}} src="/images/m-logo.jpg" alt="" />  <span style={{fontSize:"20px"}}>Mosganda</span> </div>
+                 <div className='mosganda-footer-logo'><img style={{width:"20px", height:"auto", marginRight:"1px"}} src="/images/mom1.jpg" alt="" />  <span style={{fontSize:"20px"}}>Mosganda</span> </div>
                   <p>09028718288</p>
                   <p>contact@mosganda.com</p>
-                  <p style={{paddingBottom:"0", marginBottom:"0",fontSize:"13px", color:"yellow"}}>Subscribe to our newsletter</p>
+                  {/* <p style={{paddingBottom:"0", marginBottom:"0",fontSize:"13px", color:"yellow"}}>Subscribe to our newsletter</p>
                   <form className='newsletter' onSubmit={submitNewsletter}>
                    <div><input type="text" id="newsletter" placeholder='example@gmail.com'
                     onChange={(e) => setNewsEmail(e.target.value)} required
@@ -404,8 +404,9 @@ function App() {
                      </Stack>
                       }
                     </form>
+                    */}
                 </div>
-            
+             
             <div className='mosganda-footer-item'>
               <h4>Company</h4>
               <p> <Link to="/about">About us</Link></p>
