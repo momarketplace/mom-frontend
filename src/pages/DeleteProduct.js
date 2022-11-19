@@ -8,9 +8,11 @@ import { useSelector } from 'react-redux';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Button from "@mui/material/Button";
+import {useParams } from "react-router-dom";
 
-function DeleteProduct(props) {
-    const id = props.match.params.id
+function DeleteProduct() {
+   // const id = props.match.params.id
+   const { id } = useParams() 
     const [product, setProduct] = useState({});
     const [ loading, setLoading ] = useState(false)
     const [error, setError] = useState(false);

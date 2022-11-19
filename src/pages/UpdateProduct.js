@@ -18,13 +18,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import {useParams} from 'react-router-dom'
 
 
-
-function UpdateProduct(props) {
+function UpdateProduct() {
     //const { name, price, category, numberInStore, image, countInStock, brand, description, sellerName, sellerEmail, sellerId, sellerPhone, productStore } =
-    const id = props.match.params.id;
-
+    //const id = props.match.params.id;
+    const {id} = useParams()
     const [ name, setName ] = useState('');
     const [ price, setPrice ] = useState('');
     const [ category, setCategory ] = useState('');

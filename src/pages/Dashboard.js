@@ -38,7 +38,7 @@ function Dashboard(props) {
         const fetchUsers = async () => {
             try {
                 setLoading(true)
-            const { data } = await axios.get('/api/v1/user/find', {
+            const { data } = await axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/user/find', {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -68,7 +68,7 @@ e.preventDefault();
     }
     try {
       setSearchLoading(true)
-      const { data } = await axios.get(`/api/v1/user/search?search=${search}`, {
+      const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user/search?search=${search}`, {
         headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }

@@ -6,10 +6,11 @@ import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import LoadingBox from '../components/LoadingBox';
 import Button from "@mui/material/Button";
-
+import {useParams} from 'react-router-dom'
 
 function ViewUser(props) {
-    const id = props.match.params.id
+    //const id = props.match.params.id
+    const {id} = useParams()
     const [user, setUser] = useState()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)

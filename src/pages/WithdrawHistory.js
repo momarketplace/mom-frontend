@@ -13,7 +13,7 @@ function WithdrawHistory(props) {
 
     const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-  console.log(userInfo);
+  //console.log(userInfo);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,7 +25,7 @@ function WithdrawHistory(props) {
                 },
             };
             
-            const { data } = await axios.get('/api/v1/withdraw/mywithdrawals', config);
+            const { data } = await axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/withdraw/mywithdrawals', config);
             setWithDraws(data)
             setLoading(false)
             } catch (error) {
