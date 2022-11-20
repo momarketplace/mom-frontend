@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; 
 import FileBase64 from 'react-file-base64';
-//import { useHistory } from 'react-router-dom'
 import { detailsUser, updateUserProfile } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 import { editStore } from '../actions/storeActions';
 import Button from '@mui/material/Button';
-//import Stack from '@mui/material/Stack';
-//import Alert from '@mui/material/Alert';
+import { updateUserProduct } from '../actions/productActions';
 
-function ProfilePage(props) {
+
+function ProfilePage() {
     const [name, setName ] = useState('')
     const [phone, setPhone ] = useState('')
     const [address, setAddress ] = useState('')
@@ -22,6 +21,7 @@ function ProfilePage(props) {
     const userDetails = useSelector(state => state.userDetails);
     const { loading, error, user } = userDetails;
     //console.log(user)
+    //console.log(userInfo)
 
     const userUpdateProfile = useSelector(state => state.userUpdateProfile);
     const { success: successUpdate, error: errorUpdate, loading: loadingUpdate } = userUpdateProfile;
@@ -31,7 +31,16 @@ function ProfilePage(props) {
     const userStoreDetails = useSelector(state => state.userStoreDetails);
     const { userStore } = userStoreDetails
     //console.log(userStore)
+   
+        //get user products from redux store
+  const userproducts = useSelector((state) => state.userproducts);
+  const {
+    userProducts,
+  } = userproducts;
+  //console.log(userProducts);
 
+
+      
  
     //const history = useHistory()
    const dispatch = useDispatch()
@@ -67,6 +76,16 @@ function ProfilePage(props) {
         dispatch(editStore({
             id: userStore._id, creatorName: name, creatorPhone: phone, creatorAddress:address, creatorImage:image
         }));
+
+        //also update userproducts with the new user details
+        if(user.isSeller && userProducts) {
+            userProducts.map((prod) =>{
+                dispatch(updateUserProduct({
+                    id: prod._id, sellerName: name
+                }))
+            });
+        }
+        
     }
     if (successUpdate) {
 
