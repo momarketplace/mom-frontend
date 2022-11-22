@@ -139,7 +139,7 @@ useEffect(() =>{
                   errorDraw && <MessageBox variant="danger">Failed</MessageBox>
                 }
                 {
-                  success && <MessageBox variant="success">successful</MessageBox>
+                  success && <MessageBox variant="success">Received</MessageBox>
                 }
                 <Button sx={{textAlign:"center",m:2}} onClick ={handleWithdraw} variant="contained" color="success">Submit</Button>
               </form>

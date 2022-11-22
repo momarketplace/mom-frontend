@@ -5,8 +5,9 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import axios from 'axios'
 import Button from '@mui/material/Button'
+import {Link} from 'react-router-dom'
 
-function WithdrawHistory(props) {
+function WithdrawHistory() {
     const [withdraws, setWithDraws] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
@@ -62,11 +63,11 @@ function WithdrawHistory(props) {
                             withdraws?.map((width) => (
                         <div className='card' key={width._id} style={{padding:"5px"}}>
                                     <p>Id: { width._id} <Button sx={{m:1}} variant="contained" size="small"
-                          onClick={() => { props.history.push(`/product/${width._id}`) }}>
-                          View
+                          >
+                          <Link to = {`/product/${width.productId}`} style={{color:"white"}}>View</Link>
                                     </Button></p>
                                     <p>Date: {width.requestedAt.substring(0, 10)}</p>
-                                    <p>Amount: {width.amount.toFixed(2)}</p>
+                                    <p>Amount: {((width.amount-width.amount * 0.03) + width.deliveryCost).toFixed(2)}</p>
                                     <p>Paid Date: {width.isPaid ? width.isPaidAt.substring(0, 10) : "Pending"}</p>
                         </div>
                             ))
