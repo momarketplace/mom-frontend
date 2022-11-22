@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import './SoldProducts.css'
+import {Link} from 'react-router-dom'
 
 const style = {
   position: 'absolute',
@@ -25,7 +26,7 @@ const style = {
   p: 4,
 };
 
-function SoldProducts(props) {
+function SoldProducts() {
 
     const [ accountName, setAccountName ] = useState('')
     const [accountNumber, setAccountNumber ] = useState(0)
@@ -172,8 +173,8 @@ useEffect(() =>{
                         src={product.image}
                         alt={product.name}
                 /><Button sx={{m:1}} variant="contained" size="small"
-                          onClick={() => { props.history.push(`/product/${product._id}`) }}>
-                          View product
+                          >
+                           <Link to = {`/product/${product._id}`} style={{color:"white"}}>View product</Link>
                       </Button></p>
                     <p className='soldproduct-item'>
                       <span style={{marginRight:"5px"}}>Name: {product.name}</span>
