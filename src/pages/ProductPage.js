@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import {useParams} from 'react-router-dom'
 
 
-function ProductPage(props) {
+function ProductPage() {
     const dispatch = useDispatch();
     //const productId = props.match.params.id;
   const {id} = useParams() //replace productId with id
@@ -87,6 +87,9 @@ function ProductPage(props) {
                     Seller-Name: <strong>{product.sellerName}</strong>
                       </li>
                       <li>
+                        Delivery Fee: <strong>{product.deliveryCost}</strong>
+                      </li>
+                      <li>
                         Delivery: <strong style={{color:"red"}}>{product.deliveryCapacity === "Within-the-same-city" ?
                           `Only within ${product.storeCity}` : product.deliveryCapacity === "Within-the-same-state" ?
                         `Only within ${product.storeState}`: `Across ${product.storeCountry}`}
@@ -106,8 +109,8 @@ function ProductPage(props) {
                         <p>Delivered?: <strong>{product.isDelivered ? `Delivered at ${product.isDeliveredAt.substring(0, 10)}` : "Not delivered."}</strong></p>
                         <p>Settled?: <strong>{product.isSettled ? `Settled at ${product.isSettledAt.substring(0, 10)}` : "Not yet settled."}</strong></p>
                         <p><Button variant="contained" size="small"
-                                        onClick={() => { props.history.push(`/order/${product.orderId}`) }}>
-                                        View Order
+                                        >
+                                         <Link to = {`/order/${product.orderId}`} style={{color:"white"}}>View order</Link>
                                     </Button></p>
                       </div>) :
                         (<div className="card card-body">
