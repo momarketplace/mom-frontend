@@ -7,17 +7,19 @@ import axios from 'axios'
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
+import {Link} from 'react-router-dom'
 
-function WithdrawList(props) {
+function WithdrawList() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
-    const [withdraws, setWithdraws] = useState([])
+    const [withdraws, setWithDraws] = useState([])
     const [successPay, setSuccessPay] = useState(false)
     const [errorPay, setErrorPay] = useState(false)
     const [loadingPay, setLoadingPay] = useState(false)
     const [successProduct, setSuccessProduct] = useState(false)
     const [errorProduct, setErrorProduct] = useState(false)
     const [loadingProduct, setLoadingProduct] = useState(false)
+     //https://mosganda-online-market-backend.herokuapp.com
 
 
     //get access to userLogin from redux store
@@ -32,13 +34,15 @@ function WithdrawList(props) {
         const fetchWithdraws = async () => {
             try {
                 setLoading(true)
-            const { data } = await axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/widthdraw/admin', {
+                const config = {
                 headers: {
-                    Authorization: `Bearer ${userInfo.token}`
-                }
-            })
+                    Authorization: `Bearer ${userInfo.token}`,
+                },
+            };
+            
+            const { data } = await axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/withdraw/admin', config);
+            setWithDraws(data)
             setLoading(false)
-            setWithdraws(data)
             } catch (error) {
                 setError(true)
                 setLoading(false)
@@ -127,50 +131,33 @@ function WithdrawList(props) {
                         
                 
             </div>
-                    
-                            {
-                        withdraws?.map((width) => (
-                            <div key={width._id} style={{border:"1px solid green", marginBottom:"2px"}} >
-                                <p style={{padding:"1px",margin:"0"}}>Withdraw Id: { width._id}</p>
-                                <table className ="table">
-                        <thead>
-                            <tr>
-                                <th>DATE</th>
-                                <th>AMOUNT</th>
-                                <th>PAID</th>
-                                <th>Product</th>
-                                <th>Settled?</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                    <tr>
-                                        {/* get only the date part, and leave the time*/}
-                                        <td>{width.requestedAt.substring(0, 10)}</td>
-                                        <td>{width.amount.toFixed(2)}</td>
-                                        <td>{width.isPaid? width.isPaidAt.substring(0, 10): "Pending"}</td>                             
-                                        <td>
-                                            <Button sx={{m:1}} variant="contained" size="small"
-                          onClick={() => { props.history.push(`/product/${width.productId}`) }}>
-                          View
-                </Button>
-                                            </td>
-                                            <td>
-                                                {
-                                                    width.isPaid? "Settled" : <Button sx={{ m: 1 }} variant="contained" size="small" color="secondary" onClick={() => {
-                                                handlePayment(width._id)
-                                                handleSettled(width.productId)
-                                            }}>
-                          Pay
-                </Button>
-                                                }
-                                            </td>
-                                            
-                                    </tr>
-                                    </tbody>
-                    </table>
-                                    </div>
-                                ))
-                            }
+            <div className='row center'>
+                        {
+                            withdraws?.map((width) => (
+                        <div className='card' key={width._id} style={{padding:"5px"}}>
+                                    <p>Id: { width._id} <Button sx={{m:1}} variant="contained" size="small"
+                          >
+                          <Link to = {`/product/${width.productId}`} style={{color:"white"}}>View</Link>
+                                    </Button></p>
+                                    <p>Date: {width.requestedAt.substring(0, 10)}</p>
+                                    <p>Amount: {((width.amount - (width.amount * 0.03)) + width.deliveryCost).toFixed(2)}</p>
+                                    <p>Paid Date: {width.isPaid ? width.isPaidAt.substring(0, 10) : "Pending"}</p>
+                                    <p>
+                                        Settled?:
+                                    {
+                                        width.isPaid? "Settled" : <Button sx={{ m: 1 }} variant="contained" size="small" color="secondary" onClick={() => {
+                                        handlePayment(width._id)
+                                        handleSettled(width.productId)
+                                        }}>
+                                       Pay
+                                       </Button>
+                                    }
+                                    </p>
+                        </div>
+                            ))
+                        }
+                    </div>
+                     
                         
                 </>)
             }
