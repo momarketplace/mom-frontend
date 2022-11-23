@@ -57,7 +57,12 @@ function WithdrawList() {
     const handlePayment = async(id) => {
         try {
             setLoadingPay(true)
-             await axios.put("https://mosganda-online-market-backend.herokuapp.com/api/v1/widthdraw/ispaid", { id });
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${userInfo.token}`,
+                },
+            }
+             await axios.put("https://mosganda-online-market-backend.herokuapp.com/api/v1/withdraw/ispaid", { id },config);
             setSuccessPay(true)
             setLoadingPay(false)
         } catch (error) {
