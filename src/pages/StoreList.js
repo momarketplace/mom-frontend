@@ -9,8 +9,11 @@ import Button from "@mui/material/Button";
 import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
+import {Link} from 'react-router-dom'
 
-function StoreList(props) {
+
+
+function StoreList() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const [stores, setStores] = useState([])
@@ -147,8 +150,8 @@ function StoreList(props) {
                                     <td>{store.name}</td>
                                     <td>{store.city}</td>
                                     <td>{ store.category}</td>
-                                    <td><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }} onClick={()=> props.history.push(`/store/${store._id}`)}>
-                            View
+                                    <td><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }}>
+                                    <Link to = {`/store/${store._id}`} style={{color:"white"}}>View</Link>
                        </Button></td>
                                 
                             </tr>
@@ -190,8 +193,8 @@ function StoreList(props) {
                                     <td>{store.name}</td>
                                     <td>{store.city}</td>
                                     <td>{ store.category}</td>
-                                    <td><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }} onClick={()=> props.history.push(`/store/${store._id}`)}>
-                            View
+                                    <td><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }}>
+                                    <Link to = {`/store/${store._id}`} style={{color:"white"}}>View</Link>
                        </Button></td>
                                 
                             </tr>
@@ -231,8 +234,8 @@ function StoreList(props) {
                                     <td>{store.name}</td>
                                     <td>{store.city}</td>
                                     <td>{ store.category}</td>
-                                    <td><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }} onClick={()=> props.history.push(`/store/${store._id}`)}>
-                            View
+                                    <td><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }}>
+                                    <Link to = {`/store/${store._id}`} style={{color:"white"}}>View</Link>
                        </Button></td>
                                 
                             </tr>

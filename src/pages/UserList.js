@@ -9,10 +9,11 @@ import Button from "@mui/material/Button";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import SearchIcon from '@mui/icons-material/Search';
+import {Link} from 'react-router-dom'
 
 
 
-function UserList(props) {
+function UserList() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const [users, setUsers] = useState([])
@@ -144,8 +145,8 @@ function UserList(props) {
                         </div>
                         <p style={{margin:"0", padding:"0"}}><b>Id:</b>{user._id}</p>
                         <p style={{ margin: "0", padding: "0" }}>{user.address}</p>
-                        <p style={{ margin: "0", padding: "0" }}><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }} onClick={()=> props.history.push(`/viewuser/${user._id}`)}>
-                            View
+                        <p style={{ margin: "0", padding: "0" }}><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }}>
+                        <Link to = {`/viewuser/${user._id}`} style={{color:"white"}}>View</Link>
                        </Button></p>
                            
                     </div>
@@ -171,8 +172,8 @@ function UserList(props) {
                         <p style={{margin:"0", padding:"0"}}><b>Id:</b>{user._id}</p>
                         <p style={{ margin: "0", padding: "0" }}>{user.address}</p>
                         <div style={{ display: "flex", justifyContent: "space-around" }}>
-                            <p style={{ margin: "0", padding: "0" }}><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }} onClick={()=> props.history.push(`/viewuser/${user._id}`)}>
-                            View
+                            <p style={{ margin: "0", padding: "0" }}><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }}>
+                            <Link to = {`/viewuser/${user._id}`} style={{color:"white"}}>View</Link>
                        </Button></p>
                         </div>
                         
