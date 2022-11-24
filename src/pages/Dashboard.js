@@ -123,12 +123,12 @@ e.preventDefault();
             </Link>
                   </h4>
                   <h4>
-            <Link to="/soldproductlist">
-              <Button variant="contained" color="secondary" size="small">
-                Sold Items
+            <Link to="/complainlist">
+              <Button variant="contained" color="error" size="small">
+                Complains
               </Button>
-            </Link>
-          </h4>
+                      </Link>
+                  </h4>
            <h4>
             <Link to="/withdrawlist">
               <Button variant="contained" color="warning" size="small">
@@ -146,13 +146,7 @@ e.preventDefault();
                       </Link>
                       
                   </h4>
-                  <h4>
-            <Link to="/complainlist">
-              <Button variant="contained" color="error" size="small">
-                Complains
-              </Button>
-                      </Link>
-                  </h4>
+                  
                   <h4>
             <Link to="/newsletterlist">
               <Button variant="contained" color="primary" size="small">

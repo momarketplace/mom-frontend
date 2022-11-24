@@ -29,10 +29,10 @@ function NewsletterEmailList() {
     // })
   
     useEffect(() => {
-        const fetchEmails = async () => {
+        const fetchUsers = async () => {
             try {
                 setLoading(true)
-            const { data } = await axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/newsletter', {
+            const { data } = await axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/user/find', {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -45,9 +45,10 @@ function NewsletterEmailList() {
             }
         }
 
-        fetchEmails()
+        fetchUsers()
     }, [userInfo.isAdmin])
-    console.log(newsletterEmails)
+    
+
     return (
         <div style={{backgroundColor:"white"}}>
             <h1 style={{ textAlign: "center" }}> List Of Newsletter Emails</h1>
@@ -62,7 +63,7 @@ function NewsletterEmailList() {
                 {
                     newsletterEmails?.map((newsletter) => (
                         <div key={newsletter._id}>
-                            <p style={{padding:"5px"}}>{newsletter.newsEmail}</p>
+                            <p style={{padding:"5px"}}>{newsletter.email}</p>
                         </div>
                     ))
                 }

@@ -125,7 +125,7 @@ function OrderHistoryPage(props) {
                 <p style={{maxWidth:"95%", fontSize:"15px"}}>
                 When you receive your item(s), you are to click on the <q>Confirm Delivery</q> button immediately. If you do not do this within 12 hours, it also means that you have received the item but choose not to confirm delivery.</p>
                 <p style={{maxWidth:"95%", fontSize:"15px"}}>If you received a different item from what you ordered and paid for, click on the <q>Customer Complain Form</q>, briefly describe your complaint and submit it immediately.</p>
-                <p style={{maxWidth:"95%",fontSize:"15px"}}>Want to chat with the seller, get the seller's name from the order details. Go to <q>Chat</q> and search the name to start chatting. Click on the <q>Details button</q> if you want to view your order.</p>
+                <p style={{maxWidth:"95%",fontSize:"15px"}}>Click on the <q>Details button</q> if you want to view your order.</p>
                 <Button sx={{margin:2}} onClick={handleOpen} variant="contained" color="error" size="large">
                 Customer Complain Form
             </Button>
@@ -219,10 +219,13 @@ function OrderHistoryPage(props) {
       </Modal>
             </div>
             {
-                successProduct && <MessageBox variant="success">Product updated</MessageBox>
+                successProduct && <MessageBox variant="success">Confirmation 2</MessageBox>
             }
             {
-                errorProduct && <MessageBox variant="danger">Product not updated</MessageBox>
+                successUpdate && <MessageBox variant="success">Confirmation Received</MessageBox>
+            }
+            {
+                errorProduct && <MessageBox variant="danger">Item Error</MessageBox>
             }
             {
                 errorUpdate && <MessageBox variant="danger">Failed to confirm delivery.</MessageBox>
