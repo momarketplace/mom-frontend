@@ -51,7 +51,7 @@ function NewsletterEmailList() {
 
     return (
         <div style={{backgroundColor:"white"}}>
-            <h1 style={{ textAlign: "center" }}> List Of Newsletter Emails</h1>
+            <h4 style={{ textAlign: "center" }}> List Of Newsletter Emails</h4>
             {
                 loading && <LoadingBox></LoadingBox>
             }

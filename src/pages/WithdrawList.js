@@ -105,7 +105,7 @@ function WithdrawList() {
                         
                         {
             successPay && <Stack sx={{ width: '90%' }} spacing={2}>
-               <Alert severity="success" onClose={() => setSuccessPay(false)}>Your product has been updated.</Alert>
+               <Alert severity="success" onClose={() => setSuccessPay(false)}>Payment is successful.</Alert>
       
              </Stack>
                         }
