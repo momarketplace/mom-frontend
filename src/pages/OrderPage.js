@@ -77,7 +77,7 @@ function OrderPage() {
             setEmail(email)
             setPhone(phone)
             setName(name)
-            order.paymentResult = { id: id, name: name, email: email, phone: phone, amount: amount / 100 }
+            //order.paymentResult = { id: id, name: name, email: email, phone: phone, amount: amount / 100 }
         }
        
     },[email, name, order, phone])
@@ -104,10 +104,10 @@ function OrderPage() {
     //   })[0]
      
 
-    const paymentResult = { id: id, name: name, email: email, phone: phone, amount: amount / 100 }
+    //const paymentResult = { id: id, name: name, email: email, phone: phone, amount: amount / 100 }
     
       const successHandler = () => {
-          dispatch(payOrder(order, paymentResult));
+          dispatch(payOrder(order));
 
           //update paid products
         order.orderItems.map((x) => {
@@ -135,13 +135,13 @@ function OrderPage() {
                                  { order.shippingAddress.state }, { order.shippingAddress.country }
                                 </p>
 
-                                {
+                                {/* {
                                     order.isPaid && 
                                     <>
                                     <p>Paid By: <strong>{order.paymentResult.name}</strong>, Phone: <strong>{order.paymentResult.phone}</strong></p>
                                     </>
 
-                                }
+                                } */}
 
                                 { order.isDelivered?
                                  (<MessageBox variant ="success">Delivered at {order.deliveredAt}</MessageBox>):

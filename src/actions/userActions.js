@@ -25,7 +25,7 @@ export const register = (name, email, password, image, terms) => async (dispatch
         payload: {name, email, password, image, terms}
     });
     try {
-        const { data } = await Axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/user/register', {name, email, password, image, terms});
+        const { data } = await Axios.post('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user/register', {name, email, password, image, terms});
         dispatch({
             type: USER_REGISTER_SUCCESS,
             payload: data
@@ -48,7 +48,7 @@ export const login = (email, password) => async (dispatch) => {
     });
 
     try {
-        const { data } = await Axios.post("https://mosganda-online-market-backend.herokuapp.com/api/v1/user/login", {email, password});
+        const { data } = await Axios.post("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user/login", {email, password});
         dispatch({
             type: USER_LOGIN_SUCCESS,
             payload: data
@@ -82,7 +82,7 @@ export const detailsUser = (userId) => async (dispatch, getState) => {
     })
     const { userLogin: { userInfo }} = getState();
     try {
-        const { data } = await Axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user/${userId}`, {
+        const { data } = await Axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user/${userId}`, {
             headers: {
             Authorization: `Bearer ${userInfo.token}`
             }
@@ -110,7 +110,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) =>{
     //get user info
     const { userLogin: {userInfo} } = getState();
     try {
-        const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user/profile`, user, {
+        const { data } = await Axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user/profile`, user, {
             headers: {
                 Authorization: `Bearer ${userInfo.token}`
             },
@@ -141,7 +141,7 @@ export const updateUserCreateStore = (user) => async (dispatch, getState) =>{
     //get user info
     const { userLogin: {userInfo} } = getState();
     try {
-        const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user/createstore`, user, {
+        const { data } = await Axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user/createstore`, user, {
             headers: {
                 Authorization: `Bearer ${userInfo.token}`
             },

@@ -107,7 +107,7 @@ export const createProduct =
         userLogin: { userInfo },
       } = getState();
       const { data } = await Axios.post(
-        "https://mosganda-online-market-backend.herokuapp.com/api/v1/product/create",
+        "https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/create",
         {
           name,
           price,
@@ -161,7 +161,7 @@ export const getAllProducts = () => async (dispatch) => {
   });
   //fetching data from backend
   try {
-    const { data } = await Axios.get("https://mosganda-online-market-backend.herokuapp.com/api/v1/product");
+    const { data } = await Axios.get("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product");
     dispatch({
       type: LIST_OF_PRODUCTS_SUCCESS,
       payload: data,
@@ -181,7 +181,7 @@ export const getProductDetails = (productId) => async (dispatch) => {
     payload: productId,
   });
   try {
-    const { data } = await Axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/${productId}`);
+    const { data } = await Axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/${productId}`);
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
       payload: data,
@@ -207,7 +207,7 @@ export const getUserProducts = () => async (dispatch, getState) => {
     userLogin: { userInfo },
   } = getState();
   try {
-    const { data } = await Axios.get("https://mosganda-online-market-backend.herokuapp.com/api/v1/product/user", {
+    const { data } = await Axios.get("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/user", {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -236,7 +236,7 @@ export const findProductForUpdate = (id) => async (dispatch, getState) => {
   //get user info
   const { userLogin: {userInfo} } = getState();
   try {
-    const { data } = await Axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/update/${id}`, {
+    const { data } = await Axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/update/${id}`, {
       headers: {
           Authorization: `Bearer ${userInfo.token}`
       },
@@ -265,7 +265,7 @@ export const updateUserProduct = (id) => async (dispatch, getState) =>{
   //get user info
   const { userLogin: {userInfo} } = getState();
   try {
-      const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/update/`,id, {
+      const { data } = await Axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/update/`,id, {
           headers: {
               Authorization: `Bearer ${userInfo.token}`
           },
@@ -292,7 +292,7 @@ export const editPostedProduct = (id) => async(dispatch, getState) => {
   //get user info
   const { userLogin: {userInfo} } = getState();
   try {
-      const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/postproduct`, id, {
+      const { data } = await Axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/postproduct`, id, {
           headers: {
               Authorization: `Bearer ${userInfo.token}`
           },
@@ -318,7 +318,7 @@ export const unPostedProduct = (id) => async(dispatch, getState) => {
   //get user info
   const { userLogin: {userInfo} } = getState();
   try {
-      const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/unpostproduct`, id, {
+      const { data } = await Axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/unpostproduct`, id, {
           headers: {
               Authorization: `Bearer ${userInfo.token}`
           },
@@ -344,7 +344,7 @@ export const orderedProduct = (id) => async(dispatch) => {
   })
   
   try {
-      const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/placeorder`, id)
+      const { data } = await Axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/placeorder`, id)
       dispatch({
           type: UPDATE_ORDERED_PRODUCT_SUCCESS,
           payload: data
@@ -368,7 +368,7 @@ export const getOrderedProducts = () => async (dispatch, getState) => {
     userLogin: { userInfo },
   } = getState();
   try {
-    const { data } = await Axios.get("https://mosganda-online-market-backend.herokuapp.com/api/v1/product/orderedproducts", {
+    const { data } = await Axios.get("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/orderedproducts", {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -397,7 +397,7 @@ export const paidProduct = (id) => async(dispatch) => {
   })
   
   try {
-      const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/paidproducts`, id)
+      const { data } = await Axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/paidproducts`, id)
       dispatch({
           type: UPDATE_PAID_PRODUCTS_SUCCESS,
           payload: data
@@ -422,7 +422,7 @@ export const getSoldProducts = () => async (dispatch, getState) => {
     userLogin: { userInfo },
   } = getState();
   try {
-    const { data } = await Axios.get("https://mosganda-online-market-backend.herokuapp.com/api/v1/product/soldproducts", {
+    const { data } = await Axios.get("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/soldproducts", {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -452,7 +452,7 @@ export const blockProduct = (id) => async(dispatch, getState) => {
   //get user info
   const { userLogin: {userInfo} } = getState();
   try {
-      const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/block`, id, {
+      const { data } = await Axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/block`, id, {
           headers: {
               Authorization: `Bearer ${userInfo.token}`
           },
@@ -480,7 +480,7 @@ export const unblockProduct = (id) => async(dispatch, getState) => {
   //get user info
   const { userLogin: {userInfo} } = getState();
   try {
-      const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/unblock`, id, {
+      const { data } = await Axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/unblock`, id, {
           headers: {
               Authorization: `Bearer ${userInfo.token}`
           },
