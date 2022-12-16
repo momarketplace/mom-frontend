@@ -13,7 +13,6 @@
     flex-direction: column;
     width: 100%;
 }
-
 .feedback-content-item {
     display: flex;
     justify-content: center;
@@ -22,21 +21,18 @@
 }
 
 .feedback-content-item-name {
-    flex: 0.2
+ flex: 0.2
 }
-
 .feedback-content-item-message {
     color: gray;
     flex: 0.8;
     text-align: left;
     margin-left: 5px;
 }
-
 @media screen and (max-width: 600px) {
     .feedback-result {
         padding: 5px;
     }
-
     .feedback-content-item {
         width: 100%;
         max-width: 100%;
