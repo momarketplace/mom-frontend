@@ -1,6 +1,6 @@
 {
   "short_name": "Mosganda",
-  "name": "Mosganda App",
+  "name": "Mosganda Online Marketplace",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "mom1.jpg",
+      "src": "mom2.jpg",
       "type": "image/jpg",
       "sizes": "192x192"
     },
     {
-      "src": "mom1.jpg",
+      "src": "mom2.jpg",
       "type": "image/jpg",
       "sizes": "512x512"
     }

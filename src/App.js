@@ -145,7 +145,7 @@ function App() {
           <div className='mosganda-header-left'>
             {/*header logo*/}
           <Link to="/">
-                        <div className='mosganda-header-logo'><img style={{width:"20px", height:"auto", marginRight:"10px"}} src="/images/mom1.jpg" alt="" />  <span style={{fontSize:"20px"}}>Mosganda</span> </div>
+                        <div className='mosganda-header-logo'><img style={{width:"20px", height:"auto", marginRight:"10px"}} src="/images/mom2.jpg" alt="" />  <span style={{fontSize:"20px"}}>Mosganda</span> </div>
           </Link>
            
             <div className='mosganda-header-itemslink'>
@@ -376,41 +376,15 @@ function App() {
         <footer>
           <div className='mosganda-footer'>
             <div className='mosganda-footer-item'>
-                            {/* <h4 style={{display:"flex", alignItems:"center", backgroundColor:"white", color:"navy"}}><img style={{ width: "20px", height: "auto",marginRight:"10px" }} src="/images/m-logo.jpg" alt="" /> { " "} Mosganda</h4> 
-                            */}
-                 <div className='mosganda-footer-logo'><img style={{width:"20px", height:"auto", marginRight:"1px"}} src="/images/mom1.jpg" alt="" />  <span style={{fontSize:"20px"}}>Mosganda</span> </div>
+                            
+                 <div className='mosganda-footer-logo'><img style={{width:"20px", height:"auto", marginRight:"1px"}} src="/images/mom2.jpg" alt="" />  <span style={{fontSize:"20px"}}>Mosganda</span> </div>
                   <p>09028718288</p>
                   <p>contact@mosganda.com</p>
-                  {/* <p style={{paddingBottom:"0", marginBottom:"0",fontSize:"13px", color:"yellow"}}>Subscribe to our newsletter</p>
-                  <form className='newsletter' onSubmit={submitNewsletter}>
-                   <div><input type="text" id="newsletter" placeholder='example@gmail.com'
-                    onChange={(e) => setNewsEmail(e.target.value)} required
-                    value={newsEmail}
-                   />
-                   <label />
-                   </div>
-                    <button type="submit">Subscribe</button>
-                    {
-                    loadingnewsEmail && <LoadingBox></LoadingBox>
-                    }
-                    {
-                    createNewsEmailFail && <Stack sx={{ width: '90%' }} spacing={2}>
-                    <Alert severity="error" onClose={() => setCreateNewsEmailFail(false)}>Error.</Alert>
-      
-                    </Stack>
-                    }
-                    {
-                    createNewsEmailSuccess && <Stack sx={{ width: '90%' }} spacing={2}>
-                    <Alert severity="success" onClose={() => setCreateNewsEmailSuccess(false)}>Successful.</Alert>
-      
-                     </Stack>
-                      }
-                    </form>
-                    */}
+                  
                 </div>
              
             <div className='mosganda-footer-item'>
-              <h4>Company</h4>
+              <h4>Quick links</h4>
               <p> <Link to="/about">About us</Link></p>
               <p> <Link to="/guide">Guide</Link></p>
               <p> <Link to="/privacy">Privacy</Link></p>
