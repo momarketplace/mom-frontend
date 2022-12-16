@@ -54,7 +54,7 @@ function StoreDetailsPage() {
         const fetchProduct = async () => {
             try {
                 setLoadProduct(true);
-                const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/nonuser/${id}`)
+                const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/nonuser/${id}`)
                 setLoadProduct(false);
                 setProducts(data)
             } catch (error) {
@@ -81,7 +81,7 @@ function StoreDetailsPage() {
            Authorization: `Bearer ${userInfo.token}`
          },
        };
-     const { data } = await axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/chat', { userId }, config);
+     const { data } = await axios.post('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat', { userId }, config);
      if(!chats.find((c) => c._id === data._id)) setChats([data, ...chats])
      setCreateChatLoading(false)
      setSuccessCreateChat(true)

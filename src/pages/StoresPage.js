@@ -12,7 +12,7 @@ import axios from 'axios';
 import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
 import SearchIcon from '@mui/icons-material/Search';
-import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
+// import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
 
 function StoresPage() {
@@ -51,7 +51,7 @@ function StoresPage() {
     }
     try {
       setSearchLoading(true)
-      const { data } = await axios.get(`/api/v1/store/search?search=${search}`)
+      const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/store/search?search=${search}`)
       setSearchLoading(false)
       setSearchResult(data)
       if (data.length === 0) {
@@ -78,7 +78,7 @@ function StoresPage() {
 
     try {
       setLoadingCategory(true)
-      const { data } = await axios.get(`/api/v1/store/search?search=${category}`)
+      const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/store/search?search=${category}`)
       setLoadingCategory(false)
       setCategoryResult(data)
       if (data.length === 0) {

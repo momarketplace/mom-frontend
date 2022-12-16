@@ -19,7 +19,7 @@ function WithdrawList() {
     const [successProduct, setSuccessProduct] = useState(false)
     const [errorProduct, setErrorProduct] = useState(false)
     const [loadingProduct, setLoadingProduct] = useState(false)
-     //https://mosganda-online-market-backend.herokuapp.com
+     //https://us-central1-mosganda-one-7604d.cloudfunctions.net/app
 
 
     //get access to userLogin from redux store
@@ -40,7 +40,7 @@ function WithdrawList() {
                 },
             };
             
-            const { data } = await axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/withdraw/admin', config);
+            const { data } = await axios.get('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/withdraw/admin', config);
             setWithDraws(data)
             setLoading(false)
             } catch (error) {
@@ -62,7 +62,7 @@ function WithdrawList() {
                     Authorization: `Bearer ${userInfo.token}`,
                 },
             }
-             await axios.put("https://mosganda-online-market-backend.herokuapp.com/api/v1/withdraw/ispaid", { id },config);
+             await axios.put("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/withdraw/ispaid", { id },config);
             setSuccessPay(true)
             setLoadingPay(false)
         } catch (error) {
@@ -76,11 +76,11 @@ function WithdrawList() {
     const handleSettled = async(id) => {
         try {
             setLoadingProduct(true)
-             await axios.put("https://mosganda-online-market-backend.herokuapp.com/api/v1/product/issettled", { id });
+             await axios.put("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/issettled", { id });
             setSuccessProduct(true)
             setLoadingProduct(false)
         } catch (error) {
-            console.log(error)
+            //console.log(error)
             setErrorProduct(true)
             setLoadingProduct(false)
         }

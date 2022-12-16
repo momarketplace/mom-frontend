@@ -42,7 +42,7 @@ const [createChatLoading, setCreateChatLoading] = useState(false)
         const fetchStore = async () => {
             try {
                 setLoading(true)
-                const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/${storename}`)
+                const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/${storename}`)
                 setLoading(false)
                 setMyStore(data)
                 
@@ -70,7 +70,7 @@ const [createChatLoading, setCreateChatLoading] = useState(false)
         const fetchProduct = async () => {
             try {
                 setLoadProduct(true);
-                const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/nonuser/${storeId}`)
+                const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/nonuser/${storeId}`)
                 setLoadProduct(false);
                 setProducts(data)
             } catch (error) {
@@ -97,7 +97,7 @@ const [createChatLoading, setCreateChatLoading] = useState(false)
            Authorization: `Bearer ${userInfo.token}`
          },
        };
-     const { data } = await axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/chat', { userId }, config);
+     const { data } = await axios.post('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat', { userId }, config);
      if(!chats.find((c) => c._id === data._id)) setChats([data, ...chats])
      setCreateChatLoading(false)
      setSuccessCreateChat(true)

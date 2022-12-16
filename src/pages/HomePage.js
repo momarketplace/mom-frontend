@@ -34,13 +34,13 @@ function HomePage() {
   const [loadingCategory, setLoadingCategory] = useState('')
   const [errorCategory, setErrorCategory] = useState('')
   const [notFoundCategory, setNotFoundCategory] = useState('')
- const [men, setMen] = useState(false)
+//  const [men, setMen] = useState(false)
 
 
   const dispatch = useDispatch();
   const getProducts = useSelector(state => state.getProducts)
   const { loading, error, products } = getProducts;
-  console.log(products)
+  //console.log(products)
   useEffect(() => {
     dispatch(getAllProducts())
   }, [dispatch])
@@ -54,7 +54,7 @@ function HomePage() {
     }
     try {
       setSearchLoading(true)
-      const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/search?search=${search}`)
+      const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/search?search=${search}`)
       setSearchLoading(false)
       setSearchResult(data)
       if (data.length === 0) {
@@ -79,7 +79,7 @@ function HomePage() {
 
     try {
       setLoadingCategory(true)
-      const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/search?search=${category}`)
+      const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/search?search=${category}`)
       setLoadingCategory(false)
       setCategoryResult(data)
       if (data.length === 0) {

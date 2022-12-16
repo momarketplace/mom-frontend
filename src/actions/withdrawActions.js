@@ -18,7 +18,7 @@ export const createWithdraw = (accountName, accountNumber, bank, amount, deliver
     const { userLogin: { userInfo }, } = getState()
 
     try {
-        const { data } = await Axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/withdraw/create', {accountName, accountNumber, bank, amount, deliveryCost, email, phone, productId}, {
+        const { data } = await Axios.post('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/withdraw/create', {accountName, accountNumber, bank, amount, deliveryCost, email, phone, productId}, {
             headers: {
                 Authorization: `Bearer ${userInfo.token}`
             }
@@ -45,7 +45,7 @@ export const getWithdrawals = () =>async(dispatch, getState) =>{
 //get userInfo
     const { userLogin: { userInfo }} = getState();
     try {
-        const { data } = await Axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/withdraw/mywithdrawals', {
+        const { data } = await Axios.get('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/withdraw/mywithdrawals', {
             headers: {
                 Authorization: `Bearer ${userInfo.token}`
             }

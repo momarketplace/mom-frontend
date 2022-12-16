@@ -189,7 +189,7 @@ function UserStore() {
     e.preventDefault()
     try {
       setLoadCloseStore(true)
-      const { data } = await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/store/closestore`, {toBeOpened}, {
+      const { data } = await axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/store/closestore`, {toBeOpened}, {
         headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -215,7 +215,7 @@ function UserStore() {
    
     try {
       setLoadOpenStore(true);
-       await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/store/openstore`,{id:userStore._id}, {
+       await axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/store/openstore`,{id:userStore._id}, {
         headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }

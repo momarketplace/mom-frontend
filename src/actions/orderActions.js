@@ -27,7 +27,7 @@ export const createOrder = (order, sellerEmail) => async (dispatch, getState) =>
     try {
         // get userInfo from redux store
         const { userLogin: { userInfo }, } = getState() //getState returns the whole redux store
-        const { data } = await Axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/order', order, {
+        const { data } = await Axios.post('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/order', order, {
             headers: {
                 Authorization: `Bearer ${userInfo.token}`
             }
@@ -58,7 +58,7 @@ export const detailsOrder = (orderId) => async (dispatch, getState) => {
     const {userLogin: { userInfo }, } = getState();
 
     try {
-        const { data } = await Axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/order/${orderId}`, {
+        const { data } = await Axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/order/${orderId}`, {
             headers: { Authorization: `Bearer ${userInfo.token}`}
         });
         dispatch({
@@ -84,7 +84,7 @@ export const payOrder = (order, paymentResult ) => async (dispatch, getState) =>
     //get user info
     const { userLogin: { userInfo },} = getState();
     try {
-        const { data } = await Axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/order/${order._id}/pay`,{paymentResult}, {
+        const { data } = await Axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/order/${order._id}/pay`,{paymentResult}, {
             headers: { Authorization: `Bearer ${userInfo.token}`},
         });
         dispatch({
@@ -109,7 +109,7 @@ export const listOrderMine = () =>async(dispatch, getState) =>{
 //get userInfo
     const { userLogin: { userInfo }} = getState();
     try {
-        const { data } = await Axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/order/mine', {
+        const { data } = await Axios.get('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/order/mine', {
             headers: {
                 Authorization: `Bearer ${userInfo.token}`
             }
@@ -135,7 +135,7 @@ export const orderNotification = (orderId) => async (dispatch, getState) => {
     });
     
     try {
-        const { data } = await Axios.post(`https://mosganda-online-market-backend.herokuapp.com/api/v1/order/ordernotification/${orderId}`);
+        const { data } = await Axios.post(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/order/ordernotification/${orderId}`);
 
         dispatch({
             type: ORDER_NOTIFICATION_SUCCESS,

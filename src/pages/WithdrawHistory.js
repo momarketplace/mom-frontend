@@ -26,7 +26,7 @@ function WithdrawHistory() {
                 },
             };
             
-            const { data } = await axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/withdraw/mywithdrawals', config);
+            const { data } = await axios.get('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/withdraw/mywithdrawals', config);
             setWithDraws(data)
             setLoading(false)
             } catch (error) {

@@ -36,7 +36,7 @@ function Feedback() {
        
         try {
             setLoadingFeed(true)
-            await axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/feedback', { name, message });
+            await axios.post('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/feedback', { name, message });
             setName("")
             setMessage("")
             setLoadingFeed(false)
@@ -51,7 +51,7 @@ function Feedback() {
         const fetchFeed = async () => {
             try {
                 setLoading(true)
-                const { data } = await axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/feedback');
+                const { data } = await axios.get('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/feedback');
                 setLoading(false)
                 setFeedback(data)
             } catch (error) {

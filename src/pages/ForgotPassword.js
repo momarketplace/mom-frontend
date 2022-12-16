@@ -17,7 +17,7 @@ function ForgotPassword() {
         e.preventDefault()
         try {
             setLoading(true)
-            const { data} = await axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/user/forgotpassword', { email })
+            const { data} = await axios.post('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user/forgotpassword', { email })
             setLoading(false)
             setResult(data)
             setEmail('')

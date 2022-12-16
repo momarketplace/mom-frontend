@@ -68,7 +68,7 @@ function OrderHistoryPage(props) {
                 },
             };
 
-             await axios.put("https://mosganda-online-market-backend.herokuapp.com/api/v1/order/delivered", { id }, config);
+             await axios.put("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/order/delivered", { id }, config);
             setSuccessUpdate(true)
         } catch (error) {
             setErrorUpdate(true)
@@ -85,7 +85,7 @@ function OrderHistoryPage(props) {
     //delivered items
     const productDelivered = async (id) => {
         try {
-             await axios.put("https://mosganda-online-market-backend.herokuapp.com/api/v1/product/isdelivered", { id });
+             await axios.put("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/isdelivered", { id });
             setSuccessProduct(true)
         } catch (error) {
             // console.log(error)
@@ -103,7 +103,7 @@ function OrderHistoryPage(props) {
                     Authorization: `Bearer ${userInfo.token}`,
                 },
             };
-             await axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/reject', { name, email, phone, orderId, complain }, config)
+             await axios.post('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/reject', { name, email, phone, orderId, complain }, config)
             setComplainLoading(false)
             setComplainSuccess(true)
         } catch (error) {

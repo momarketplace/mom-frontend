@@ -30,7 +30,7 @@ function OrderList() {
     const fetchOrders = async() => {
         try {
             setLoading(true)
-            const { data } = await axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/order/admin', {
+            const { data } = await axios.get('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/order/admin', {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }

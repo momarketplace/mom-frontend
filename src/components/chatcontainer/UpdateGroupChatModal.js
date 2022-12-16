@@ -81,7 +81,7 @@ function UpdateGroupChatModal({ fetchAgain, setFetchAgain, fetchMessages }) {
         },
       };
       const { data } = await axios.put(
-        "https://mosganda-online-market-backend.herokuapp.com/api/v1/chat/groupadd",
+        "https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat/groupadd",
         {
           chatId: selectedChat._id,
           userId: user1._id,
@@ -119,7 +119,7 @@ function UpdateGroupChatModal({ fetchAgain, setFetchAgain, fetchMessages }) {
         },
       };
       const { data } = await axios.put(
-        "https://mosganda-online-market-backend.herokuapp.com/api/v1/chat/groupremove",
+        "https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat/groupremove",
         {
           chatId: selectedChat._id,
           userId: user1._id,
@@ -155,7 +155,7 @@ function UpdateGroupChatModal({ fetchAgain, setFetchAgain, fetchMessages }) {
         },
       };
       const { data } = await axios.put(
-        "https://mosganda-online-market-backend.herokuapp.com/api/v1/chat/rename",
+        "https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat/rename",
         {
           chatId: selectedChat._id,
           chatName: groupChatName,
@@ -185,7 +185,7 @@ function UpdateGroupChatModal({ fetchAgain, setFetchAgain, fetchMessages }) {
       const config = {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       };
-      const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user?search=${search}`, config);
+      const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user?search=${search}`, config);
       setLoading(false);
       //console.log(data);
       setSearchResult(data);

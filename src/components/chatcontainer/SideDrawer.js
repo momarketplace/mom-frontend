@@ -77,7 +77,7 @@ function SideDrawer() {
         headers: { Authorization: `Bearer ${userInfo.token}`},
       }
 
-      const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user?search=${search}`, config);
+      const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user?search=${search}`, config);
       setLoading(false);
       setSearchResult(data)
     } catch (error) {
@@ -96,7 +96,7 @@ function SideDrawer() {
           Authorization: `Bearer ${userInfo.token}`
         },
       };
-      const { data } = await axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/chat', { userId }, config);
+      const { data } = await axios.post('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat', { userId }, config);
 
       //if it finds an existing chat, just append the data
       if(!chats.find((c) => c._id === data._id)) setChats([data, ...chats])

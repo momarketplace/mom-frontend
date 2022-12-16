@@ -70,7 +70,7 @@ function GroupChatModal({children}) {
             const config = {
               headers: { Authorization: `Bearer ${userInfo.token}` },
             };
-            const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user?search=${search}`, config);
+            const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user?search=${search}`, config);
             setLoading(false);
             setSearchResult(data)
         } catch (error) {
@@ -89,7 +89,7 @@ function GroupChatModal({children}) {
             const config = {
               headers: { Authorization: `Bearer ${userInfo.token}` },
             };
-            const { data } = await axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/chat/group', {
+            const { data } = await axios.post('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat/group', {
                 name: groupChatName,
                 users: JSON.stringify(selectedUsers.map((u)=>u._id))
             }, config);

@@ -3,8 +3,9 @@ import axios from 'axios';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import LoadingBox from '../components/LoadingBox';
+import {useParams} from 'react-router-dom'
 
-function Resetpassword(props) {
+function Resetpassword() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('')
     const [show, setShow] = useState()
@@ -14,8 +15,9 @@ function Resetpassword(props) {
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
 
-  const id = props.match.params.id
+  //const id = props.match.params.id
 
+  const {id} = useParams()
     
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -25,7 +27,7 @@ function Resetpassword(props) {
         } else {
             try {
                 setLoading(true)
-              await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user/resetpassword/${id}`, { password });
+              await axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user/resetpassword/${id}`, { password });
                 setLoading(false);
                 setPassword("")
                 setConfirmPassword('')

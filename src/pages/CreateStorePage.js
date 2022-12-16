@@ -163,7 +163,7 @@ dispatch(getUserStore());
     
         try {
           setSearchLoading(true)
-          const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/store/newstorename?newstorename=${newstorename}`)
+          const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/store/newstorename?newstorename=${newstorename}`)
           setSearchLoading(false)
           if (data.length === 0) {
             setAvailable(true)

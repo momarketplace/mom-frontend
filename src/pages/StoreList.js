@@ -39,7 +39,7 @@ function StoreList() {
         const fetchStores = async () => {
             try {
                 setLoading(true)
-            const { data } = await axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/store/admin', {
+            const { data } = await axios.get('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/store/admin', {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -65,7 +65,7 @@ function StoreList() {
     }
     try {
       setSearchLoading(true)
-        const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/store/searchforadmin?search=${search}`, {
+        const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/store/searchforadmin?search=${search}`, {
           headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }

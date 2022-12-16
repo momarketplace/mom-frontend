@@ -27,7 +27,7 @@ function DeleteProduct() {
         const fetchData = async () => {
             try {
                 setLoading(true)
-                const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/delete/${id}`,{
+                const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/delete/${id}`,{
                     headers: {
                         Authorization: `Bearer ${userInfo.token}`
                         }
@@ -44,7 +44,7 @@ function DeleteProduct() {
 
     const handleDelete = async () =>{
         try {
-          const { data } = await axios.delete(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/delete/${id}`,{
+          const { data } = await axios.delete(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/delete/${id}`,{
             headers: {
                 Authorization: `Bearer ${userInfo.token}`
                 }

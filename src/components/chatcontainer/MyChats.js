@@ -38,7 +38,7 @@ function MyChats({fetchAgain}) {
           },
         };
 
-          const { data } = await axios.get("https://mosganda-online-market-backend.herokuapp.com/api/v1/chat", config);
+          const { data } = await axios.get("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat", config);
         setChats(data);
         setLoading(false)
       } catch (error) {
@@ -58,7 +58,7 @@ function MyChats({fetchAgain}) {
           },
         };
 
-       await axios.put("https://mosganda-online-market-backend.herokuapp.com/api/v1/chat/unnotification", { id }, config);
+       await axios.put("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat/unnotification", { id }, config);
 
       //fetch chats again
       fetchChats()
@@ -86,7 +86,7 @@ function MyChats({fetchAgain}) {
           },
         };
 
-      const { data } = await axios.get("https://mosganda-online-market-backend.herokuapp.com/api/v1/chat/findnotification", config);
+      const { data } = await axios.get("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat/findnotification", config);
       //console.log(data)
 
     } catch (error) {

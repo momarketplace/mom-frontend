@@ -9,7 +9,7 @@ import {
 export const addToBasket = (id, qty) => async(dispatch, getState) => {
     //send axios request to get information of this product
     //chnaged productId parameter to id
-    const { data } = await Axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/${id}`)
+    const { data } = await Axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/${id}`)
     dispatch({
         type: ADD_TO_BASKET,
         payload: {

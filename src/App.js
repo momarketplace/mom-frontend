@@ -75,7 +75,7 @@ function App() {
   // const [createNewsEmailFail, setCreateNewsEmailFail] = useState(false)
   // const [ loadingnewsEmail, setLoadingnewsEmail] = useState(false)
   
-
+//https://us-central1-mosganda-one-7604d.cloudfunctions.net/app
 
   //get access to basket items
   const basket = useSelector((state) => state.basket);
@@ -106,7 +106,7 @@ function App() {
           },
         };
 
-      const { data } = await axios.get("https://mosganda-online-market-backend.herokuapp.com/api/v1/chat/findnotification", config);
+      const { data } = await axios.get("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat/findnotification", config);
       setNotifs(data)
 
     } catch (error) {
@@ -125,7 +125,7 @@ function App() {
   //   e.preventDefault();
   //   try {
   //           setLoadingnewsEmail(true)
-  //           await axios.post('https://mosganda-online-market-backend.herokuapp.com/api/v1/newsletter/create', { newsEmail });
+  //           await axios.post('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/newsletter/create', { newsEmail });
   //           setLoadingnewsEmail(false)
   //     setCreateNewsEmailSuccess(true)
   //     setNewsEmail("")

@@ -51,7 +51,7 @@ function OrderPage() {
 
     useEffect(() =>{
         const getPaystackKey = async () => {
-            const { data } = await Axios.get('https://mosganda-online-market-backend.herokuapp.com/api/v1/config/paystack');
+            const { data } = await Axios.get('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/config/paystack');
             setPublicKey(data)
             
         }

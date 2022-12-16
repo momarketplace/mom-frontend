@@ -8,7 +8,7 @@ import LoadingBox from '../components/LoadingBox';
 import Button from "@mui/material/Button";
 import {useParams} from 'react-router-dom'
 
-function ViewUser(props) {
+function ViewUser() {
     //const id = props.match.params.id
     const {id} = useParams()
     const [user, setUser] = useState()
@@ -55,7 +55,7 @@ function ViewUser(props) {
         const fetchUser = async () => {
             try {
                 setLoading(true)
-                const { data } = await axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user/${id}`, {
+                const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user/${id}`, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -76,7 +76,7 @@ function ViewUser(props) {
     const blockUser = async (id) => {
         try {
              setLoadBlockUser(true)
-            const { data } = await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user/banned`, {id}, {
+            const { data } = await axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user/banned`, {id}, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -85,7 +85,7 @@ function ViewUser(props) {
             setSuccessBlockUser(true)
 
             setLoadBlockStore(true)
-             await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/store/banned`, {id}, {
+             await axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/store/banned`, {id}, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -94,7 +94,7 @@ function ViewUser(props) {
             setSuccessBlockStore(true)
 
             setLoadBlockProduct(true)
-            await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/banned`, {id}, {
+            await axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/banned`, {id}, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -114,7 +114,7 @@ function ViewUser(props) {
     const unBlockUser = async(id) => {
         try {
              setLoadunBlockUser(true)
-            const { data } = await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/user/unbanned`, {id}, {
+            const { data } = await axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user/unbanned`, {id}, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -123,7 +123,7 @@ function ViewUser(props) {
             setSuccessunBlockUser(true)
 
             setLoadunBlockStore(true)
-             await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/store/unbanned`, {id}, {
+             await axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/store/unbanned`, {id}, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }
@@ -132,7 +132,7 @@ function ViewUser(props) {
             setSuccessunBlockStore(true)
 
             setLoadunBlockProduct(true)
-            await axios.put(`https://mosganda-online-market-backend.herokuapp.com/api/v1/product/unbanned`, {id}, {
+            await axios.put(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/unbanned`, {id}, {
                 headers: {
                     Authorization: `Bearer ${userInfo.token}`
                 }

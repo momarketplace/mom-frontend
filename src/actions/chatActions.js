@@ -13,7 +13,7 @@ export const createChat = (userId) => async (dispatch, getState) => {
     userLogin: { userInfo },
     } = getState();
     try {
-        const { data } = await Axios.post(`https://mosganda-online-market-backend.herokuapp.com/api/v1/chat`, {userId}, {
+        const { data } = await Axios.post(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat`, {userId}, {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
           },
@@ -47,7 +47,7 @@ export const getChats = () => async (dispatch, getState) => {
     userLogin: { userInfo },
     } = getState();
     try {
-        const { data } = await Axios.get(`https://mosganda-online-market-backend.herokuapp.com/api/v1/chat`, {
+        const { data } = await Axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat`, {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
           },
