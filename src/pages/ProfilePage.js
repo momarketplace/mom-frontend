@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; 
 import FileBase64 from 'react-file-base64';
+//import { useHistory } from 'react-router-dom'
 import { detailsUser, updateUserProfile } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
@@ -8,7 +9,8 @@ import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 import { editStore } from '../actions/storeActions';
 import Button from '@mui/material/Button';
 import { updateUserProduct } from '../actions/productActions';
-
+//import Stack from '@mui/material/Stack';
+//import Alert from '@mui/material/Alert';
 
 function ProfilePage() {
     const [name, setName ] = useState('')

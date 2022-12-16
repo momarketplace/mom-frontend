@@ -15,6 +15,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { updateUserProduct } from '../actions/productActions';
 
 
 function EditStore() {
@@ -36,10 +37,18 @@ function EditStore() {
    
     const userStoreDetails = useSelector(state => state.userStoreDetails);
     const { userStore } = userStoreDetails
+    console.log(userStore)
 
     //get editUserStore from redux store
     const editUserStore = useSelector(state => state.editUserStore);
     const {success: successEdit, loading: loadingEdit, error: errorEdit} = editUserStore;
+
+     //get user products from redux store
+  const userproducts = useSelector((state) => state.userproducts);
+  const {
+    userProducts,
+  } = userproducts;
+  console.log(userProducts);
 
     //const history = useHistory()
     const dispatch = useDispatch();
@@ -88,6 +97,21 @@ function EditStore() {
          businessName
        })
        );
+
+       //also update userproducts with the new store details
+       if(userProducts) {
+        userProducts.map((prod) =>{
+            dispatch(updateUserProduct({
+                id: prod._id,
+                 storeName: name,
+                storeAddress: address,
+                storeCity: city,
+                storeState: state,
+                storeCountry: country,
+                deliveryCapacity: deliveryCapacity
+            }))
+        });
+    }
         
     }
     if (successEdit) {

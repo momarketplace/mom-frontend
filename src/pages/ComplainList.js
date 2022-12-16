@@ -42,7 +42,7 @@ function ComplainList() {
 
     return (
         <div style={{backgroundColor:"#f5f5f5"}}>
-            <h4 style={{textAlign:"center"}}>List of Complains</h4>
+            <h1 style={{textAlign:"center"}}>List of Complains</h1>
             {
                 loading && <LoadingBox></LoadingBox>
             }

@@ -12,7 +12,7 @@ import axios from 'axios';
 import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
 import SearchIcon from '@mui/icons-material/Search';
-// import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
+//import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
 
 function StoresPage() {
@@ -175,91 +175,7 @@ function StoresPage() {
       </div>
 
 
-      {/* <div className="row around">
-          <div>
-            <h4>
-              <Link to="/">
-              <Button variant="contained" color="success">
-                <ListAltOutlinedIcon />
-                  Products
-                </Button>
-              </Link>
-            </h4>
-        </div>
-        <div>
-          <form style={{backgroundColor:"black"}} onSubmit={handleSearch}>
-                <input type="text" id="search" placeholder='Search by name'
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-              <button  type="submit">
-                  <SearchIcon />
-                </button>
-          </form>
-          {
-              notFound && <Stack sx={{ width: '90%' }} spacing={2}>
-              <Alert severity="success" onClose={() => setNotFound(false)}>Item Not Found</Alert>
       
-            </Stack>
-              }
-              {
-              emptySearch && <Stack sx={{ width: '90%' }} spacing={2}>
-              <Alert severity="warning" onClose={() => setEmptySearch(false)}>Search cannot be empty.</Alert>
-      
-            </Stack>
-                }
-        </div>
-
-        <div>
-          <form onSubmit={handleCategory}>
-  <label htmlFor="category"></label>
-    <select id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-              <option value="">Category</option>
-              <option value="supermarket">Supermarket</option>
-                <option value="men">Men's fashion</option>
-              <option value="women">Women's fashion</option>
-              <option value="menandwomen">Fashion (Men and women)</option>
-                <option value="phone">Phone and Accessories</option>
-                <option value="computing">Computing</option>
-                <option value="health">Health and Beauty</option>
-                <option value="baby">Baby Products</option>
-                <option value="furniture">Furniture</option>
-                <option value="automobile">Automobile</option>
-                <option value="gaming">Gaming</option>
-                <option value="food">Food</option>
-                <option value="drinks">Drinks</option>
-                <option value="household">Household equipment</option>
-                <option value="groceries">Groceries</option>
-                <option value="pharmacy">Pharmacy (drugs)</option>
-                <option value="others">Others</option>
-  </select>
-  <button type="submit"><SearchIcon /></button>
-          </form>
-          {
-              notFoundCategory && <Stack sx={{ width: '90%' }} spacing={2}>
-              <Alert severity="success" onClose={() => setNotFoundCategory(false)}>Store(s) Not Found.</Alert>
-      
-            </Stack>
-              }
-              {
-              emptyCategory && <Stack sx={{ width: '90%' }} spacing={2}>
-              <Alert severity="warning" onClose={() => setEmptyCategory(false)}>Please, select a category.</Alert>
-      
-            </Stack>
-                }
-        </div>
-          <div>
-            <h4>
-              <Link to="/createstore">
-              <Button variant="contained" color="success">
-                <CreateNewFolderIcon />
-                  Create-store
-                </Button>
-              </Link>
-            </h4>
-          </div>
-        </div> */}
-
      
       
       <div style={{ marginBottom: "10px", borderBottom:`${searchResult.length>0?"2px solid #023c3f":""}`}} className="row center">

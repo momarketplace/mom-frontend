@@ -13,13 +13,6 @@ import Alert from '@mui/material/Alert';
 import SearchIcon from '@mui/icons-material/Search';
 
 
-//import StorefrontIcon from '@mui/icons-material/Storefront';
-//import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
-//import QuizIcon from '@mui/icons-material/Quiz';
-//import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
-
-
-
 function HomePage() {
   const [search, setSearch] = useState('')
   const [searchLoading, setSearchLoading] = useState(false)
@@ -34,13 +27,13 @@ function HomePage() {
   const [loadingCategory, setLoadingCategory] = useState('')
   const [errorCategory, setErrorCategory] = useState('')
   const [notFoundCategory, setNotFoundCategory] = useState('')
-//  const [men, setMen] = useState(false)
+ //const [men, setMen] = useState(false)
 
 
   const dispatch = useDispatch();
   const getProducts = useSelector(state => state.getProducts)
   const { loading, error, products } = getProducts;
-  //console.log(products)
+  console.log(products)
   useEffect(() => {
     dispatch(getAllProducts())
   }, [dispatch])

@@ -19,7 +19,7 @@ function WithdrawList() {
     const [successProduct, setSuccessProduct] = useState(false)
     const [errorProduct, setErrorProduct] = useState(false)
     const [loadingProduct, setLoadingProduct] = useState(false)
-     //https://us-central1-mosganda-one-7604d.cloudfunctions.net/app
+    
 
 
     //get access to userLogin from redux store
@@ -62,11 +62,11 @@ function WithdrawList() {
                     Authorization: `Bearer ${userInfo.token}`,
                 },
             }
-             await axios.put("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/withdraw/ispaid", { id },config);
+             await axios.put("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/withdraw/ispaid", { id }, config);
             setSuccessPay(true)
             setLoadingPay(false)
         } catch (error) {
-            console.log(error)
+            //console.log(error)
             setErrorPay(true)
             setLoadingPay(false)
         }
@@ -80,7 +80,7 @@ function WithdrawList() {
             setSuccessProduct(true)
             setLoadingProduct(false)
         } catch (error) {
-            //console.log(error)
+            console.log(error)
             setErrorProduct(true)
             setLoadingProduct(false)
         }

@@ -38,6 +38,7 @@ function SoldProducts() {
   const [amountToPay, setAmountToPay] = useState(0)
   const [serviceCharge, setServiceCharge] = useState(0)
   const [deliveryCost, setDeliveryCost ] = useState(0)
+  
 //console.log(productId)
 
    
@@ -139,7 +140,7 @@ useEffect(() =>{
                   errorDraw && <MessageBox variant="danger">Failed</MessageBox>
                 }
                 {
-                  success && <MessageBox variant="success">Received</MessageBox>
+                  success && <MessageBox variant="success">Recieved</MessageBox>
                 }
                 <Button sx={{textAlign:"center",m:2}} onClick ={handleWithdraw} variant="contained" color="success">Submit</Button>
               </form>
@@ -173,8 +174,8 @@ useEffect(() =>{
                         src={product.image}
                         alt={product.name}
                 /><Button sx={{m:1}} variant="contained" size="small"
-                          >
-                           <Link to = {`/product/${product._id}`} style={{color:"white"}}>View product</Link>
+                         >
+                         <Link to = {`/product/${product._id}`} style={{color:"white"}}>View product</Link>
                       </Button></p>
                     <p className='soldproduct-item'>
                       <span style={{marginRight:"5px"}}>Name: {product.name}</span>

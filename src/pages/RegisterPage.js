@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { register } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
-import MessageBox from '../components/MessageBox';
+//import MessageBox from '../components/MessageBox';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import Button from "@mui/material/Button";
+import axios from "axios"
 
 
 
@@ -17,6 +19,12 @@ function RegisterPage() {
     const [ password, setPassword ] = useState('');
     const [show, setShow] = useState(false)
   const [successMessage, setSuccessMessage] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(false)
+  //activate send verification button
+  const [showVerificationBox, setShowVerificationBox] = useState(false)
+  const [loadVerification, setLoadVerification] = useState(false)
+  const [errorVerification, setErrorVerification] = useState(false)
+  const [result, setResult] = useState()
   
 
     //const redirect = props.location.search? props.location.search.split('=')[1] : '/';
@@ -45,10 +53,14 @@ function RegisterPage() {
         else {
           dispatch(register(name, email, password));
           setName("");
-          setEmail("");
+          
           setPassword("");
-          if(!error){
+          if(error){
+           setErrorMessage(true)
+           return
+          }else{
             setSuccessMessage(true)
+            setShowVerificationBox(true)
           }
         }
         
@@ -56,28 +68,42 @@ function RegisterPage() {
   
   
     //keep track of changes to userInfo
-    useEffect(() => {
-      if (userInfo) {
-        window.location = "/"
-      }
-      //  if(userInfo && !error) {
-      //    setSuccessMessage(true)
-      //  }
-    }, [ userInfo])
+    // useEffect(() => {
+    //   if (userInfo) {
+    //     window.location = "/"
+    //   }
+    // }, [ userInfo])
   
   
   //move the user to login if registration is successful
-  if (successMessage) {
-    setTimeout(() => {
-      setSuccessMessage(false)
-      window.location='/login'
-    }, 2000);
+  // if (successMessage) {
+  //   setTimeout(() => {
+  //     setSuccessMessage(false)
+  //     window.location='/login'
+  //   }, 2000);
+  // }
+
+  //handle verification function
+  const handleVerification = async() =>{
+    try {
+      setLoadVerification(true)
+      const { data} = await axios.post('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/user/sendverificationlink', { email })
+      setLoadVerification(false)
+      setResult(data)
+      setEmail('')
+    } catch (error) {
+      setErrorVerification(true)
+      setLoadVerification(false)
+    }
   }
+
 
   
     return (
       <div>
-        <form onSubmit={handleSummit}>
+        {
+          !showVerificationBox &&
+          <form onSubmit={handleSummit}>
           <div className='register'>
             <h2 style={{textAlign:"center"}}>Register</h2>
             <p>Please fill in this form to create an account.</p>
@@ -129,8 +155,14 @@ function RegisterPage() {
               loading && <LoadingBox></LoadingBox>
             }
             {
-              error && <MessageBox className="danger">Failed to register.</MessageBox>
+              errorMessage && <Stack sx={{ width: '90%' }} spacing={2}>
+              <Alert severity="error" onClose={() => setErrorMessage(false)}>Failed to register</Alert>
+      
+            </Stack>
             }
+            {/* {
+              error && <MessageBox className="danger">Failed to register.</MessageBox>
+            } */}
             <button type="submit" class="register-button">Register</button>
             <div class="signin">
             <p>Already have an account? <Link to="/login">Login</Link>.</p>
@@ -140,6 +172,33 @@ function RegisterPage() {
           </div>
           
         </form>
+        }
+
+        <div>
+        {
+          showVerificationBox &&
+          <div className='row center' style={{display:"flex", flexDirection:"column"}}>
+            <p>Please, click on the button below to send a verification link to your email.</p>
+            <Button variant="contained" color="primary" size="small" onClick={handleVerification}>
+                Send Verification link
+              </Button>
+              {loadVerification && <LoadingBox></LoadingBox>}
+                    {
+              result && <Stack sx={{ width: '90%' }} spacing={2}>
+              <Alert severity="success" onClose={() => setResult("")}>Successful. A verification link has been sent to your email.</Alert>
+      
+            </Stack>
+                    }
+                    {
+              errorVerification && <Stack sx={{ width: '90%' }} spacing={2}>
+              <Alert severity="error" onClose={() => setErrorVerification(false)}>Failed to sent verification link.</Alert>
+      
+            </Stack>
+              }
+          </div>
+        }
+
+        </div>
 
       </div>
     );

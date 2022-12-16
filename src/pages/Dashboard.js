@@ -11,7 +11,7 @@ import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
 import SearchIcon from '@mui/icons-material/Search';
 
-function Dashboard(props) {
+function Dashboard() {
      const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
   const [users, setUsers] = useState([])
@@ -221,8 +221,8 @@ e.preventDefault();
         {
                searchResult?.map((user) => (
                     <div key={user._id} style={{border:"1px solid black", marginBottom:"2px",backgroundColor:"#f8f8f8"}}>
-                   <h4 style={{ marginBottom: "1px", marginLeft: "5px" }}>Id: {user._id} {" "} <span><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }} onClick={()=> props.history.push(`/viewuser/${user._id}`)}>
-                            View
+                   <h4 style={{ marginBottom: "1px", marginLeft: "5px" }}>Id: {user._id} {" "} <span><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }}>
+                            <Link to = {`/viewuser/${user._id}`} style={{color:"white"}}>View</Link>
                        </Button></span></h4>
                    
                         <table className="table">
@@ -259,8 +259,8 @@ e.preventDefault();
               loadBannedUsers && user.isBanned === true &&
                    <div key={user._id} style={{ border: "1px solid black", marginBottom: "2px", backgroundColor: "#f8f8f8" }}>
                      
-                        <h4 style={{ marginBottom: "1px", marginLeft: "5px" }}>Id: {user._id} {" "} <span><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }} onClick={()=> props.history.push(`/viewuser/${user._id}`)}>
-                            View
+                        <h4 style={{ marginBottom: "1px", marginLeft: "5px" }}>Id: {user._id} {" "} <span><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }}>
+                            <Link to = {`/viewuser/${user._id}`} style={{color:"white"}}>View</Link>
                        </Button></span></h4>
                         <table className="table">
                             <thead>
@@ -279,8 +279,9 @@ e.preventDefault();
                                     <td>{user.email}</td>
                                     <td>{ user.isSeller && user.isBanned? "Seller/Blocked": user.isSeller? "Seller":  user.isBanned?"Blocked":"" }</td>
                                 <td>
-                                    <Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }} onClick={()=> props.history.push(`/viewuser/${user._id}`)}>
-                            View
+                                    
+                       <Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }}>
+                            <Link to = {`/viewuser/${user._id}`} style={{color:"white"}}>View</Link>
                        </Button>
                                 </td>
                                 
@@ -303,8 +304,8 @@ e.preventDefault();
               loadSellers && user.isSeller === true &&
                    <div key={user._id} style={{ border: "1px solid black", marginBottom: "2px", backgroundColor: "#f8f8f8" }}>
                      
-                        <h4 style={{ marginBottom: "1px", marginLeft: "5px" }}>Id: {user._id} {" "} <span><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }} onClick={()=> props.history.push(`/viewuser/${user._id}`)}>
-                            View
+                        <h4 style={{ marginBottom: "1px", marginLeft: "5px" }}>Id: {user._id} {" "} <span><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }}>
+                            <Link to = {`/viewuser/${user._id}`} style={{color:"white"}}>View</Link>
                        </Button></span></h4>
                         <table className="table">
                             <thead>
@@ -323,8 +324,8 @@ e.preventDefault();
                                     <td>{user.email}</td>
                                     <td>{ user.isSeller && user.isBanned? "Seller/Blocked": user.isSeller? "Seller":  user.isBanned?"Blocked":"" }</td>
                                 <td>
-                                    <Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }} onClick={()=> props.history.push(`/viewuser/${user._id}`)}>
-                            View
+                                <Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }}>
+                            <Link to = {`/viewuser/${user._id}`} style={{color:"white"}}>View</Link>
                        </Button>
                                 </td>
                                 
@@ -356,8 +357,8 @@ e.preventDefault();
         {
                !loadBannedUsers && !loadSellers && searchResult.length < 1 && users?.map((user) => (
                     <div key={user._id} style={{border:"1px solid black", margin:"2px",backgroundColor:"#f8f8f8"}}>
-                   <h4 style={{ marginBottom: "1px", marginLeft: "5px" }}>Id: {user._id} {" "} <span><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }} onClick={()=> props.history.push(`/viewuser/${user._id}`)}>
-                            View
+                   <h4 style={{ marginBottom: "1px", marginLeft: "5px" }}>Id: {user._id} {" "} <span><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }}>
+                            <Link to = {`/viewuser/${user._id}`} style={{color:"white"}}>View</Link>
                        </Button></span></h4>
                    
                         <table className="table">

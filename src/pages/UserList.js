@@ -26,6 +26,7 @@ function UserList() {
     const [notFound, setNotFound] = useState(false);
     const [emptySearch, setEmptySearch] = useState(false)
 
+
     //get access to userLogin from redux store
   const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
@@ -81,11 +82,7 @@ function UserList() {
 
     //console.log(resultUser)
     //console.log(users)
-    
-
-    
-
-    
+     
     return (
         <div style={{backgroundColor:"#f5f5f5"}}>
             <h3 style={{ textAlign: "center" }}>List of users</h3>
@@ -175,6 +172,7 @@ function UserList() {
                             <p style={{ margin: "0", padding: "0" }}><Button variant="contained" color="primary" type="submit" size="small" sx={{ mb: 2 }}>
                             <Link to = {`/viewuser/${user._id}`} style={{color:"white"}}>View</Link>
                        </Button></p>
+                       
                         </div>
                         
                     </div>

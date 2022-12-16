@@ -62,6 +62,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import StoreUrlLandingPage from './pages/StoreUrlLandingPage';
 import Recruitment from './pages/Recruitment';
+import ConfirmVerificationLink from './pages/ConfirmVerificationLink';
 
 
 
@@ -322,6 +323,7 @@ function App() {
          
         <main>
           <Routes>
+          <Route path="/confirmverification/:id" element={ <ConfirmVerificationLink />}></Route>
            <Route path="/recruitment" element={ <Recruitment />}></Route>
           <Route path = "/:storename" element = { <StoreUrlLandingPage />}></Route>
          <Route path="/createstoresteps" element={ <CreateStoreSteps />}></Route>

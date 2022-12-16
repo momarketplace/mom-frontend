@@ -64,7 +64,7 @@ function UserStore() {
     error: errorProduct,
     userProducts,
   } = userproducts;
-  console.log(userProducts);
+  //console.log(userProducts);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -331,7 +331,7 @@ function UserStore() {
         <div>
           <h4>
             <span style={{fontSize:'15px'}}>Store link: <span style={{backgroundColor:"#011628", color:"yellow", padding:"5px", borderRadius:"5px"}}>https://www.mosganda.com/{userStore && userStore.businessName }</span></span> {" "}
-            <Button variant="outlined" onClick={() => copyLink(`https://www.mosganda.com/${userStore.businessName}`)}>
+            <Button variant="outlined" onClick={() => copyLink(`localhost:3000/${userStore.businessName}`)}>
               Copy Link
               <ContentCopyIcon />
      </Button>

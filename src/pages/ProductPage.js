@@ -110,7 +110,7 @@ function ProductPage() {
                         <p>Settled?: <strong>{product.isSettled ? `Settled at ${product.isSettledAt.substring(0, 10)}` : "Not yet settled."}</strong></p>
                         <p><Button variant="contained" size="small"
                                         >
-                                         <Link to = {`/order/${product.orderId}`} style={{color:"white"}}>View order</Link>
+                                       <Link to = {`/order/${product.orderId}`} style={{color:"white"}}>View order</Link>
                                     </Button></p>
                       </div>) :
                         (<div className="card card-body">

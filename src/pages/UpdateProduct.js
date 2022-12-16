@@ -21,6 +21,7 @@ import Select from '@mui/material/Select';
 import {useParams} from 'react-router-dom'
 
 
+
 function UpdateProduct() {
     //const { name, price, category, numberInStore, image, countInStock, brand, description, sellerName, sellerEmail, sellerId, sellerPhone, productStore } =
     //const id = props.match.params.id;

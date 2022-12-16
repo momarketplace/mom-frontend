@@ -42,7 +42,7 @@ const [createChatLoading, setCreateChatLoading] = useState(false)
         const fetchStore = async () => {
             try {
                 setLoading(true)
-                const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/${storename}`)
+                const { data } = await axios.get(`/${storename}`)
                 setLoading(false)
                 setMyStore(data)
                 
