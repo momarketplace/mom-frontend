@@ -48,7 +48,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+//import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Services from './pages/Services';
 import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -63,20 +63,14 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import StoreUrlLandingPage from './pages/StoreUrlLandingPage';
 import Recruitment from './pages/Recruitment';
 import ConfirmVerificationLink from './pages/ConfirmVerificationLink';
-
-
-
+import CallIcon from '@mui/icons-material/Call';
+import EmailIcon from '@mui/icons-material/Email';
 
 
 
 
 function App() {
-  // const [newsEmail, setNewsEmail] = useState('')
-  // const [createNewsEmailSuccess, setCreateNewsEmailSuccess] = useState(false)
-  // const [createNewsEmailFail, setCreateNewsEmailFail] = useState(false)
-  // const [ loadingnewsEmail, setLoadingnewsEmail] = useState(false)
-  
-//https://us-central1-mosganda-one-7604d.cloudfunctions.net/app
+
 
   //get access to basket items
   const basket = useSelector((state) => state.basket);
@@ -87,6 +81,7 @@ function App() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   
+
 
   //logout function
   const dispatch = useDispatch();
@@ -107,7 +102,7 @@ function App() {
           },
         };
 
-      const { data } = await axios.get("https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/chat/findnotification", config);
+      const { data } = await axios.get("https://us-central1-mosganda-one-7604d.cloudfunctions.net/api/v1/chat/findnotification", config);
       setNotifs(data)
 
     } catch (error) {
@@ -121,32 +116,24 @@ function App() {
  
   const myNotifications = notifs.filter((n) => n.latestMessage.sender._id !== userInfo._id)
   
-  //function to collect newsletter email
-  // const submitNewsletter = async(e) => {
-  //   e.preventDefault();
-  //   try {
-  //           setLoadingnewsEmail(true)
-  //           await axios.post('https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/newsletter/create', { newsEmail });
-  //           setLoadingnewsEmail(false)
-  //     setCreateNewsEmailSuccess(true)
-  //     setNewsEmail("")
-      
-  //       } catch (error) {
-  //           setCreateNewsEmailFail(true)
-  //       }
-
-  // }
+  
   return (
     <BrowserRouter>
     
-      <div className="grid-container" style={{ marginBottom: "0px" }}>
+      <div className="grid-container page-container" style={{ marginBottom: "0px" }}>
         <header>
         <div className='mosganda-header'>
           <div className='mosganda-header-left'>
             {/*header logo*/}
-          <Link to="/">
-                        <div className='mosganda-header-logo'><img style={{width:"20px", height:"auto", marginRight:"10px"}} src="/images/mom2.jpg" alt="" />  <span style={{fontSize:"20px"}}>Mosganda</span> </div>
-          </Link>
+            <Link to ="/">
+            <img style={{width:"80px", height:"auto", marginLeft:"10px"}} src="/images/mom-logo.jpg" alt="" />  
+            </Link>
+            {/* <p className='mosganda-footer-image-container'>
+            <img style={{width:"70px", height:"auto", marginRight:"1px"}} src="/images/mom-logo.jpg" alt="" />  
+            </p> */}
+          {/* <Link to="/">
+                        <img style={{width:"90px", height:"auto", margin:"10px"}} src="/images/mom-logo.jpg" alt="" />
+          </Link> */}
            
             <div className='mosganda-header-itemslink'>
               <Link to="/stores">
@@ -321,7 +308,7 @@ function App() {
           </div>
           </header>
          
-        <main>
+        <main className='content-wrap'>
           <Routes>
           <Route path="/confirmverification/:id" element={ <ConfirmVerificationLink />}></Route>
            <Route path="/recruitment" element={ <Recruitment />}></Route>
@@ -373,44 +360,51 @@ function App() {
             </Routes>
           
         </main>
-        <footer>
+        <footer className='footer'>
           <div className='mosganda-footer'>
-            <div className='mosganda-footer-item'>
-                            
-                 <div className='mosganda-footer-logo'><img style={{width:"20px", height:"auto", marginRight:"1px"}} src="/images/mom2.jpg" alt="" />  <span style={{fontSize:"20px"}}>Mosganda</span> </div>
-                  <p>09028718288</p>
-                  <p>contact@mosganda.com</p>
+            <div className='mosganda-footer-left'>
+              <h4 style={{color:"yellow"}}>Contact us</h4>
+              <p className='mosganda-footer-image-container'>
+            <img style={{width:"70px", height:"auto", marginRight:"1px"}} src="/images/mom-logo.jpg" alt="" />  
+            </p>
+            {/* <p className='mosganda-footer-image-container'>
+            <img style={{width:"20px", height:"auto", marginRight:"1px"}} src="/images/mom2.jpg" alt="" />  
+            <p style={{fontSize:"15px", marginLeft:"5px"}}>Mosganda</p>
+            </p> */}
+            <p>
+              <span><CallIcon /></span>
+              <span style={{marginLeft:"5px"}}>09028718288</span>
+            </p>
+            <p>
+              <span><EmailIcon /></span>
+              <span style={{marginLeft:'5px'}}>contact@mosganda.com</span>
+            </p>
                   
-                </div>
-             
-            <div className='mosganda-footer-item'>
-              <h4>Quick links</h4>
-              <p> <Link to="/about">About us</Link></p>
-              <p> <Link to="/guide">Guide</Link></p>
-              <p> <Link to="/privacy">Privacy</Link></p>
-              <p> <Link to="/termsandconditions">Terms and Conditions</Link></p>
-              <p> <Link to="/feedback">Your feedback</Link></p>
-              <p> <Link to="/recruitment">Careers</Link></p>
+
             </div>
-            <div className='mosganda-footer-item'>
-              <h4>Follow us</h4>
-            
-              <p>
-                <Link to="#" style={{ color: "white", margin: "2px" }}><FacebookIcon sx={{ fontSize: 30, backgroundColor: "white", color: "blue" }} /></Link>
-                <Link to="#" style={{ color: "white", margin: "2px" }}><InstagramIcon sx={{fontSize:30, backgroundColor:"white", color:"purple"}} /></Link>
-                 <Link to="#" style={{ color: "white", margin: "2px" }}><TwitterIcon sx={{fontSize:30, backgroundColor:"white", color:"#1c86ee"}} /></Link>
-                <Link to="#" style={{ color: "white", margin: "2px" }}><YouTubeIcon sx={{fontSize:30, backgroundColor:"white", color:"red"}} /></Link>
+            <div className='mosganda-footer-center'>
+              <h4 style={{color:"yellow"}}>Quick links</h4>
+              <p className="mosganda-footer-center-links">
+              <Link to="/about">About us</Link>
+              <Link to="/guide">Guide</Link>
+              <Link to="/privacy">Privacy</Link>
+              <Link to="/termsandconditions">Terms and Conditions</Link>
+              <Link to="/feedback">Your feedback</Link>
+              <Link to="/recruitment">Careers</Link>
               </p>
-              <p className='whatsapp-container'>
-                <WhatsAppIcon sx={{fontSize:30}} />
-                <span style={{ marginLeft:"2px"}}>08133806965</span>
-              </p>
-              
             </div>
-            
-            
-                </div>
+            <div className='mosganda-footer-right'>
+              <h4 style={{color:"yellow"}}>Follow us</h4>
+              <p className="mosganda-footer-social-links">
+                <Link to="#"><FacebookIcon sx={{ fontSize: 25, backgroundColor: "white", color: "blue" }} /></Link>
+                <Link to="#"><InstagramIcon sx={{fontSize:25, backgroundColor:"white", color:"purple"}} /></Link>
+                <Link to="#"><TwitterIcon sx={{fontSize:25, backgroundColor:"white", color:"#1c86ee"}} /></Link>
+                <Link to="#"><YouTubeIcon sx={{fontSize:25, backgroundColor:"white", color:"red"}} /></Link>
+              </p>
+            </div>
+          </div>
           <div className="footer-all-right-reserved">All rights reserved</div>
+          
         </footer>
       </div>
     </BrowserRouter>
