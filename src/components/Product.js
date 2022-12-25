@@ -1,5 +1,5 @@
 import React from "react";
-//import { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 //import Rating from "./Rating";
 import Button from "@mui/material/Button";
@@ -11,6 +11,17 @@ function Product(props) {
   const { product, showStoreButton} = props;
   //const [qty, setQty] = useState(1);
   const qty = 1;
+  const [ buyIcon, setBuyIcon ] = useState(true)
+
+  //function to blink buyIcon
+  const timer = setTimeout(() =>{
+    setBuyIcon(buyIcon != true)
+  },1000)
+ 
+  const handleInterval = () =>{
+    clearTimeout(timer)
+  }
+  
   return (
     <div key={product._id} className="card product">
       <Link to={`/product/${product._id}`}>
@@ -18,31 +29,34 @@ function Product(props) {
       </Link>
       <div className="card-body">
         <Link to={`/product/${product._id}`}>
-          <h4 style={{ textAlign: "center", margin:"0px" }}>{product.name}</h4>
-          {/* {product.isSold && <h3 className="sold">Item Sold</h3>} */}
+          <h4 style={{ textAlign: "center" }}>{product.name}</h4>
+         
         </Link>
         <div className="card-body-items">
-          <div className="price">
             <h4>#{product.price}</h4>
-          </div>
-          <div>
+          
             <p>{product.storeCity}</p>
-          </div>
+          
         </div>
-        <div className="card-body-span" style={{display:"flex", justifyContent:"space-evenly"}}>
+        <div className="card-body-span">
           <span>
             <Link to={`/basket/${product._id}?qty=${qty}`}>
               <Button variant="contained" color="secondary" size="small">
-                <AddShoppingCartOutlinedIcon />
-                Buy
+                <span className="card-body-span-items" onClick={handleInterval}>
+                  {buyIcon && <AddShoppingCartOutlinedIcon />}
+                  <span>{buyIcon? "Buy":"click me"}</span>
+                </span>
+                
               </Button>
             </Link>
           </span>
           <span>
             <Link to={`/product/${product._id}`}>
               <Button variant="contained" color="success" size="small">
-                <DetailsIcon />
-                Detail
+                <span className="card-body-span-items">
+                   <DetailsIcon />
+                  <span>Detail</span>
+                </span>
               </Button>
             </Link>
           </span>
@@ -51,8 +65,10 @@ function Product(props) {
               (<span>
               <Link to={`/store/${product.productStoreId}`}>
                   <Button variant="contained" color="success" size="small">
-                    <PreviewIcon />
-                  Store
+                    <span className="card-body-span-items">
+                   <PreviewIcon />
+                  <span>Store</span>
+                </span>
                 </Button>
               </Link>
               </span>) : ""
