@@ -53,7 +53,10 @@ function PlaceOrderPage() {
         } else if (item.storeCity !== basket.shippingAddress.city && item.storeState !== basket.shippingAddress.state) {
             item.deliveryCost = Number(item.nationWide)
             return item.nationWide 
-        } 
+        }else{
+            item.deliveryCost = Number(item.free)
+            return item.free
+        }  
     }).reduce((a, b) => a + b, 0)
     
     //service charge for seller
