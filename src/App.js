@@ -114,7 +114,7 @@ function App() {
     myNotification()
   },[userInfo, selectedChat, chats])
  
-  const myNotifications = notifs.filter((n) => n.latestMessage.sender._id !== userInfo._id)
+  const myNotifications = notifs?.filter((n) => n.latestMessage.sender._id !== userInfo._id)
   
   
   return (
