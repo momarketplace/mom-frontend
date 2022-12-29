@@ -13,7 +13,7 @@ import Alert from '@mui/material/Alert';
 import SearchIcon from '@mui/icons-material/Search';
 
 
-function HomePage() {
+function Homepage() {
   const [search, setSearch] = useState('')
   const [searchLoading, setSearchLoading] = useState(false)
   const [searchResult, setSearchResult] = useState([])
@@ -22,18 +22,14 @@ function HomePage() {
   const [emptySearch, setEmptySearch] = useState(false)
 
   const [category, setCategory] = useState('')
-  const [categoryResult, setCategoryResult] = useState([])
-  const [emptyCategory, setEmptyCategory] = useState('')
-  const [loadingCategory, setLoadingCategory] = useState('')
-  const [errorCategory, setErrorCategory] = useState('')
-  const [notFoundCategory, setNotFoundCategory] = useState('')
- //const [men, setMen] = useState(false)
-
+  const [displayCategory, setDisplayCategory] = useState(false)
+  
+ 
 
   const dispatch = useDispatch();
   const getProducts = useSelector(state => state.getProducts)
   const { loading, error, products } = getProducts;
-  console.log(products)
+  //console.log(products)
   useEffect(() => {
     dispatch(getAllProducts())
   }, [dispatch])
@@ -61,29 +57,15 @@ function HomePage() {
     
   }
 
-  //search products by category
-  const handleCategory = async (e) => {
-    e.preventDefault()
+  
 
-    if (!category || category === '') {
-      setEmptyCategory(true)
-      return
-    }
-
-    try {
-      setLoadingCategory(true)
-      const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/api/v1/product/search?search=${category}`)
-      setLoadingCategory(false)
-      setCategoryResult(data)
-      if (data.length === 0) {
-        setNotFoundCategory(true)
-      }
-      setCategory('')
-    } catch (error) {
-      setErrorCategory(true)
-      setLoadingCategory(false)
-    }
+  function handleCategory() {
+    setDisplayCategory(true)
   }
+
+    
+
+ // console.log(categoryResult)
 
       return (
       <div>
@@ -102,10 +84,13 @@ function HomePage() {
           
 
 
-          
-            <form className='homepage-header-category' onSubmit={handleCategory}>
-              <label htmlFor="category"></label>
-              <select id="category" className='category' value={category} onChange={(e) => setCategory(e.target.value)}>
+          <div>
+            
+          <label htmlFor="category"></label>
+              <select id="category" className='category' value={category} onChange={(e) => {
+                setCategory(e.target.value)
+                handleCategory(category)
+                }}>
               <option value=""> Category</option>
               <option value="men">Men's fashion</option>
               <option value="women">Women's fashion</option>
@@ -123,33 +108,15 @@ function HomePage() {
                 <option value="pharmacy">Pharmacy (drugs)</option>
                 <option value="others">Others</option>
                </select>
-               <button type="submit" className='category-button'><SearchIcon sx={{fontSize:"18px"}} /></button>
-               </form>
+               
+          </div>
+            
           
         </div>
 
 
 
           
-
-
-       
-          
-          <div style={{margin:"5px"}}>
-            
-            {
-              notFoundCategory && <Stack sx={{ width: '90%' }} spacing={2}>
-              <Alert severity="success" onClose={() => setNotFoundCategory(false)}>Items Not Found.</Alert>
-      
-            </Stack>
-              }
-              {
-              emptyCategory && <Stack sx={{ width: '90%' }} spacing={2}>
-              <Alert severity="warning" onClose={() => setEmptyCategory(false)}>Please, select a category.</Alert>
-      
-            </Stack>
-                }
-          </div>
           <p style={{backgroundColor:"white", padding:"10px", margin:"0px"}}>Confused?  <Link to ="/guide" style={{color:"blue"}}>Take our step by step guide.</Link></p>
             
        
@@ -175,18 +142,27 @@ function HomePage() {
           
         </div>
         
-
-        <div style={{ marginBottom: "10px", borderBottom:`${categoryResult.length>0?"2px solid #023c3f":""}`}} className="row center">
-          {loadingCategory && <LoadingBox></LoadingBox>}
-          {errorCategory && <MessageBox variant="danger">Failed to load category</MessageBox>}
-            {categoryResult?.map((product) => (
-             !product.isBanned && <Product key={product._id} product={product} showStoreButton={true}></Product>
-            ))}
-        </div>
+  
+          {
+            displayCategory &&
+           <> 
+            <h5 style={{textAlign:"center"}}>Category for {category}</h5>
+            <p style={{textAlign:"center"}}>Item(s) that match this category are pushed above the black line below. If there is no match, the page remains the same.</p>
+           <div style={{ marginBottom: "10px", borderBottom:`${displayCategory?"2px solid #023c3f":""}`}} className="row center">
+            {products?.map((product) => (
+              product.category === category && !product.isBanned &&
+              (<Product key={product._id} product={product} showStoreButton={true}></Product>)
+              
+            ))
+            }
+           
+        </div></>
+          }
+      
+      
 
         
           {
-            categoryResult.length < 1 &&
             <div className="row center" style={{backgroundColor:"#f5f5f5"}}>
           {loading && <LoadingBox></LoadingBox>}
           {error && <MessageBox variant="danger">Failed to load products</MessageBox>}
@@ -198,11 +174,11 @@ function HomePage() {
           
           <div style={{marginTop:"30px"}} className='mosganda-description-in-homepage'>
             <h5>Mosganda Online Marketplace</h5>
-            <p>Mosganda is an online platform for buying and selling goods and services. For sellers, create your online store and make 24/7 sales. It is very easy to sell on Mosganda - register and log in, create your online store by filling your store information, add items to your store and post them for sale. For buyers, click on the item you want to buy, and the system will lead you to pay for it. <Link to="/guide" style={{color:"blue"}}>Learn more about Mosganda and how to use this website here.</Link> </p>
+            <p>Mosganda is an online platform for buying and selling goods and services. We give your business an online presence. Register now, create your online store, add items you want to sell, and post them for sale. You do not need any graphic or design skill to create your online store. <Link to="/guide" style={{color:"blue"}}>Learn more about Mosganda and how to use this website here.</Link> </p>
           </div>
         
       </div>
     );
 }
 
-export default HomePage
+export default Homepage
