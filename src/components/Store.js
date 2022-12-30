@@ -18,9 +18,9 @@ function Store(props) {
                 </Link>
             <div className="card-body">
                 <div>
-                    <p style={{textAlign:"center"}}>{ `${store.description.substring(0,30)}...`}</p>
+                    <p style={{textAlign:"center"}}>{ `${store.description.substring(0,50)}...`}</p>
                 </div>
-                <div className='card-body-span' style={{display:"flex", justifyContent:"space-around"}}>
+                <div className='card-body-span card-body-span-store'>
                     <span>
                         <Link to ={`/store/${store._id}`}>
                             <Button variant="contained" color="success" size="small">

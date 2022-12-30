@@ -1325,3 +1325,8 @@ a {
 .purple-lilly {
   background-color: #550a35 !important;
 }
+
+.card-body-span-store {
+  display: flex;
+  justify-content: space-around;
+}
