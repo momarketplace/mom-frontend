@@ -24,7 +24,7 @@ const style = {
     p: 4,
 };
 
-function OrderHistoryPage(props) {
+function OrderHistoryPage() {
     const [errorUpdate, setErrorUpdate] = useState(false)
     const [successUpdate, setSuccessUpdate] = useState(false)
     const [successProduct, setSuccessProduct] = useState(false)
@@ -123,9 +123,9 @@ function OrderHistoryPage(props) {
                 <h3 style={{ textAlign: "center" }}> Order Items</h3>
                 <h4>Important</h4>
                 <p style={{maxWidth:"95%", fontSize:"15px"}}>
-                When you receive your item(s), you are to click on the <q>Confirm Delivery</q> button immediately. If you do not do this within 12 hours, it also means that you have received the item but choose not to confirm delivery.</p>
+                When you receive your item(s), you are to click on the <q>Confirm Delivery</q> button immediately. If you do not do this within 12 hours, it means that you have received the item but choose not to confirm delivery.</p>
                 <p style={{maxWidth:"95%", fontSize:"15px"}}>If you received a different item from what you ordered and paid for, click on the <q>Customer Complain Form</q>, briefly describe your complaint and submit it immediately.</p>
-                <p style={{maxWidth:"95%",fontSize:"15px"}}>Click on the <q>Details button</q> if you want to view your order.</p>
+                <p style={{maxWidth:"95%",fontSize:"15px"}}> Click on the <q>Details button</q> if you want to view your order.</p>
                 <Button sx={{margin:2}} onClick={handleOpen} variant="contained" color="error" size="large">
                 Customer Complain Form
             </Button>
@@ -222,7 +222,7 @@ function OrderHistoryPage(props) {
                 successProduct && <MessageBox variant="success">Confirmation 2</MessageBox>
             }
             {
-                successUpdate && <MessageBox variant="success">Confirmation Received</MessageBox>
+                successUpdate && <MessageBox variant="success">Confirmation received</MessageBox>
             }
             {
                 errorProduct && <MessageBox variant="danger">Item Error</MessageBox>

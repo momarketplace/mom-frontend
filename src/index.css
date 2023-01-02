@@ -1291,6 +1291,7 @@ a {
 
 .required-field {
   color:red;
+  font-size: 10px;
 }
 
 .privacy {

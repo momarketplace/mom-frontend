@@ -5,16 +5,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { detailsOrder, orderNotification, payOrder } from '../actions/orderActions';
 import { paidProduct } from '../actions/productActions';
-import { useParams } from 'react-router-dom';
+
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { ORDER_PAY_RESET } from '../constants/orderConstants';
+import {useParams} from 'react-router-dom'
 
 
 
 function OrderPage() {
+    const {id} = useParams()
     //const orderId = props.match.params.id;
-    const {id} = useParams() //use id to replace orderId
     //const publicKey = "pk_test_863b631d2a66390b101d9b0be373f958bad8ac59"
     //const amount = 1000000 // Remember, set in kobo!
     const [publicKey, setPublicKey]=useState("")
@@ -22,6 +23,8 @@ function OrderPage() {
     const [name, setName ] = useState("")
     const [phone, setPhone ] = useState("")
     const [ amount, setAmount ] = useState(0)
+
+    const [buyerId, setBuyerId] = useState('')
     
 
     //get login user details from store
@@ -77,7 +80,7 @@ function OrderPage() {
             setEmail(email)
             setPhone(phone)
             setName(name)
-            //order.paymentResult = { id: id, name: name, email: email, phone: phone, amount: amount / 100 }
+            setBuyerId(order.shippingAddress.buyerId)
         }
        
     },[email, name, order, phone])
@@ -104,31 +107,36 @@ function OrderPage() {
     //   })[0]
      
 
-    //const paymentResult = { id: id, name: name, email: email, phone: phone, amount: amount / 100 }
-    
+      //const paymentResult = {id: id, name: name, email: email, phone: phone, amount:amount/100}
+      //when payment is successful
       const successHandler = () => {
-          dispatch(payOrder(order));
+        //order.paymentResult = paymentResult
+        dispatch(payOrder(order));
+
+        //   dispatch(payOrder(order, paymentResult));
 
           //update paid products
         order.orderItems.map((x) => {
-            return dispatch(paidProduct({id: x.product, buyerEmail:email, orderId:id, deliveryCost: x.deliveryCost, service: x.service }))
+            return dispatch(paidProduct({id: x.product, buyerEmail:email, orderId:id, deliveryCost: x.deliveryCost, service: x.service,buyerId:buyerId }))
         });
           
            //notify buyer
         dispatch(orderNotification(id))
       }
 
+      //console.log(buyerId)
+
     return loading? (<LoadingBox></LoadingBox>):
     error? (<MessageBox variant="danger">{error}</MessageBox>):
     (
         <div style={{backgroundColor:"white"}}>
-            <p style={{padding:"10px", maxWidth:"90%", marginBottom:"0px"}}>Order Id: <span style={{backgroundColor:"#006400",color:"yellow",padding:"5px"}}>{order._id}</span> </p>
+            <h3 style={{padding:"10px", maxWidth:"90%"}}>Order {order._id} </h3>
             <div className = "row top">
                 <div className = "col-2">
                     <ul>
                         <li>
                             <div className ="card card-body">
-                                <h4>Shipping/Buyer Information</h4>
+                                <h3>Shipping/Buyer Information</h3>
                                 <p> <strong>Name:</strong> { order.shippingAddress.fullName }, <strong>Phone:</strong> { order.shippingAddress.phone } <br />
                                 <strong>Address:</strong> { order.shippingAddress.address },
                                 { order.shippingAddress.city }, 
@@ -138,7 +146,7 @@ function OrderPage() {
                                 {/* {
                                     order.isPaid && 
                                     <>
-                                    <p>Paid By: <strong>{order.paymentResult.name}</strong>, Phone: <strong>{order.paymentResult.phone}</strong></p>
+                                    <p>Paid By: <strong>{order.paymentResult.name}</strong>, Email: <strong>{order.paymentResult.email}</strong>, Phone: <strong>{order.paymentResult.phone}</strong></p>
                                     </>
 
                                 } */}
@@ -151,8 +159,8 @@ function OrderPage() {
                         </li>
                         <li>
                             <div className ="card card-body">
-                                <h4>Payment</h4>
-                                <p> Method: { order.paymentMethod } 
+                                <h3>Payment</h3>
+                                <p> <strong>Method:</strong> { order.paymentMethod } 
                                 </p>
 
                                 { order.isPaid?
@@ -163,13 +171,13 @@ function OrderPage() {
                                 </li>
                                 <li>
                                     <div className='card card-body'>
-                                        <h4>Delivery</h4>
+                                        <h3>Delivery</h3>
                                         <p>Fee: #{ order.deliveryFee}</p>
                                     </div>
                                 </li>
                         <li>
                             <div className ="card card-body">
-                                <h4>Order Items</h4>
+                                <h3>Order Items</h3>
                                 <ul>
                             {
                                 order.orderItems.map((item) =>(
@@ -181,7 +189,7 @@ function OrderPage() {
                                             <div className ="min-30">
                                                 <Link to = {`/product/${item.product}`}>{item.name}</Link>
                                                 <h4>Store Information</h4>
-                                                <p>Name: <strong>{item.storeName}</strong></p>
+                                                <p>Name: <strong>{item.storeName}</strong>, {item.storeId}</p>
                                                 <p>Address: <strong>{item.storeAddress}, {item.storeCity}, {item.storeCountry}.</strong></p>
                                                 <h4>Store Owner</h4>
                                                 <p>Name: <strong>{item.sellerName}</strong> Phone: <strong>{item.sellerPhone}</strong></p>
@@ -206,7 +214,7 @@ function OrderPage() {
                     <div className ="card card-body">
                         <ul>
                             <li>
-                                <h4>Order Summary</h4>
+                                <h3>Order Summary</h3>
                             </li>
                             <li>
                                 <div className = "row">
@@ -220,12 +228,12 @@ function OrderPage() {
                                     <div>#{order.deliveryFee.toFixed(2)}</div>
                                 </div>
                                     </li>
-                                    {/* <li>
-                                <div className = "row">
+                                    <li>
+                                {/* <div className = "row">
                                     <div>Service</div>
                                     <div>#{order.buyerService.toFixed(2)}</div>
-                                </div>
-                            </li> */}
+                                </div> */}
+                            </li>
                             
                             <li>
                                 <div className = "row">
@@ -236,7 +244,7 @@ function OrderPage() {
                             {
                                 !order.isPaid &&
                             (<li>
-                                <div className="form"> 
+                                <div className='form'> 
                                     
                                 <div className='register-items'>
                                 <h4>Receipt Form</h4>

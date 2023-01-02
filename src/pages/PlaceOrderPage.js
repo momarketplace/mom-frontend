@@ -16,6 +16,7 @@ function PlaceOrderPage() {
     const [buyerName, setBuyerName ] = useState('')
     const [buyerAddress, setBuyerAddress ] = useState('')
     const [buyerPhone, setBuyerPhone] = useState('')
+    const [buyerId, setBuyerId] = useState('')
     
    
 //const history = useHistory()
@@ -56,7 +57,7 @@ function PlaceOrderPage() {
         }else{
             item.deliveryCost = Number(item.free)
             return item.free
-        }  
+        } 
     }).reduce((a, b) => a + b, 0)
     
     //service charge for seller
@@ -85,6 +86,7 @@ useEffect(() =>{
         setBuyerName(basket.shippingAddress.fullName);
         setBuyerPhone(basket.shippingAddress.phone);
         setBuyerAddress(`${basket.shippingAddress.address},${basket.shippingAddress.city},${basket.shippingAddress.state},${basket.shippingAddress.country}.`)
+        setBuyerId(basket.shippingAddress.buyerId)
     }
 },[basket])
 
@@ -97,7 +99,7 @@ useEffect(() =>{
         dispatch(createOrder({...basket, orderItems: basket.basketItems}));
         //update ordered product
         basket.basketItems.map((x) => {
-            return dispatch(orderedProduct({id: x.product,buyerName,buyerPhone,buyerAddress, service }))
+            return dispatch(orderedProduct({id: x.product,buyerName,buyerPhone,buyerAddress, service, buyerId }))
         });
     }
 

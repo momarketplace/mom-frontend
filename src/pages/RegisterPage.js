@@ -67,21 +67,7 @@ function RegisterPage() {
   }
   
   
-    //keep track of changes to userInfo
-    // useEffect(() => {
-    //   if (userInfo) {
-    //     window.location = "/"
-    //   }
-    // }, [ userInfo])
-  
-  
-  //move the user to login if registration is successful
-  // if (successMessage) {
-  //   setTimeout(() => {
-  //     setSuccessMessage(false)
-  //     window.location='/login'
-  //   }, 2000);
-  // }
+    
 
   //handle verification function
   const handleVerification = async() =>{
@@ -105,7 +91,7 @@ function RegisterPage() {
           !showVerificationBox &&
           <form onSubmit={handleSummit}>
           <div className='register'>
-            <h2 style={{textAlign:"center"}}>Register</h2>
+            <h3 style={{textAlign:"center"}}>Register</h3>
             <p>Please fill in this form to create an account.</p>
             
             <div className='register-items'>

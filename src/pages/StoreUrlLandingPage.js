@@ -42,7 +42,7 @@ const [createChatLoading, setCreateChatLoading] = useState(false)
         const fetchStore = async () => {
             try {
                 setLoading(true)
-                const { data } = await axios.get(`/${storename}`)
+                const { data } = await axios.get(`https://us-central1-mosganda-one-7604d.cloudfunctions.net/app/${storename}`)
                 setLoading(false)
                 setMyStore(data)
                 
@@ -133,7 +133,7 @@ const [createChatLoading, setCreateChatLoading] = useState(false)
                                 (<div className='close-store' style={{maxWidth:"100%"}}>
           <h2 style={{color:"white"}}>Business Activities Closed.</h2>
           <p style={{color:"white"}}>To be opened: </p>
-                                    <h3 style={{color:"white"}}>{mystore.toBeOpened}</h3>
+                                    <h3 style={{color:"yellow"}}>{mystore.toBeOpened}</h3>
                                     </div>) :
                                     (
                                         <div>
