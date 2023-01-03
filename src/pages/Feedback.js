@@ -17,21 +17,6 @@ function Feedback() {
     const [error, setError] = useState(false)
     const [feedback, setFeedback] = useState([])
     
-    // const sendMessage = async (event) => {
-    //     if (event.key === "Enter") {
-    //         try {
-    //         setLoadingFeed(true)
-    //         await axios.post('/api/v1/feedback', { name, message });
-    //         setName("")
-    //         setMessage("")
-    //         setLoadingFeed(false)
-    //         setSuccessFeed(true)
-    //     } catch (error) {
-    //         setErrorFeed(true);
-    //         setLoadingFeed(false)
-    //     }
-    //     }
-    // }
     const submitHandler = async() => {
        
         try {

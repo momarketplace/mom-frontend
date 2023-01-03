@@ -8,12 +8,12 @@ function Privacy() {
             Mosganda is thoroughly committed to protecting the privacy of our site visitors and customers. We respect each visitor's and customer's right to personal privacy. To this end, we collect and use information throughout our website only as disclosed in this Privacy Policy.
         </p>
         <h4 className='privacy-text'>What this privacy policy covers</h4>
-        <ul className='privacy-text'>
+        <p><ul className='privacy-text'>
             <li>(a) How we collect information from you.</li>
             <li>(b) How we protect customer's information.</li>
             <li>(c) How we use and share your information which you provide when using our webstie.</li>
             <li>(d) General information inline with extant laws and regulations.</li>
-        </ul>
+        </ul></p>
         <p className='privacy-text'>This policy does not apply to the practices of third party agents, or people of which we do not exercise direct control, employment or management.</p>
         <h4>Consent:</h4>
         <p className='privacy-text'>By using this site, you have consented to our Privacy Policy and that you have the legal capacity to give consent. Otherwise, you may discontinue your use of our website and services.</p>
@@ -25,7 +25,9 @@ We collect your personal information (including but not limited to email address
         
         <h4 className='privacy-text'>(2) Use of your personal data</h4>
         <p className='privacy-text'>We use your personal data to operate, provide, develop and improve the products and services that we offer, including the following:
-            <ul className='privacy-text'>
+        </p>
+        <p>
+        <ul className='privacy-text'>
                 <li>(a)	Registering you as a new customer.</li>
                 <li>(b)	Processing and delivering your orders</li>
                 <li>(c)	Create and keep track of your store and items</li>
@@ -37,22 +39,26 @@ We collect your personal information (including but not limited to email address
                 <li>(i)	Detecting fraud.</li>
             </ul>
         </p>
-        
         <h4 className='privacy-text'>(3) How we share your personal data</h4>
         <p className='privacy-text'>We may need to share your personal data with sellers, buyers, or third parties for the following purposes:
+            <p>
             <ul className='privacy-text'>
                 <li><strong>Sales and purchase of products and services: </strong>In order to deliver your products and services purchased on our marketplace from sellers/buyers or third parties, we may be required to provide your personal data to such seller/buyer or third parties.</li>
                 <li><strong>Working with third party service providers: </strong>: We engage third parties to perform certain functions on our behalf. Examples include fulfilling orders for products or services, delivering packages, analyzing data, providing marketing assistance, processing payments, transmitting content, assessing and managing credit risk, and providing customer service.</li>
                 <li><strong>Business transfers: </strong>As we continue to develop our business, we might sell or buy other businesses or services. In such transactions, customer information may be transferred together with other business assets.</li>
                 <li><strong>Detecting fraud and abuse: </strong>: We release account and other personal data to other companies and organizations for fraud protection and credit risk reduction, and to comply with the law.</li>
             </ul>
+            </p>
             <p className='privacy-text'>When we share your personal data with third parties we:</p>
-            <ul className='privacy-text'>
+        </p>
+        <p>
+        <ul className='privacy-text'>
                 <li>(a) require them to agree to use your data in accordance with the terms of this Privacy Policy and in accordance with the law; and</li>
                 <li>(b) only permit them to process your personal data for specified purposes and in accordance with our instructions. We do not allow our third-party service providers to use your personal data for their own purposes.</li>
             </ul>
         </p>
         <h4 className='privacy-text'>(4) Governing principles of data processing</h4>
+        <p>
         <ul className='privacy-text'>
             <li>(a) Your personal data on Mosganda shall be collected and processed in accordance with legitimate and lawful purpose consented to by you herein, provided that a further processing may be done only for archiving, scientific research, historical research or statistical purposes for public interest in line with extant regulations and laws.</li>
             <li>(b) Personal data shall be adequate, accurate and without prejudice to the dignity of human person.</li>
@@ -60,6 +66,7 @@ We collect your personal information (including but not limited to email address
             <li>(d) Our data collection shall depict that we owe a duty of care to you.</li>
             <li>(e) We shall be accountable in line with extant laws and regulations.</li>
         </ul>
+        </p>
         <h4>(5) Personal data retention period</h4>
         <p className='privacy-text'>Mosganda will only keep your personal information for as long as it is necessary for the purposes set out in this Privacy Policy, unless a longer retention period is required or permitted by law (such as tax, accounting or other legal requirements.) Upon request for account closure, your account will be closed but this closure will not involve deletion of historical records of the account for the reasons already stated. However, except as may be required by law or law enforcement agents and/or regulators, further processing of the personal information related to the account will cease from time of closure.</p>
         <h4>(6) Your privacy rights</h4>
@@ -69,7 +76,7 @@ Under certain circumstances, you have rights under data protection laws in relat
         <h4>(7) Security precautions</h4>
         <p className='privacy-text'>Our website has stringent security measures in place to protect the loss, misuse, and alteration of the information under our control. Whenever you change or access your account information, we offer the use of a secure server. Once your information is in our possession we adhere to strict security guidelines, protecting it against unauthorized access. However, please bear in mind that we cannot guarantee that the internet in itself is 100% secure and so we cannot take responsibility for the illegal acts of hackers as long as we have taken the necessary precautions. Although we will do our best to protect your personal information, transmission of personal information to and from our services is at your own risk. You should only access our website or services through and within a secure environment. Most importantly, you are responsible for keeping your email and password secure and you should not disclose them to anyone.</p>
         <h4>(8) Advertisement on Mosganda</h4>
-        <p className='privacy-text'>We use third-party advertising companies to serve ads when you visit our website. These companies may use information (not including your name, address, email address, or telephone number) about your visits to this and other websites in order to provide advertisements about goods and services of interest to you.</p>
+        <p className='privacy-text'>We use third-party advertising companies to serve ads when you visit our website. These companies may use information (not including your email address or telephone number) about your visits to this and other websites in order to provide advertisements about goods and services of interest to you.</p>
         <h4>(9) Remedies, questions and contact</h4>
         <p className='privacy-text'>If you observe or have good grounds that your privacy rights have been infringed or likely to be infringed by the use of our website, please lodge your complaints or questions regarding our policy to the following address: contact@mosganda.com. Our Data Protection Officer shall attend to them. Generally, you may contact us on any issue by mail to contact@mosganda.com. You can also chat with us using out chat feature.</p>
         <h4>(10) Notification of changes</h4>
