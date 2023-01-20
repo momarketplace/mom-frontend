@@ -12,18 +12,6 @@
   padding: 20px;
 }
 
-.withdrawal-information>ul {
-  width: 100%;
-  max-width: 95%;
-}
-
-.withdrawal-information>ul>li {
-  list-style-type: disc;
-  width: 100%;
-  max-width: 90%;
-  margin-left: 10px;
-  font-size: 15px;
-}
 
 .withdrawal-notice {
   width: 100%;
@@ -33,7 +21,13 @@
 .soldproduct-item {
   margin: 0px;
   font-size: 11px !important;
-  color: black !important;
+  
+}
+
+
+.soldpro {
+  width: 250px;
+  max-width: 300px;
 }
 
 @media screen and (max-width: 600px) {
